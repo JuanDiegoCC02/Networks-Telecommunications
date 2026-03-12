@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,9 +77,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Telecommunications_Network_Databases',
+        'NAME': 'Telecommunications_Network_DB',
         'USER': 'root',
-        'PASSWORD': 'jd1234'
+        'PASSWORD': 'jd1234',
         'HOST': '127.0.0.1',
         'PORT': '3306'
     }

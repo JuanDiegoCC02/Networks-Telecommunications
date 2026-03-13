@@ -11,9 +11,9 @@ function Routing() {
   return (
     <Router>
         <Routes>
-             <Route path = '/' element = {<Register/>}/> 
+             <Route path = '/register' element = {<Register/>}/> 
              <Route path = '/logIn' element = {<LogIn/>}/> 
-             <Route path = '/home' element = {<Home/>}/> 
+             <Route path = '/' element = {<Home/>}/> 
         </Routes>
     </Router>
   )

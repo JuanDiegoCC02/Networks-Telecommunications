@@ -7,8 +7,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
     birth_date = serializers.DateField(write_only=True)
     phone_number = serializers.CharField(write_only=True, max_length=20)
     
-    username = serializers.CharField(read_only=True)
-    email = serializers.EmailField(read_only=True)
+    username = serializers.CharField(required=True)
+    email = serializers.EmailField(required=True)
 
     class Meta:
         model = User
@@ -24,14 +24,14 @@ class UserProfileSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        # 1. obtain profile data
+        # 1 obtain profile data
         birth_date = validated_data.pop('birth_date')
         phone_number = validated_data.pop('phone_number')
 
-        # 2. create userBase / encrypts the password
+        # 2 create userBase / encrypts the password
         user = User.objects.create_user(**validated_data)
 
-        # 3. create user & perfil automatic
+        # 3 create user & perfil automatic
         Profile.objects.create(
             user=user, 
             birth_date=birth_date, 

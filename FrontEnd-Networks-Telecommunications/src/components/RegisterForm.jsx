@@ -38,43 +38,48 @@ function registerForm() {
     setPhone(e.target.value)
   }
 
-      async function register() {
+     async function register() {
 
-        // Validación para que todos los espacios deban completarse antes de poder enviar el formulario
-         if (!UserName || !FirstName || !LastName || !Password || !Email || !Birthday || !Phone) {
-            return;
-        }
+      console.log("UserName:", UserName)
+      console.log("FirstName:", FirstName)
+      console.log("LastName:", LastName)
+      console.log("Password:", Password)
+      console.log("Email:", Email)
+      console.log("Birthday:", Birthday)
+      console.log("Phone:", Phone)
 
-      
-        const obj = {
-            username: UserName,
-            firstname: FirstName,
-            lastname: LastName,
-            password: Password,
-            email: Email,
-            birthday: Birthday,
-            phone: Phone
-        }
-    try { // POST para crear el usuario
-        const requestServer = await PostUsers(obj);
-        console.log("Usuario registrado:", requestServer);
-        navigate("/logIn");
-    } catch (error) {
-    console.error("Error al registrar:", error);
+  if (!UserName || !FirstName || !LastName || !Password || !Email || !Birthday || !Phone) {
+      alert("Complete all fields");
+      return;
+  }
 
-    // Verifica si viene un msj
-    if (error.response && error.response.data) {
-        const data = error.response.data;
+  const obj = {
+      username: UserName,
+      first_name: FirstName,
+      last_name: LastName,
+      password: Password,
+      email: Email,
+      birth_date: Birthday,
+      phone_number: Phone
+  }
 
-        if (data.error) {
-           console.log("Failed backend")
-        } else {
-            console.log("failed data")
-        }
-        } else {
-           console.log("failed")
-        }
-    }
+  try {
+
+      const requestServer = await PostUsers(obj);
+
+      console.log("Usuario registrado:", requestServer);
+
+      alert("User created successfully");
+
+      navigate("/logIn");
+
+  } catch (error) {
+
+      console.error("Error al registrar:", error);
+
+      alert("Error creating user");
+
+  }
 }
 
   return (
@@ -96,7 +101,7 @@ function registerForm() {
         </div>
         <div>
           <label htmlFor="">Password</label>
-          <input placeholder='Password' value={Password} onChange={password} type="text" />
+          <input placeholder='Password' value={Password} onChange={password} type="password" />
         </div>
         <div>
           <label htmlFor="">Email</label>
@@ -104,16 +109,16 @@ function registerForm() {
         </div>
         <div>
           <label htmlFor="">Birthday</label>
-          <input placeholder='Birthday' value={Birthday} onChange={birthday} type="text" />
+          <input placeholder='Birthday' value={Birthday} onChange={birthday} type="date" />
         </div>
         <div>
           <label htmlFor="">Phone</label>
-          <input placeholder='Phone' value={Phone} onChange={phone} type="text" />
+          <input placeholder='Phone' value={Phone} onChange={phone} type="number" />
         </div>
       </div>
 
       <div>
-        <input type="button" onClick={register} value= "Register" />
+        <button onClick={register} value= "Register" >Register</button>
       </div>
 
     </div>

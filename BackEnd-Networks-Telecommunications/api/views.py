@@ -7,17 +7,29 @@ from django.contrib.auth import authenticate, login, logout
 from .serializers import UserProfileSerializer
 
 class RegisterView(APIView):
-    # register view (AllowAny)
+    
+
     permission_classes = [AllowAny]
 
     def post(self, request):
+
+        # show data return 
+        print("DATA return:", request.data)  
+
         serializer = UserProfileSerializer(data=request.data)
+
         if serializer.is_valid():
-            serializer.save()
+            user = serializer.save()
+
+            print("User created:", user.username)  # confirm
+
             return Response(
-                {"message": "User and Profile created successfully"}, 
+                {"message": "User and Profile created successfully"},
                 status=status.HTTP_201_CREATED
             )
+
+        print("Failed serializers", serializer.errors)  # failed
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

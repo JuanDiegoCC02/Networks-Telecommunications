@@ -16,6 +16,10 @@ function NavPage() {
             <div>
                 <a href="/">Home</a>
             </div>
+             <div>
+                <a href="/cameras">Cameras</a>
+            </div>
+
         </nav>
 
     </div>

@@ -34,8 +34,8 @@ function AddCamera() {
           <label htmlFor=""> Camera Status </label>
           <select name="" id="">
             <option value="">select status</option>
-            <option value="on">ON</option>
-            <option value="off">OFF</option>
+            <option value="on">Active</option>
+            <option value="off">Inactive</option>
           </select>
         </div>
 

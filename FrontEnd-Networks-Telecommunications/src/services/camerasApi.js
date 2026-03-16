@@ -1,7 +1,7 @@
 //  Get Cameras
 async function getCameras() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/usersGet/", {
+    const response = await fetch("http://127.0.0.1:8000/api/camerasGet/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -9,12 +9,12 @@ async function getCameras() {
     });
 
     if (!response.ok) {
-      throw new Error("Error fetching user");
+      throw new Error("Error fetching camera");
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Error fetching user", error);
+    console.error("Error fetching camera", error);
     throw error;
   }
 }
@@ -23,7 +23,7 @@ async function getCameras() {
 //  Post Cameras
 async function postCameras(obj) {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/users/", {
+    const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ async function postCameras(obj) {
 
     return data;
   } catch (error) {
-    console.error("Error PostUsuarios:", error);
+    console.error("Error post camera:", error);
     throw error;
   }
 }
@@ -48,7 +48,7 @@ async function postCameras(obj) {
 //  Update Cameras
 async function updateCameras(obj, id) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/users-update/${id}/`, {
+    const response = await fetch(`http://127.0.0.1:8000/api/cameras-update/${id}/`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -57,12 +57,12 @@ async function updateCameras(obj, id) {
     });
 
     if (!response.ok) {
-      throw new Error("Error updating user");
+      throw new Error("Error updating camera");
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Error update user:", error);
+    console.error("Error update camera:", error);
     throw error;
   }
 }
@@ -71,7 +71,7 @@ async function updateCameras(obj, id) {
 // Delete Cameras 
 async function deleteCameras(id) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
+    const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,7 @@ async function deleteCameras(id) {
 
     return { message: `User with id ${id} deleted successfully` };
   } catch (error) {
-    console.error("Error deleting User:", error);
+    console.error("Error deleting Camera:", error);
     throw error;
   }
 }

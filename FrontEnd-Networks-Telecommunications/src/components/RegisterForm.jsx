@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { PostUsers } from '../services/hooksUsers'
+import { postUsers } from '../services/usersApi'
 
 
 
@@ -65,7 +65,7 @@ function registerForm() {
 
   try {
 
-      const requestServer = await PostUsers(obj);
+      const requestServer = await postUsers(obj);
 
       console.log("Usuario registrado:", requestServer);
 

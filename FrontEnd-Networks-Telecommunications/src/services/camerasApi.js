@@ -1,5 +1,5 @@
-// HOOKS Get Users
-async function GetUsers() {
+//  Get Cameras
+async function getCameras() {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/usersGet/", {
       method: "GET",
@@ -20,8 +20,8 @@ async function GetUsers() {
 }
 
 
-// HOOKS Post Users
-async function PostUsers(obj) {
+//  Post Cameras
+async function postCameras(obj) {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/users/", {
       method: "POST",
@@ -45,8 +45,8 @@ async function PostUsers(obj) {
 }
 
 
-// HOOKS Update Users
-async function UpdateUsers(obj, id) {
+//  Update Cameras
+async function updateCameras(obj, id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/users-update/${id}/`, {
       method: "PATCH",
@@ -68,8 +68,8 @@ async function UpdateUsers(obj, id) {
 }
 
 
-//HOOKS Delete Users 
-async function DeleteUsers(id) {
+// Delete Cameras 
+async function deleteCameras(id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
       method: "DELETE",
@@ -90,8 +90,8 @@ async function DeleteUsers(id) {
 }
 
 export{
-    GetUsers,
-    PostUsers,
-    UpdateUsers,
-    DeleteUsers
+    getCameras,
+    postCameras,
+    updateCameras,
+    deleteCameras
 }

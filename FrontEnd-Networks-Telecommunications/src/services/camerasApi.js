@@ -67,6 +67,28 @@ async function updateCameras(obj, id) {
   }
 }
 
+// patch cameras
+async function patchCameras(obj, id) {
+  try {
+    // CAMBIO: Quité "-update" de la URL
+    const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(obj)
+    });
+
+    if (!response.ok) {
+        throw new Error("Error en la petición al servidor");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error patch camera:', error);
+    throw error;
+  }
+}
 
 // Delete Cameras 
 async function deleteCameras(id) {
@@ -93,5 +115,6 @@ export{
     getCameras,
     postCameras,
     updateCameras,
+    patchCameras,
     deleteCameras
 }

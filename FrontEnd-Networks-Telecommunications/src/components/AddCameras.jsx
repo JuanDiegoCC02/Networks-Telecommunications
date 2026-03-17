@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { postCameras } from '../services/camerasApi';
 
-function AddCamera() {
+function AddCameras() {
   const [cameraName, setCameraName] = useState("");
   const [cameraIP, setCameraIP] = useState("");
   const [cameraLocation, setCameraLocation] = useState("");
@@ -114,4 +114,4 @@ function AddCamera() {
   )
 }
 
-export default AddCamera
+export default AddCameras

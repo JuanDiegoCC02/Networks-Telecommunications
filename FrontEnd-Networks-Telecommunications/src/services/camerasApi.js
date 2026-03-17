@@ -1,7 +1,7 @@
 //  Get Cameras
 async function getCameras() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/camerasGet/", {
+    const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

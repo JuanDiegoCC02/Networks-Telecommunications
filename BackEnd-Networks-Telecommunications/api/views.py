@@ -5,6 +5,9 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import authenticate, login, logout
 from .serializers import UserProfileSerializer
+from rest_framework import viewsets
+from .models import Camera
+from .serializers import CameraSerializer
 
 class RegisterView(APIView):
     
@@ -79,3 +82,9 @@ class MyProfileView(APIView):
             "phone": user.profile.phone_number,
             "birth_date": user.profile.birth_date
         })
+
+#Camera View CRUD system
+class CameraViewSet(viewsets.ModelViewSet):
+    queryset = Camera.objects.all()
+    serializer_class = CameraSerializer
+

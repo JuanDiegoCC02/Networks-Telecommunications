@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Camera
 
 class UserProfileSerializer(serializers.ModelSerializer):
     #data profile
@@ -54,3 +54,9 @@ class ProfileDetailSerializer(serializers.ModelSerializer):
             "email": obj.user.email,
             "full_name": f"{obj.user.first_name} {obj.user.last_name}"
         }
+
+
+class CameraSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Camera
+        fields = '__all__'

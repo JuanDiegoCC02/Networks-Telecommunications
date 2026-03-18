@@ -3,7 +3,8 @@ import { postCameras } from '../services/camerasApi';
 
 function AddCameras() {
   const [cameraName, setCameraName] = useState("");
-  const [cameraIP, setCameraIP] = useState("");
+  const [ip_Address, setIp_Address] = useState("");
+  const [url_Address, setUrl_Address] = useState("");
   const [cameraLocation, setCameraLocation] = useState("");
   const [cameraDescription, setCameraDescroption] = useState("");
   const [cameraStatus, setCameraStatus] = useState("");
@@ -11,8 +12,11 @@ function AddCameras() {
   function name(e) {
     setCameraName(e.target.value)    
   }
-   function ip(e) {
-    setCameraIP(e.target.value)    
+   function ip_address(e) {
+    setIp_Address(e.target.value)    
+  }
+   function url_address(e) {
+    setUrl_Address(e.target.value)    
   }
    function location(e) {
     setCameraLocation(e.target.value)    
@@ -29,19 +33,21 @@ function AddCameras() {
     async function create() {
 
       console.log("name:", cameraName)
-      console.log("ip:", cameraIP)
+      console.log("ip_address:", ip_Address)
+      console.log("url_address:", url_Address)
       console.log("location:", cameraLocation)
       console.log("description:", cameraDescription)
       console.log("status:", cameraStatus)
       
-  if (!cameraName || !cameraIP || !cameraLocation || !cameraDescription || !cameraStatus) {
+  if (!cameraName || !ip_Address || !url_Address || !cameraLocation || !cameraDescription || !cameraStatus) {
       alert("Complete all fields");
       return;
   }
 
   const obj = {
       name: cameraName,
-      ip_camera: cameraIP,
+      ip_address: ip_Address,
+      url_address: url_Address,
       location: cameraLocation,
       description: cameraDescription,
       status: cameraStatus
@@ -84,9 +90,13 @@ function AddCameras() {
           <input type="text" placeholder='Insert Name' value={cameraName} onChange={name} />
         </div>        
         <div>
-          <label htmlFor=""> IP Access Camera </label>
-          <input type="text"  placeholder='Insert IP' value={cameraIP} onChange={ip}  />
+          <label htmlFor=""> IP Address Camera </label>
+          <input type="text"  placeholder='Insert IP' value={ip_Address} onChange={ip_address}  />
         </div>     
+         <div>
+          <label htmlFor=""> URL Address Camera </label>
+          <input type="text"  placeholder='Insert URL' value={url_Address} onChange={url_address}  />
+        </div> 
         <div>
           <label htmlFor=""> Camera Location </label>
           <input type="text"  placeholder='Insert Location' value={cameraLocation} onChange={location}  />

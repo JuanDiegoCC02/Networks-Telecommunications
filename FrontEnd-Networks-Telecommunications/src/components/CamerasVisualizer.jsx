@@ -7,7 +7,8 @@ function CamerasVisualizer() {
   const [reload, setReload] = useState(false)
 
   const [editName, setEditName] = useState("")
-  const [editID, setEditID] = useState("")
+  const [editIp_Address, setEditIp_Address] = useState("")
+  const [editUrl_Address, setEditUrl_Address] = useState("")
   const [editLocation, setEditLocation] = useState("")
   const [editDescription, setEditDescription] = useState("")
   const [editStatus, setEditStatus] = useState("")
@@ -31,7 +32,8 @@ function CamerasVisualizer() {
  function openCameraEdit(user) {
     setUser(user)
     setEditName(user.name)
-    setEditID(user.id)
+    setEditIp_Address(user.ip_address)
+    setEditUrl_Address(user.url_address)
     setEditLocation(user.location)
     setEditDescription(user.description)
     setEditStatus(user.status)
@@ -43,7 +45,8 @@ function CamerasVisualizer() {
  async function UpdateCInfo(id) {
   const updCamera = {
     "name": editName,
-    "id_camera": editID,
+    "ip_address": editIp_Address,
+    "url_address": editUrl_Address,
     "location": editLocation,
     "description": editDescription,
     "status": editStatus,
@@ -76,14 +79,15 @@ function CamerasVisualizer() {
           <div key={c.id}>
             <header> 
              <h4> {c.name} </h4>
-             <span> {c.status} </span>
+             <span> Status Camera:  {c.status} </span>
 
             </header>
             <main>
-            <h5> {c.name} </h5>
-            <span> {c.id} </span><br />
-            <span> {c.location} </span>
-            <p> {c.description} </p>
+            <h5>Name: {c.name} </h5>
+            <span>IP Address: {c.ip_address} </span><br /><br />
+            <span>URL Address: {c.url_address} </span><br /><br />
+            <span>Location: {c.location} </span><br />
+            <p>Description: {c.description} </p>
             </main>
             <footer>
               <button onClick={() => {
@@ -105,19 +109,23 @@ function CamerasVisualizer() {
 
         <div><h5>Edit Camera Information</h5></div>
           <div>
-            <label htmlFor=""></label>
+            <label htmlFor="">Name</label>
             <input value={editName} onChange={(e) => setEditName(e.target.value)} type="text" />
           </div>
            <div>
-            <label htmlFor=""></label>
-            <input value={editID} onChange={(e) => setEditID(e.target.value)} type="text" />
+            <label htmlFor="">Ip_Address</label>
+            <input value={editIp_Address} onChange={(e) => setEditIp_Address(e.target.value)} type="text" />
           </div>
            <div>
-            <label htmlFor=""></label>
+            <label htmlFor="">URL_ Address</label>
+            <input value={editUrl_Address} onChange={(e) => setEditUrl_Address(e.target.value)} type="text" />
+          </div>
+           <div>
+            <label htmlFor="">Location</label>
             <input value={editLocation} onChange={(e) => setEditLocation(e.target.value)} type="text" />
           </div>
            <div>
-            <label htmlFor=""></label>
+            <label htmlFor="">Description</label>
             <input value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />
           </div>
            <div>

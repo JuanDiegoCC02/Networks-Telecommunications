@@ -29,7 +29,9 @@ class Profile(models.Model):
 class Camera(models.Model):
     name = models.CharField(max_length=100)
 
-    ip_camera = models.URLField()
+    ip_address = models.CharField(max_length=80)
+
+    url_address = models.URLField()
 
     location = models.CharField(max_length=150)
 

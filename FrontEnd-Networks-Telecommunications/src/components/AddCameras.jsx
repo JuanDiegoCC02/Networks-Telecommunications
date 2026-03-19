@@ -98,17 +98,28 @@ function AddCameras() {
           <input type="text"  placeholder='Insert URL' value={url_Address} onChange={url_address}  />
         </div> 
         <div>
-          <label htmlFor=""> Camera Location </label>
-          <input type="text"  placeholder='Insert Location' value={cameraLocation} onChange={location}  />
-        </div>    
-           <div>
-          <label htmlFor=""> Camera Description </label>
-          <input type="text"  placeholder='Insert Description' value={cameraDescription} onChange={description}  />
-        </div>        
+         <label htmlFor=""> Camera Description </label>
+         <input type="text"  placeholder='Insert Description' value={cameraDescription} onChange={description}  />
+        </div> 
+
+        <div>
+          <label htmlFor="">Location </label>
+          <select name="" id="" value={cameraLocation} onChange={location}>
+            <option value="">Select Location</option>
+            <option value="san jose">San José</option>
+            <option value="cartago">Cartago</option>
+            <option value="heredia">Heredia</option>
+            <option value="alajuela">Alajuela</option>
+            <option value="limon">Limón</option>
+            <option value="puntarenas">Puntarenas</option>
+            <option value="guanacaste">Guanacaste</option>
+          </select>
+        </div> 
+              
         <div>
           <label htmlFor=""> Camera Status </label>
           <select value={cameraStatus} onChange={status} name="" id="">
-            <option value="">select status</option>
+            <option value="">Select Status</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>

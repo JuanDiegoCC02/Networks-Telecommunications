@@ -74,6 +74,33 @@ function CamerasVisualizer() {
         <h3>Cameras Visualizer</h3>
       </div>
 
+    <div>
+      <div>
+        <input type="search" placeholder='Camera Search' name="" id="" />
+      </div>
+
+      <div>
+        <select name="" id="">
+          <option value="">select status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+
+      <div>
+        <select name="" id="">
+          <option value="">select location</option>
+          <option value="">San José</option>
+          <option value="">Cartago</option>
+          <option value="">Heredia</option>
+          <option value="">Alajuela</option>
+          <option value="">Limón</option>
+          <option value="">Puntarenas</option>
+          <option value="">Guanacaste</option>
+        </select>
+      </div>
+      </div>
+
       <div>
         {cameras.map((c) => (
           <div key={c.id}>

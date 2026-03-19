@@ -33,9 +33,15 @@ class Camera(models.Model):
 
     url_address = models.URLField()
 
-    location = models.CharField(max_length=150)
-
     description = models.TextField(blank=True)
+
+
+    location = models.CharField(
+        max_length=20,
+        choices=[('san jose', 'San Jose'), ('cartago', 'Cartago'),('heredia', 'Heredia'),('alajuela', 'Alajuela'),('limon', 'Limon'),('puntarenas', 'Puntarenas'),('guanacaste', 'Guanacaste')],
+        default='active'
+    )
+
     
     status = models.CharField(
         max_length=10,

@@ -38,15 +38,15 @@ class Camera(models.Model):
 
     location = models.CharField(
         max_length=20,
-        choices=[('san jose', 'San Jose'), ('cartago', 'Cartago'),('heredia', 'Heredia'),('alajuela', 'Alajuela'),('limon', 'Limon'),('puntarenas', 'Puntarenas'),('guanacaste', 'Guanacaste')],
+        choices=[('San José', 'San José'), ('Cartago', 'Cartago'),('Heredia', 'Heredia'),('Alajuela', 'Alajuela'),('Limón', 'Limón'),('Puntarenas', 'Puntarenas'),('Guanacaste', 'Guanacaste')],
         default='active'
     )
 
     
     status = models.CharField(
         max_length=10,
-        choices=[('active', 'Active'), ('inactive', 'Inactive')],
-        default='active'
+        choices=[('Active', 'Active'), ('Inactive', 'Inactive')],
+        default='Active'
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

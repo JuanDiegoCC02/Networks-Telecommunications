@@ -106,13 +106,13 @@ function AddCameras() {
           <label htmlFor="">Location </label>
           <select name="" id="" value={cameraLocation} onChange={location}>
             <option value="">Select Location</option>
-            <option value="san jose">San José</option>
-            <option value="cartago">Cartago</option>
-            <option value="heredia">Heredia</option>
-            <option value="alajuela">Alajuela</option>
-            <option value="limon">Limón</option>
-            <option value="puntarenas">Puntarenas</option>
-            <option value="guanacaste">Guanacaste</option>
+            <option value="San José">San José</option>
+            <option value="Cartago">Cartago</option>
+            <option value="Heredia">Heredia</option>
+            <option value="Alajuela">Alajuela</option>
+            <option value="Limón">Limón</option>
+            <option value="Puntarenas">Puntarenas</option>
+            <option value="Guanacaste">Guanacaste</option>
           </select>
         </div> 
               
@@ -120,8 +120,8 @@ function AddCameras() {
           <label htmlFor=""> Camera Status </label>
           <select value={cameraStatus} onChange={status} name="" id="">
             <option value="">Select Status</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
           </select>
         </div>
 

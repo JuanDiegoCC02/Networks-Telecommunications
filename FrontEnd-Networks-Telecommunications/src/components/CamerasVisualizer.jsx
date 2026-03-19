@@ -6,6 +6,10 @@ function CamerasVisualizer() {
   const [user, setUser] = useState(null)
   const [reload, setReload] = useState(false)
 
+  const [search, setSearch] = useState("")
+  const [filterLocation, setFilterLocation] = useState("")
+  const [filterStatus, setFilterStatus] = useState("")
+
   const [editName, setEditName] = useState("")
   const [editIp_Address, setEditIp_Address] = useState("")
   const [editUrl_Address, setEditUrl_Address] = useState("")
@@ -27,6 +31,25 @@ function CamerasVisualizer() {
     }
     CamerasLoad()
   }, [reload])
+
+// Filter cameras
+  const filteredCameras = cameras.filter((c)=>{
+    const searchText = search.toLowerCase()
+    
+    // funtion inpt search 
+    const requestedSearch =
+    c.name.toLowerCase().includes(searchText) ||
+    c.ip_address.toLowerCase().includes(searchText) ||
+    c.url_address.toLowerCase().includes(searchText)
+
+    const requestedLocation = 
+    filterLocation === "" || c.location === filterLocation
+
+    const requestedStatus = 
+    filterStatus === "" || c.status === filterStatus
+
+    return requestedSearch && requestedLocation && requestedStatus
+  })
 
 // Funtion Open Modal for the Camera Edit
  function openCameraEdit(user) {
@@ -76,33 +99,34 @@ function CamerasVisualizer() {
 
     <div>
       <div>
-        <input type="search" placeholder='Camera Search' name="" id="" />
+        <input value={search} onChange={(e)=> setSearch(e.target.value)} type="search" placeholder='Camera Search' name="" id="" />
       </div>
 
       <div>
-        <select name="" id="">
-          <option value="">select status</option>
-          <option value="active">Active</option>
-          <option value="inactive">Inactive</option>
-        </select>
-      </div>
-
-      <div>
-        <select name="" id="">
+        <select value={filterLocation} onChange={(e)=> setFilterLocation(e.target.value)} name="" id="">
           <option value="">select location</option>
-          <option value="">San José</option>
-          <option value="">Cartago</option>
-          <option value="">Heredia</option>
-          <option value="">Alajuela</option>
-          <option value="">Limón</option>
-          <option value="">Puntarenas</option>
-          <option value="">Guanacaste</option>
+          <option value="San José">San José</option>
+          <option value="Cartago">Cartago</option>
+          <option value="Heredia">Heredia</option>
+          <option value="Alajuela">Alajuela</option>
+          <option value="Limón">Limón</option>
+          <option value="Puntarenas">Puntarenas</option>
+          <option value="Guanacaste">Guanacaste</option>
         </select>
       </div>
+
+       <div>
+        <select value={filterStatus} onChange={(e)=> setFilterStatus(e.target.value)} name="" id="">
+          <option value="">select status</option>
+          <option value="Active">Active</option>
+          <option value="Inactive">Inactive</option>
+        </select>
+      </div>
+
       </div>
 
       <div>
-        {cameras.map((c) => (
+        {filteredCameras.map((c) => (
           <div key={c.id}>
             <header> 
              <h4> {c.name} </h4>
@@ -147,20 +171,30 @@ function CamerasVisualizer() {
             <label htmlFor="">URL_ Address</label>
             <input value={editUrl_Address} onChange={(e) => setEditUrl_Address(e.target.value)} type="text" />
           </div>
-           <div>
-            <label htmlFor="">Location</label>
-            <input value={editLocation} onChange={(e) => setEditLocation(e.target.value)} type="text" />
-          </div>
-           <div>
+          <div>
             <label htmlFor="">Description</label>
             <input value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />
           </div>
            <div>
+             <label htmlFor="">Location </label>
+          <select name="" id="" value={editLocation} onChange={(e) => setEditLocation(e.target.value)}>
+            <option value="">Select Location</option>
+            <option value="San José">San José</option>
+            <option value="Cartago">Cartago</option>
+            <option value="Heredia">Heredia</option>
+            <option value="Alajuela">Alajuela</option>
+            <option value="Limón">Limón</option>
+            <option value="Puntarenas">Puntarenas</option>
+            <option value="Guanacaste">Guanacaste</option>
+          </select>
+          </div>
+           
+           <div>
             <label htmlFor="">Camera Status</label>
             <select value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
               <option value="">select status</option>
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
             </select>
           </div>
 

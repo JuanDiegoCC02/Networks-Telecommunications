@@ -6,18 +6,18 @@ function NavPage() {
   return (
     <div>
 
-        <nav>
-            <div>
-                <a href="register">Register</a>
+        <nav className='navContainerFull'>
+            <div className='navContainerOwn'>
+                <a className='accessNav' href="register">Register</a>
             </div>
-            <div>
-                <a href="/logIn">Log In</a>
+            <div className='navContainerOwn'>
+                <a className='accessNav' href="/logIn">Log In</a>
             </div>
-            <div>
-                <a href="/">Home</a>
+            <div className='navContainerOwn'>
+                <a className='accessNav' href="/">Home</a>
             </div>
-             <div>
-                <a href="/cameras">Cameras</a>
+             <div className='navContainerOwn'>
+                <a className='accessNav' href="/cameras">Cameras</a>
             </div>
 
         </nav>

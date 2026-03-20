@@ -46,26 +46,33 @@
 
 
     return (
-      <div style={{textAlign:"center", marginTop:"50px"}}>
+      <div className="logInContainerFull">
 
-        <h2>Log In</h2>
+        <div className="logInContainerTitle">
+        <h2 className="logInTitle">Log In</h2>
+        </div>
 
-        <div>
-          <label> Username </label><br/>
-          <input type="text" placeholder="" value={Username} onChange={(e) => setUsername(e.target.value)}/>
+
+      <div className="logInFormFull">
+        <div className="logInContainerForm">
+          <label className="logInLabelForm"> Username </label><br/>
+          <input className="logInInputForm" type="text" placeholder="" value={Username} onChange={(e) => setUsername(e.target.value)}/>
         </div>
 
         <br/>
 
-        <div>
-          <label> Password </label><br/>
-          <input type="password" placeholder="" value={Password} onChange={(e) => setPassword(e.target.value)}/>
+        <div className="logInContainerForm">
+          <label className="logInLabelForm"> Password </label><br/>
+          <input className="logInInputForm" type="password" placeholder="" value={Password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
 
         <br/>
+      
+        <div className="logInContianerBttn">
+        <button className="logInBttnAccess" onClick={accessLogIn}> Log In </button>
+        </div>
 
-        <button onClick={accessLogIn}> Log In </button>
-
+        </div>
 
       </div>
     );

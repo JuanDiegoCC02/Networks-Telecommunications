@@ -83,42 +83,53 @@ function registerForm() {
 }
 
   return (
-       <div>
+       <div className='registerContainerFull'>
 
-      <div><h1>Register</h1></div>
-      <div>
-        <div>
-          <label htmlFor="">Username</label>
-          <input placeholder='Username' value={UserName} onChange={username} type="text" />
-        </div>
-        <div>
-          <label htmlFor="">Firstname</label>
-          <input placeholder='Firstname' value={FirstName} onChange={firstname} type="text" />
-        </div>
-        <div>
-          <label htmlFor="">Lastname</label>
-          <input placeholder='Lastname' value={LastName} onChange={lastname} type="text" />
-        </div>
-        <div>
-          <label htmlFor="">Password</label>
-          <input placeholder='Password' value={Password} onChange={password} type="password" />
-        </div>
-        <div>
-          <label htmlFor="">Email</label>
-          <input placeholder='Email' value={Email} onChange={email} type="text" />
-        </div>
-        <div>
-          <label htmlFor="">Birthday</label>
-          <input placeholder='Birthday' value={Birthday} onChange={birthday} type="date" />
-        </div>
-        <div>
-          <label htmlFor="">Phone</label>
-          <input placeholder='Phone' value={Phone} onChange={phone} type="number" />
-        </div>
+      <div className='registerContainerTitle'>
+        <h1 className='registerTitle'>Register</h1>
       </div>
 
-      <div>
-        <button onClick={register} value= "Register" >Register</button>
+      <div className='registerFormFull'>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Username</label>
+          <input className='registerInputForm' placeholder='Username' value={UserName} onChange={username} type="text" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Firstname</label>
+          <input className='registerInputForm' placeholder='Firstname' value={FirstName} onChange={firstname} type="text" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Lastname</label>
+          <input className='registerInputForm' placeholder='Lastname' value={LastName} onChange={lastname} type="text" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Password</label>
+          <input className='registerInputForm' placeholder='Password' value={Password} onChange={password} type="password" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Email</label>
+          <input className='registerInputForm' placeholder='Email' value={Email} onChange={email} type="text" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Birthday</label>
+          <input className='registerInputForm' placeholder='Birthday' value={Birthday} onChange={birthday} type="date" />
+        </div>
+
+        <div className='registerContainerForm'>
+          <label className='registerLabelForm' htmlFor="">Phone</label>
+          <input className='registerInputForm' placeholder='Phone' value={Phone} onChange={phone} type="number" />
+        </div>
+        
+        <div className='registerContainerBttn'>
+          <button className='registerBttnAccess' onClick={register} value= "Register" >Register</button>
+       </div>
+
       </div>
 
     </div>

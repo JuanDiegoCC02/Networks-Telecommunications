@@ -1,6 +1,7 @@
 import React from 'react'
 import NavPage from '../components/navPage'
 import HomeBody from '../components/HomeBody'
+import FooterPage from '../components/FooterPage'
 
 function Home() {
   return (
@@ -8,6 +9,7 @@ function Home() {
     <div>
       <NavPage/>
       <HomeBody/>
+      <FooterPage/>
     </div>
     
   )

@@ -4,6 +4,8 @@ import Register from '../pages/Register';
 import LogIn from '../pages/LogIn';
 import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
+import CamerasVisualizer from '../components/CamerasVisualizer';
+import AddCameras from '../components/AddCameras';
 
 
 
@@ -19,6 +21,8 @@ function Routing() {
 
             {/* Private Routes */} 
               <Route path = '/cameras' element = {<Cameras/>}/> 
+              <Route path = '/cameras/vizualizer' element = {<CamerasVisualizer/>}/> 
+              <Route path = '/cameras/add' element = {<AddCameras/>}/> 
         </Routes>
     </Router>
   )

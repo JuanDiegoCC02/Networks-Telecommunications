@@ -2,7 +2,7 @@ import React from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 function NavPage() {
-    const navigate = useNavigate
+    const navigate = useNavigate ()
   return (
     <div>
 
@@ -17,7 +17,7 @@ function NavPage() {
                 <a className='accessNav' href="/">Home</a>
             </div>
              <div className='navContainerOwn'>
-                <a className='accessNav' href="/cameras">Cameras</a>
+                <a className='accessNav' href="/cameras/add">Cameras</a>
             </div>
 
         </nav>

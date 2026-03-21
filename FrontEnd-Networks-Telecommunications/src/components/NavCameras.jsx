@@ -1,8 +1,16 @@
 import React from 'react'
+import AddCameras from './AddCameras'
+import CamerasVisualizer from './CamerasVisualizer'
 
 function NavCameras() {
   return (
-    <div>NavCameras</div>
+    <div>
+
+      <div>
+        <AddCameras/>
+        <CamerasVisualizer/>
+      </div>
+    </div>
   )
 }
 

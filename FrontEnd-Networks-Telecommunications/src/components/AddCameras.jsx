@@ -75,62 +75,65 @@ function AddCameras() {
 
 
   return (
-    <div>
+    <div className='addCamerasContainerFull'>
 
-      <div><h3>Add New Camera Connection</h3></div>
+      <div className='addCamerasContainerTitle'>
+        <h3 className='addCamerasTitle'>Add New Camera Connection</h3>
+      </div>
 
-      <div>
-
-        <div>
-         <h4>Camera Connection</h4>
+      <div className='addCamerasFormFull'>
+        <div className='addCamerasContainerTitleForm'>
+         <h4 className='addCamerasTitleForm'>Camera Connection</h4>
         </div>
 
-        <div>
-          <label htmlFor=""> Camera Name </label>
-          <input type="text" placeholder='Insert Name' value={cameraName} onChange={name} />
-        </div>        
-        <div>
-          <label htmlFor=""> IP Address Camera </label>
-          <input type="text"  placeholder='Insert IP' value={ip_Address} onChange={ip_address}  />
-        </div>     
-         <div>
-          <label htmlFor=""> URL Address Camera </label>
-          <input type="text"  placeholder='Insert URL' value={url_Address} onChange={url_address}  />
-        </div> 
-        <div>
-         <label htmlFor=""> Camera Description </label>
-         <input type="text"  placeholder='Insert Description' value={cameraDescription} onChange={description}  />
+        <div className='addCamerasContainerForm'>
+          <label className='addCamerasLabelForm' htmlFor=""> Camera Name </label>
+          <input className='addCamerasInputForm' type="text" placeholder='Insert Name' value={cameraName} onChange={name} />
         </div> 
 
-        <div>
-          <label htmlFor="">Location </label>
-          <select name="" id="" value={cameraLocation} onChange={location}>
-            <option value="">Select Location</option>
-            <option value="San José">San José</option>
-            <option value="Cartago">Cartago</option>
-            <option value="Heredia">Heredia</option>
-            <option value="Alajuela">Alajuela</option>
-            <option value="Limón">Limón</option>
-            <option value="Puntarenas">Puntarenas</option>
-            <option value="Guanacaste">Guanacaste</option>
+        <div className='addCamerasContainerForm'>
+          <label className='addCamerasLabelForm' htmlFor=""> IP Address Camera </label>
+          <input className='addCamerasInputForm' type="text"  placeholder='Insert IP' value={ip_Address} onChange={ip_address}  />
+        </div> 
+
+         <div className='addCamerasContainerForm'>
+          <label className='addCamerasLabelForm' htmlFor=""> URL Address Camera </label>
+          <input className='addCamerasInputForm' type="text"  placeholder='Insert URL' value={url_Address} onChange={url_address}  />
+        </div> 
+
+        <div className='addCamerasContainerForm'>
+         <label className='addCamerasLabelForm' htmlFor=""> Camera Description </label>
+         <input className='addCamerasInputForm' type="text"  placeholder='Insert Description' value={cameraDescription} onChange={description}  />
+        </div> 
+
+        <div className='addCamerasContainerForm'>
+          <label className='addCamerasLabelForm' htmlFor="">Location </label>
+          <select className='addCamerasSelectLocation' name="" id="" value={cameraLocation} onChange={location}>
+            <option className='addCamerasOptionLocation' value="">Select Location</option>
+            <option className='addCamerasOptionLocation' value="San José">San José</option>
+            <option className='addCamerasOptionLocation' value="Cartago">Cartago</option>
+            <option className='addCamerasOptionLocation' value="Heredia">Heredia</option>
+            <option className='addCamerasOptionLocation' value="Alajuela">Alajuela</option>
+            <option className='addCamerasOptionLocation' value="Limón">Limón</option>
+            <option className='addCamerasOptionLocation' value="Puntarenas">Puntarenas</option>
+            <option className='addCamerasOptionLocation' value="Guanacaste">Guanacaste</option>
           </select>
         </div> 
               
-        <div>
-          <label htmlFor=""> Camera Status </label>
-          <select value={cameraStatus} onChange={status} name="" id="">
-            <option value="">Select Status</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
+        <div className='addCamerasContainerForm'>
+          <label className='addCamerasLabelForm' htmlFor=""> Camera Status </label>
+          <select  className='addCamerasSelectStatus' value={cameraStatus} onChange={status} name="" id="">
+            <option className='addCamerasOptionStatus' value="">Select Status</option>
+            <option className='addCamerasOptionStatus' value="Active">Active</option>
+            <option className='addCamerasOptionStatus' value="Inactive">Inactive</option>
           </select>
         </div>
 
-        <div>
-          <button onClick={create} value="Create">Add Camera</button>
+        <div className='addCamerasContainerBttn'>
+          <button className='addCamerasBttnCreate' onClick={create} value="Create">Add Camera</button>
         </div>
 
       </div>
-
     </div>
   )
 }

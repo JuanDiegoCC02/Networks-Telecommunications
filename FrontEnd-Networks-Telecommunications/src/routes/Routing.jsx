@@ -22,8 +22,6 @@ function Routing() {
 
             {/* Private Routes */} 
               <Route path = '/cameras' element = {<Cameras/>}/> 
-              <Route path = '/cameras/visualizer' element = {<CamerasVisualizer/>}/> 
-              <Route path = '/cameras/add' element = {<AddCameras/>}/>
 
               <Route path = '/routers' element = {<Routers/>}/> 
  

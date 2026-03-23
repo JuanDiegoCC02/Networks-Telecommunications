@@ -53,3 +53,31 @@ class Camera(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# RouterModel
+class Router(models.Model):
+    name = models.CharField(max_length=100)
+    ip_address = models.GenericIPAddressField()
+    mac_address = models.CharField(max_length=50)
+
+    brand = models.CharField(max_length=50, blank=True)
+    model = models.CharField(max_length=50, blank=True)
+
+    location = models.CharField(
+        max_length=20,
+        choices=[('San José', 'San José'), ('Cartago', 'Cartago'),('Heredia', 'Heredia'),('Alajuela', 'Alajuela'),('Limón', 'Limón'),('Puntarenas', 'Puntarenas'),('Guanacaste', 'Guanacaste')],
+        default='San José'
+    )
+
+    status = models.CharField(
+        max_length=10,
+        choices=[('Active', 'Active'), ('Inactive', 'Inactive')],
+        default='Active'
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+    

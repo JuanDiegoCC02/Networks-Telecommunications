@@ -6,6 +6,7 @@ import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
 import CamerasVisualizer from '../components/CamerasVisualizer';
 import AddCameras from '../components/AddCameras';
+import Routers from '../pages/Routers';
 
 
 
@@ -21,8 +22,11 @@ function Routing() {
 
             {/* Private Routes */} 
               <Route path = '/cameras' element = {<Cameras/>}/> 
-              <Route path = '/cameras/vizualizer' element = {<CamerasVisualizer/>}/> 
-              <Route path = '/cameras/add' element = {<AddCameras/>}/> 
+              <Route path = '/cameras/visualizer' element = {<CamerasVisualizer/>}/> 
+              <Route path = '/cameras/add' element = {<AddCameras/>}/>
+
+              <Route path = '/routers' element = {<Routers/>}/> 
+ 
         </Routes>
     </Router>
   )

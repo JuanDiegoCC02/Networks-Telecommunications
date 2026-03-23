@@ -17,7 +17,10 @@ function NavPage() {
                 <a className='accessNav' href="/">Home</a>
             </div>
              <div className='navContainerOwn'>
-                <a className='accessNav' href="/cameras/add">Cameras</a>
+                <a className='accessNav' href="/cameras">Cameras</a>
+            </div>
+            <div className='navContainerOwn'>
+                <a className='accessNav' href="/routers">Routers</a>
             </div>
 
         </nav>

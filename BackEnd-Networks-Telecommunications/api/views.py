@@ -8,6 +8,8 @@ from .serializers import UserProfileSerializer
 from rest_framework import viewsets
 from .models import Camera
 from .serializers import CameraSerializer
+from .models import Router
+from .serializers import RouterSerializer
 
 class RegisterView(APIView):
     
@@ -87,4 +89,10 @@ class MyProfileView(APIView):
 class CameraViewSet(viewsets.ModelViewSet):
     queryset = Camera.objects.all()
     serializer_class = CameraSerializer
+
+
+class RouterViewSet(viewsets.ModelViewSet):
+    queryset = Router.objects.all()
+    serializer_class = RouterSerializer
+
 

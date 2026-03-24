@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Profile, Camera
+from .models import Profile, Camera, Router
 
 class UserProfileSerializer(serializers.ModelSerializer):
     #data profile
@@ -60,3 +60,10 @@ class CameraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camera
         fields = '__all__'
+
+
+class RouterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Router
+        fields = '__all__'
+

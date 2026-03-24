@@ -1,10 +1,12 @@
 from django.urls import path, include
-from .views import RegisterView, LoginView, LogoutView, MyProfileView, CameraViewSet
+from .views import RegisterView, LoginView, LogoutView, MyProfileView, CameraViewSet, RouterViewSet
 from rest_framework.routers import DefaultRouter
 
 
 router = DefaultRouter()
 router.register('cameras', CameraViewSet)
+router.register('routers', RouterViewSet)
+
 
 urlpatterns = [
     path('users/', RegisterView.as_view()),

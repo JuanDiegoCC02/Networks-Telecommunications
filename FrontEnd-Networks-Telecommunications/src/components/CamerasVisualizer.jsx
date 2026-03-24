@@ -129,10 +129,10 @@ function CamerasVisualizer() {
         {filteredCameras.map((c) => (
           <div className='cVizualizerContainerCameraOwn' key={c.id}>
             <header className='cVizualizerHeaderCamera'> 
-             <h4 className='cVizualizerTitleCamera'> {c.name} </h4>
+             <h2 className='cVizualizerTitleCamera'> {c.name} </h2>
              <span className='cVizualizerStatusCamera'> Status Camera:  {c.status} </span>
             </header>
-
+          
             <main className='cVizualizerMainCamera'>
             <h5 className='cVizualizerNameCamera'>Name: {c.name} </h5>
             <span className='cVizualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br /><br />

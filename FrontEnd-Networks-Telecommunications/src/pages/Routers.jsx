@@ -1,22 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NavPage from '../components/navPage'
 import AddRouters from '../components/AddRouters'
 import RoutersVisualizer from '../components/RoutersVisualizer'
 
 function Routers() {
+  const  [view, setView] = useState ("add")
   return (
     <div>
      <NavPage/>
 
     <div>
-      <div><button>Add Routers</button></div>
-      <div><button>Routers Visualizer</button></div>
+      <div>
+        <button onClick={()=> setView("add")}>Add Routers</button>
+      </div>
+
+      <div>
+        <button onClick={()=> setView("visualizer")}>Routers Visualizer</button>
+      </div>
 
     </div>
     
      <div>
-      <AddRouters/>
-      <RoutersVisualizer/>
+      {view === "add" && <AddRouters/>}
+      {view === "visualizer" && <RoutersVisualizer/>}
      </div>
      
     </div>

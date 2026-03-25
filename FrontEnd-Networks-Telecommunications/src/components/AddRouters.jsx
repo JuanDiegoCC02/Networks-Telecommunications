@@ -79,66 +79,68 @@ function AddRouters() {
 }
 
   return (
-    <div>
-        <div>
-          <h2>Add New Routers Connection</h2>
+    <div className='addRoutersContainerFull'>
+        <div className='addRoutersContainerTitle'>
+          <h2 className='addRoutersTitle'>Add New Routers Connection</h2>
         </div>
 
-        <div>
-          <div>
-            <h4> Routers Connection </h4>
+        <div className='addRoutersFormFull'>
+          <div className='addRoutersContainerTitleForm'>
+            <h4 className='addRoutersTitleForm'> Routers Connection </h4>
+          </div>
+
+          <div className='addRoutersContainerForm'>
+            <label className='addRoutersLabelForm' htmlFor=""> Name </label>
+            <input className='addRoutersInputForm' type="text" value={routerName} onChange={name}/>
           </div>
 
           <div>
-            <label htmlFor=""> Name </label>
-            <input type="text" value={routerName} onChange={name}/>
+            <label className='addRoutersLabelForm' htmlFor=""> IP Address </label>
+            <input className='addRoutersInputForm' type="text" value={ip_Address} onChange={ip_address}/>
           </div>
 
           <div>
-            <label htmlFor=""> IP Address </label>
-            <input type="text" value={ip_Address} onChange={ip_address}/>
+            <label className='addRoutersLabelForm' htmlFor=""> MAC Address </label>
+            <input className='addRoutersInputForm' type="text" value={mac_Address} onChange={mac_address}/>
           </div>
 
           <div>
-            <label htmlFor=""> MAC Address </label>
-            <input type="text" value={mac_Address} onChange={mac_address}/>
+            <label className='addRoutersLabelForm' htmlFor=""> Brand </label>
+            <input className='addRoutersInputForm' type="text" value={routerBrand} onChange={brand}/>
           </div>
 
           <div>
-            <label htmlFor=""> Brand </label>
-            <input type="text" value={routerBrand} onChange={brand}/>
+            <label className='addRoutersLabelForm' htmlFor=""> Model </label>
+            <input className='addRoutersInputForm' type="text" value={routerModel} onChange={model}/>
           </div>
 
-          <div>
-            <label htmlFor=""> Model </label>
-            <input type="text" value={routerModel} onChange={model}/>
-          </div>
-
-          <div>
-            <select name="" id="" value={routerLocation} onChange={location}>
-              <option value="">Select Location</option>
-              <option value="San José">San José</option>
-              <option value="Cartago">Cartago</option>
-              <option value="Heredia">Heredia</option>
-              <option value="Alajuela">Alajuela</option>
-              <option value="Limón">Limón</option>
-              <option value="Puntarenas">Puntarenas</option>
-              <option value="Guanacaste">Guanacaste</option>
+          <div className='addRoutersContainerForm'>
+            <label className='addRoutersLabelForm' htmlFor="">Location</label>
+            <select className='addRoutersSelectLocation' name="" id="" value={routerLocation} onChange={location}>
+              <option className='addRoutersOptionSelect' value="">Select Location</option>
+              <option className='addRoutersOptionSelect' value="San José">San José</option>
+              <option className='addRoutersOptionSelect' value="Cartago">Cartago</option>
+              <option className='addRoutersOptionSelect' value="Heredia">Heredia</option>
+              <option className='addRoutersOptionSelect' value="Alajuela">Alajuela</option>
+              <option className='addRoutersOptionSelect' value="Limón">Limón</option>
+              <option className='addRoutersOptionSelect' value="Puntarenas">Puntarenas</option>
+              <option className='addRoutersOptionSelect' value="Guanacaste">Guanacaste</option>
             </select>
           </div>
 
           <div>
-            <select name="" id="" value={routerStatus} onChange={status}>
-              <option value="">Select Status</option>
-              <option value="Active">Active</option>
-              <option value="Inactive">Inactive</option>
+            <label className='addRoutersLabelForm' htmlFor="">Status</label>
+            <select className='addRoutersSelectStatus' name="" id="" value={routerStatus} onChange={status}>
+              <option className='addRoutersOptionSelect' value="">Select Status</option>
+              <option className='addRoutersOptionSelect' value="Active">Active</option>
+              <option className='addRoutersOptionSelect' value="Inactive">Inactive</option>
             </select>
           </div>
 
         </div>
 
-        <div>
-          <button value="create" onClick={create}>Add Router</button>
+        <div className='addRoutersContainerBtn'>
+          <button className='addRoutersBtn' value="create" onClick={create}>Add Router</button>
         </div>
 
     </div>

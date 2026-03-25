@@ -28,6 +28,7 @@ async function postUsers(obj) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(obj),
     });
 

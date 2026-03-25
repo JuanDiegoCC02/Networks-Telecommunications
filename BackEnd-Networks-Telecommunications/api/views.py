@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .serializers import UserProfileSerializer
 from rest_framework import viewsets
@@ -11,8 +12,8 @@ from .serializers import CameraSerializer
 from .models import Router
 from .serializers import RouterSerializer
 
+# Register View
 class RegisterView(APIView):
-    
 
     permission_classes = [AllowAny]
 
@@ -37,29 +38,48 @@ class RegisterView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+# Log In View
 class LoginView(APIView):
-    # log in  validations django
     permission_classes = [AllowAny]
 
     def post(self, request):
-        username = request.data.get('username')
+        login_access = request.data.get('loginAccess')
         password = request.data.get('password')
-        
-        # authenticate data MySQL
-        user = authenticate(username=username, password=password)
 
-        # create django_session on the server and the cookie on the client
+        user = None
+
+        if login_access and "@" in login_access:
+            try:
+                user_obj = User.objects.get(email__iexact=login_access)
+                user = authenticate(
+                    request,
+                    username=user_obj.username,
+                    password=password
+                )
+            except User.DoesNotExist:
+                user = None
+
+        else:
+            user = authenticate(
+                request,
+                username=login_access,
+                password=password
+            )
+
         if user is not None:
-            login(request, user) 
-            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
-        
+            login(request, user)
+            return Response({
+                "message": "Login successful",
+                "username": user.username,
+                "email": user.email
+            }, status=status.HTTP_200_OK)
+
         return Response(
-            {"error": "Invalid username or password"}, 
+            {"error": "Invalid username or password"},
             status=status.HTTP_401_UNAUTHORIZED
         )
 
-
+# Log Out View
 class LogoutView(APIView):
     # close session
     permission_classes = [IsAuthenticated]
@@ -68,7 +88,7 @@ class LogoutView(APIView):
         logout(request)
         return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
-
+# Profile View 
 class MyProfileView(APIView):
     # view segurity
     permission_classes = [IsAuthenticated]
@@ -90,7 +110,7 @@ class CameraViewSet(viewsets.ModelViewSet):
     queryset = Camera.objects.all()
     serializer_class = CameraSerializer
 
-
+#Router View CRUD system
 class RouterViewSet(viewsets.ModelViewSet):
     queryset = Router.objects.all()
     serializer_class = RouterSerializer

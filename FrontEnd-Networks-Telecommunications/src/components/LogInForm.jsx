@@ -4,7 +4,7 @@
 
   function LogInForm() {
 
-    const [Username, setUsername] = useState("");
+    const [LogInAccess, setLogInAccess] = useState("");
     const [Password, setPassword] = useState("");
 
     const navigate = useNavigate();
@@ -22,15 +22,17 @@
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
-            username: Username,
+            loginAccess: LogInAccess,
             password: Password
           })
         });
 
+        const data = await response.json();
+
         if (response.ok) {
 
           // Save username in cookies
-          setCookie("username", Username, {
+          setCookie("username", data.username, {
             path: "/",
             maxAge: 3600
           });
@@ -55,8 +57,8 @@
 
       <div className="logInFormFull">
         <div className="logInContainerForm">
-          <label className="logInLabelForm"> Username </label><br/>
-          <input className="logInInputForm" type="text" placeholder="" value={Username} onChange={(e) => setUsername(e.target.value)}/>
+          <label className="logInLabelForm"> Username or Email </label><br/>
+          <input className="logInInputForm" type="text" placeholder="" value={LogInAccess} onChange={(e) => setLogInAccess(e.target.value)}/>
         </div>
 
         <br/>

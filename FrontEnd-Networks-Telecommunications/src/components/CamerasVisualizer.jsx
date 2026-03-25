@@ -157,7 +157,7 @@ function CamerasVisualizer() {
         ))}
       </div>
       {show && (
-        <div className='cVizualizerModalEditCameraFull'>
+        <div className='cVizualizerModalEditFull'>
 
         <div className='cVizualizerContainerTitleMEdit'>
           <h5 className='cVizualizerTitleMEdit'>Edit Camera Information</h5>

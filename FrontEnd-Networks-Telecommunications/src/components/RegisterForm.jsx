@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { postUsers } from '../services/usersApi'
+import "../styles/RegisterForm.css"
 
 
 
@@ -113,7 +114,7 @@ function registerForm() {
 
         <div className='registerContainerForm'>
           <label className='registerLabelForm' htmlFor="">Email</label>
-          <input className='registerInputForm' placeholder='Email' value={Email} onChange={email} type="text" />
+          <input className='registerInputForm' placeholder='Email' value={Email} onChange={email} type="email" />
         </div>
 
         <div className='registerContainerForm'>
@@ -123,7 +124,7 @@ function registerForm() {
 
         <div className='registerContainerForm'>
           <label className='registerLabelForm' htmlFor="">Phone</label>
-          <input className='registerInputForm' placeholder='Phone' value={Phone} onChange={phone} type="number" />
+          <input className='registerInputForm' placeholder='Phone' value={Phone} onChange={phone} type="text" />
         </div>
         
         <div className='registerContainerBttn'>

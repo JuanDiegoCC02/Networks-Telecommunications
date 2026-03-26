@@ -1,0 +1,126 @@
+:root {
+  /* Paleta Light Tech - Limpia y Corporativa */
+  --bg-main: #f8fafc;           /* Fondo general de la página */
+  --card-white: #ffffff;        /* Fondo del formulario */
+  --text-bold: #0f172a;         /* Negro azulado para títulos e inputs */
+  --text-soft: #64748b;         /* Gris para labels y placeholders */
+  --tech-blue: #2563eb;         /* Azul de acento tecnológico */
+  --border-light: #e2e8f0;      /* Bordes sutiles */
+  --input-focus: #3b82f6;       /* Color al hacer clic */
+  
+  /* Sistema de Diseño Industrial */
+  --radius: 6px;                /* Bordes menos redondeados = más serio */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Estilos aplicados a tu estructura --- */
+
+.registerContainerFull {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-main);
+  /* Patrón de puntos sutil para el toque "Visualizer" */
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  padding: 20px;
+}
+
+.registerContainerTitle {
+  margin-bottom: 2.5rem;
+}
+
+.registerTitle {
+  color: var(--text-bold);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0;
+}
+
+.registerFormFull {
+  background: var(--card-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 3rem;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Espaciado estructurado */
+}
+
+.registerContainerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.registerLabelForm {
+  color: var(--text-bold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.registerInputForm {
+  background-color: #fcfcfd;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text-bold);
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.registerInputForm:focus {
+  outline: none;
+  border-color: var(--input-focus);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.registerInputForm::placeholder {
+  color: #cbd5e1;
+}
+
+/* Botón de Registro - Negro Tech */
+.registerContainerBttn {
+  margin-top: 1rem;
+}
+
+.registerBttnAccess {
+  width: 100%;
+  background-color: var(--text-bold); /* Negro sólido profesional */
+  color: #ffffff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.registerBttnAccess:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.registerBttnAccess:active {
+  transform: translateY(0);
+}
+
+/* Estilo para el input de fecha y número */
+input[type="date"], input[type="number"] {
+  font-family: inherit;
+}

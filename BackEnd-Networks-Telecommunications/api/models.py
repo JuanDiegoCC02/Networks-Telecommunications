@@ -42,6 +42,9 @@ class Camera(models.Model):
         default='active'
     )
 
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+
     
     status = models.CharField(
         max_length=10,

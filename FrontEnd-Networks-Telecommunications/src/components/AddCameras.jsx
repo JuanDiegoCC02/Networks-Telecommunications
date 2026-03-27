@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { postCameras } from '../services/camerasApi';
+import CamerasMap from './CamerasMap';
 
 function AddCameras() {
   const [cameraName, setCameraName] = useState("");
@@ -8,6 +9,8 @@ function AddCameras() {
   const [cameraLocation, setCameraLocation] = useState("");
   const [cameraDescription, setCameraDescroption] = useState("");
   const [cameraStatus, setCameraStatus] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
   function name(e) {
     setCameraName(e.target.value)    
@@ -23,6 +26,10 @@ function AddCameras() {
   }
    function description(e) {
     setCameraDescroption(e.target.value)    
+  }
+  function handleCoords(coords) {
+  setLatitude(coords.lat);
+  setLongitude(coords.lng);
   }
    function status(e) {
     setCameraStatus(e.target.value)    
@@ -48,8 +55,10 @@ function AddCameras() {
       name: cameraName,
       ip_address: ip_Address,
       url_address: url_Address,
-      location: cameraLocation,
       description: cameraDescription,
+      location: cameraLocation,
+      latitude: latitude,
+      longitude: longitude,
       status: cameraStatus
   }
 
@@ -119,6 +128,14 @@ function AddCameras() {
             <option className='addCamerasOptionLocation' value="Guanacaste">Guanacaste</option>
           </select>
         </div> 
+
+        <div className='addCamerasContainerForm'>
+          <label>Select the Camera Direction</label>
+          <CamerasMap setCoords={handleCoords} />
+
+          <p>Latitude: {latitude}</p>
+          <p>Longitude: {longitude}</p>
+        </div>
               
         <div className='addCamerasContainerForm'>
           <label className='addCamerasLabelForm' htmlFor=""> Camera Status </label>

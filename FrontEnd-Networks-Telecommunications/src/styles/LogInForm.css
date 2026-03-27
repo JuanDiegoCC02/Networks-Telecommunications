@@ -1,14 +1,12 @@
 :root {
-
+  /* Mantenemos tu paleta corporativa */
   --bg-dark: #0a0c10;
   --form-bg: #ffffff;
-  
-
   --text-main: #0f172a;
-  --text-label: #475569; 
-  --accent: #2563eb;      
+  --text-label: #475569;
+  --accent: #2563eb;
   
-
+  /* Sombra Premium con borde fantasma */
   --shadow-premium: 
     0 0 0 1px rgba(0, 0, 0, 0.05),
     0 20px 25px -5px rgba(0, 0, 0, 0.4), 
@@ -17,7 +15,8 @@
   --border-subtle: #e2e8f0;
 }
 
-.registerContainerFull {
+/* Contenedor Principal con tu fondo de rejilla */
+.logInContainerFull {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,37 +26,41 @@
   background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
   background-size: 32px 32px;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  padding: 40px 20px;
+  padding: 20px;
 }
 
-.registerTitle {
-  color: #ffffff;
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.04em; 
+.logInContainerTitle {
   margin-bottom: 2rem;
   text-align: center;
 }
 
-.registerFormFull {
+.logInTitle {
+  color: #ffffff;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+/* El Formulario de Login */
+.logInFormFull {
   background: var(--form-bg);
-  border-radius: 16px; 
+  border-radius: 16px;
   padding: 3.5rem;
   width: 100%;
-  max-width: 500px;
+  max-width: 420px; /* Un poco más angosto que el register para mayor elegancia */
   box-shadow: var(--shadow-premium);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; 
 }
 
-.registerContainerForm {
+.logInContainerForm {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.registerLabelForm {
+.logInLabelForm {
   color: var(--text-label);
   font-size: 0.8rem;
   font-weight: 600;
@@ -65,7 +68,7 @@
   letter-spacing: 0.05em;
 }
 
-.registerInputForm {
+.logInInputForm {
   border: 1px solid var(--border-subtle);
   border-radius: 8px;
   padding: 12px 16px;
@@ -75,31 +78,25 @@
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.registerInputForm:focus {
+.logInInputForm:focus {
   outline: none;
   background-color: #ffffff;
   border-color: var(--accent);
-  /* Halo de enfoque más suave */
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
   transform: translateY(-1px);
 }
 
-.registerInputForm::placeholder {
-  color: #94a3b8;
+/* Botón de Acceso */
+.logInContianerBttn {
+  margin-top: 1.5rem;
 }
 
-.registerContainerBttn {
-  margin-top: 1.5rem; 
-  display: flex;
-  justify-content: center;
-}
-
-.registerBttnAccess {
+.logInBttnAccess {
   width: 100%;
   background: var(--text-main);
   color: #ffffff;
   border: none;
-  padding: 16px; 
+  padding: 16px;
   border-radius: 8px;
   font-weight: 700;
   font-size: 0.9rem;
@@ -107,22 +104,15 @@
   letter-spacing: 0.1em;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-.registerBttnAccess:hover {
+.logInBttnAccess:hover {
   background: #000000;
-  transform: translateY(-2px); 
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
-.registerBttnAccess:active {
+.logInBttnAccess:active {
   transform: translateY(0);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* updated Date  */
-input[type="date"] {
-  font-family: inherit;
-  color: var(--text-label);
-}

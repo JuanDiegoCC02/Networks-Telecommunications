@@ -1,6 +1,7 @@
   import React, { useState } from "react";
   import { useNavigate } from "react-router-dom";
   import { useCookies } from "react-cookie";
+  import"../styles/LogInForm.css"
 
   function LogInForm() {
 
@@ -57,14 +58,14 @@
 
       <div className="logInFormFull">
         <div className="logInContainerForm">
-          <label className="logInLabelForm"> Username or Email </label><br/>
+          <label className="logInLabelForm"> Username or Email </label>
           <input className="logInInputForm" type="text" placeholder="" value={LogInAccess} onChange={(e) => setLogInAccess(e.target.value)}/>
         </div>
 
         <br/>
 
         <div className="logInContainerForm">
-          <label className="logInLabelForm"> Password </label><br/>
+          <label className="logInLabelForm"> Password </label>
           <input className="logInInputForm" type="password" placeholder="" value={Password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
 

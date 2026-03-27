@@ -1,0 +1,80 @@
+:root {
+  --bg-dark: #0a0c10;
+  --nav-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --accent: #2563eb; 
+  --border-ui: #f1f5f9;
+  
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.navContainerFull {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: var(--nav-bg);
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-soft);
+}
+
+.navContainerOwn {
+  display: flex;
+  align-items: center;
+}
+
+.accessNav {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 24px 30px;
+  text-transform: capitalize; 
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accessNav::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.accessNav:hover {
+  color: var(--text-main);
+  background-color: #f8fafc;
+}
+
+.accessNav:hover::before {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.accessNav::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; 
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accessNav:hover::after {
+  width: 100%;
+}
+
+.accessNav[href="/cameras"], .accessNav[href="/routers"] {
+  font-weight: 700;
+}

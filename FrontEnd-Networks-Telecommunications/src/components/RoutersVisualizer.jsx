@@ -120,102 +120,102 @@ function RoutersVisualizer() {
         </div>
 
 
-        <div className='rVizualizerContainerRoutersFull'>
+        <div className='rVisualizerContainerRoutersFull'>
         {filteredRouters.map((r) => (
-            <div className='rVizualizerContainerRouterOwn' key={r.id}>
-                <header className='rVizualizerHeaderRouter'>
-                    <h2 className='rVizualizerTitleRouter'>{r.name}</h2>
-                    <span className='rVizualizerStatusRouter'>Status Router: {r.status}</span><br />
-                    <span className='rVizualizerLocationRouter'>Location Router: {r.location}</span>
+            <div className='rVisualizerContainerRouterOwn' key={r.id}>
+                <header className='rVisualizerHeaderRouter'>
+                    <h2 className='rVisualizerTitleRouter'>{r.name}</h2>
+                    <span className='rVisualizerStatusRouter'>Status Router: {r.status}</span><br />
+                    <span className='rVisualizerLocationRouter'>Location Router: {r.location}</span>
                 </header>
 
-                <main className='rVizualizerMainRouter'>
-                    <h4 className='rVizualizerNameRouter'>Name: {r.name}</h4>
-                    <span className='rVizualizerIPAddressRouter'>IP Address: {r.ip_address}</span><br />
-                    <span className='rVizualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />
-                    <span className='rVizualizerBrandRouter'>Brand: {r.brand}</span><br />
-                    <span className='rVizualizerModelRouter'>Model: {r.model}</span><br />
+                <main className='rVisualizerMainRouter'>
+                    <h4 className='rVisualizerNameRouter'>Name: {r.name}</h4>
+                    <span className='rVisualizerIPAddressRouter'>IP Address: {r.ip_address}</span><br />
+                    <span className='rVisualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />
+                    <span className='rVisualizerBrandRouter'>Brand: {r.brand}</span><br />
+                    <span className='rVisualizerModelRouter'>Model: {r.model}</span><br />
 
                     <div className='rVisualizerViewGeolocation'>
                       <ViewGeolocationRouter routers={[r]}/>
                     </div>
                 </main>
 
-                <footer className='rVizualizerFooterRouter'>
-                    <div className='rVizualizerContainerFooter'>
-                        <button className='rVizualizerBttnDelete' onClick={() => {DeleteRData(r.id)}}>Delete</button>
+                <footer className='rVisualizerFooterRouter'>
+                    <div className='rVisualizerContainerFooter'>
+                        <button className='rVisualizerBttnDelete' onClick={() => {DeleteRData(r.id)}}>Delete</button>
                     </div>
 
-                    <div className='rVizualizerContainerFooter'>
-                        <button className='rVizualizerBttnEdit' onClick={() => {openRoUterEdit(r)}}>Edit</button>
+                    <div className='rVisualizerContainerFooter'>
+                        <button className='rVisualizerBttnEdit' onClick={() => {openRoUterEdit(r)}}>Edit</button>
                     </div>
                 </footer>
             </div>
         ))}
         </div>
         {show && (
-            <div className='rVizualizerModalEditFull'>
+            <div className='rVisualizerModalEditFull'>
 
-                <div className='rVizualizerContainerTitleEdit'>
-                    <h5 className='rVizualizerTitleMEdit'>Edit Router Data</h5>
+                <div className='rVisualizerContainerTitleEdit'>
+                    <h5 className='rVisualizerTitleMEdit'>Edit Router Data</h5>
                 </div>
 
-                <div className='rVizualizerEditFormFull'>
-                    <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor=""> Name </label>
-                        <input className='rVizualizerInputFormEdit' value={editName} onChange={(e)=> setEditName(e.target.value)} type="text" />
+                <div className='rVisualizerEditFormFull'>
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> Name </label>
+                        <input className='rVisualizerInputFormEdit' value={editName} onChange={(e)=> setEditName(e.target.value)} type="text" />
                     </div>
 
-                    <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor=""> IP Address </label>
-                        <input className='rVizualizerInputFormEdit' value={editIp} onChange={(e)=> setEditIp(e.target.value)}  type="text" />
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> IP Address </label>
+                        <input className='rVisualizerInputFormEdit' value={editIp} onChange={(e)=> setEditIp(e.target.value)}  type="text" />
+                    </div>
+                    
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> MAC Address </label>
+                        <input className='rVisualizerInputFormEdit' value={editMac} onChange={(e)=> setEditMac(e.target.value)}  type="text" />
+                    </div>
+                    
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> Brand </label>
+                        <input className='rVisualizerInputFormEdit' value={editBrand} onChange={(e)=> setEditBrand(e.target.value)}  type="text" />
                     </div>
                     
                     <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor=""> MAC Address </label>
-                        <input className='rVizualizerInputFormEdit' value={editMac} onChange={(e)=> setEditMac(e.target.value)}  type="text" />
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> Model </label>
+                        <input className='rVisualizerInputFormEdit' value={editModel} onChange={(e)=> setEditModel(e.target.value)}  type="text" />
                     </div>
                     
                     <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor=""> Brand </label>
-                        <input className='rVizualizerInputFormEdit' value={editBrand} onChange={(e)=> setEditBrand(e.target.value)}  type="text" />
-                    </div>
-                    
-                    <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor=""> Model </label>
-                        <input className='rVizualizerInputFormEdit' value={editModel} onChange={(e)=> setEditModel(e.target.value)}  type="text" />
-                    </div>
-                    
-                    <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor="">Router Location </label>
-                    <select className='rVizualizerSelectEditForm' name="" id="" value={editLocation} onChange={(e) => setEditLocation(e.target.value)}>
-                        <option className='rVizualizerOptEditForm' value="">Select Location</option>
-                        <option className='rVizualizerOptEditForm' value="San José">San José</option>
-                        <option className='rVizualizerOptEditForm' value="Cartago">Cartago</option>
-                        <option className='rVizualizerOptEditForm' value="Heredia">Heredia</option>
-                        <option className='rVizualizerOptEditForm' value="Alajuela">Alajuela</option>
-                        <option className='rVizualizerOptEditForm' value="Limón">Limón</option>
-                        <option className='rVizualizerOptEditForm' value="Puntarenas">Puntarenas</option>
-                        <option className='rVizualizerOptEditForm' value="Guanacaste">Guanacaste</option>
+                        <label className='rVisualizerLabelFormEdit' htmlFor="">Router Location </label>
+                    <select className='rVisualizerSelectEditForm' name="" id="" value={editLocation} onChange={(e) => setEditLocation(e.target.value)}>
+                        <option className='rVisualizerOptEditForm' value="">Select Location</option>
+                        <option className='rVisualizerOptEditForm' value="San José">San José</option>
+                        <option className='rVisualizerOptEditForm' value="Cartago">Cartago</option>
+                        <option className='rVisualizerOptEditForm' value="Heredia">Heredia</option>
+                        <option className='rVisualizerOptEditForm' value="Alajuela">Alajuela</option>
+                        <option className='rVisualizerOptEditForm' value="Limón">Limón</option>
+                        <option className='rVisualizerOptEditForm' value="Puntarenas">Puntarenas</option>
+                        <option className='rVisualizerOptEditForm' value="Guanacaste">Guanacaste</option>
                     </select>
                     </div>
                     
-                    <div className='rVizualizerContainerOwnEdit'>
-                        <label className='rVizualizerLabelFormEdit' htmlFor="">Router Status</label>
-                    <select className='rVizualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
-                        <option className='rVizualizerOptEditForm' value="">select status</option>
-                        <option className='rVizualizerOptEditForm' value="Active">Active</option>
-                        <option className='rVizualizerOptEditForm' value="Inactive">Inactive</option>
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor="">Router Status</label>
+                    <select className='rVisualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
+                        <option className='rVisualizerOptEditForm' value="">select status</option>
+                        <option className='rVisualizerOptEditForm' value="Active">Active</option>
+                        <option className='rVisualizerOptEditForm' value="Inactive">Inactive</option>
                     </select>
                     </div>
 
-                    <div className='rVizualizerBttnsEdit'>
-                        <div className='rVizualizerBtnSaveEdit'>
-                        <button className='rVizualizerBtnSaveEdit' onClick={()=> UpdateRData(user.id)} >Save Changes</button>
+                    <div className='rVisualizerBttnsEdit'>
+                        <div className='rVisualizerBtnSaveEdit'>
+                        <button className='rVisualizerBtnSaveEdit' onClick={()=> UpdateRData(user.id)} >Save Changes</button>
                         </div>
 
-                         <div className='rVizualizerContainerBtnCancelEdit'>
-                        <button className='rVizualizerBtnCancelEdit' onClick={()=> setShow(false)} >Cancel Changes</button>
+                         <div className='rVisualizerContainerBtnCancelEdit'>
+                        <button className='rVisualizerBtnCancelEdit' onClick={()=> setShow(false)} >Cancel Changes</button>
                         </div>
                     </div>
 

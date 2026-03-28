@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteCameras, getCameras, patchCameras } from '../services/camerasApi'
 import ViewGeolocationCamera from './ViewGeolocationCamera'
+import "../styles/CamerasVisualizer.css"
 
 function CamerasVisualizer() {
   const [cameras, setCameras] = useState([])
@@ -146,15 +147,19 @@ function CamerasVisualizer() {
             </main>
 
             <footer className='cVisualizerFooterCamera'>
+              <div className='cVisualizerContainerBttn'>
               <button className='cVisualizerBttnDelete' onClick={() => {
                 DeleteCInfo(c.id)
               }}>
                 Delete
               </button>
+              </div>
 
+              <div className='cVisualizerContainerBttn'>
               <button className='cVisualizerBttnEdit' onClick={() => openCameraEdit(c)}>
                 Edit
               </button>
+              </div>
             </footer>
 
           </div>

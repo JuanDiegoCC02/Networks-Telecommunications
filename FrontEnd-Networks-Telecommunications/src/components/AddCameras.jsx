@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { postCameras } from '../services/camerasApi';
 import AddGeolocationCamera from './AddGeolocationCamera';
+import "../styles/AddCameras.css"
 
 function AddCameras() {
   const [cameraName, setCameraName] = useState("");

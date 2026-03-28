@@ -1,0 +1,154 @@
+:root {
+  --bg-dark: #0a0c10;
+  --form-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-label: #475569;
+  --accent: #2563eb;
+  --border-ui: #e2e8f0;
+  --shadow-premium: 
+    0 0 0 1px rgba(0, 0, 0, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.4), 
+    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.addCamerasContainerFull {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-dark);
+  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
+  background-size: 32px 32px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  padding: 60px 20px;
+}
+
+.addCamerasTitle {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.addCamerasFormFull {
+  background: var(--form-bg);
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 800px; 
+  box-shadow: var(--shadow-premium);
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 24px;
+  position: relative;
+}
+
+.addCamerasContainerTitleForm {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--border-ui);
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.addCamerasTitleForm {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.addCamerasTitleForm::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.addCamerasContainerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.addCamerasContainerForm:nth-child(7), 
+.addCamerasContainerForm:nth-child(5)  {
+  grid-column: 1 / -1;
+}
+
+.addCamerasLabelForm {
+  color: var(--text-label);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.addCamerasInputForm, 
+.addCamerasSelectLocation, 
+.addCamerasSelectStatus {
+  border: 1px solid var(--border-ui);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  background-color: #fcfcfd;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.addCamerasInputForm:focus, 
+.addCamerasSelectLocation:focus, 
+.addCamerasSelectStatus:focus {
+  outline: none;
+  background-color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+  transform: translateY(-1px);
+}
+
+/* coords styles */
+.addCamerasContainerForm p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 4px 0;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Bttn Create */
+.addCamerasContainerBttn {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+.addCamerasBttnCreate {
+  width: 100%;
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addCamerasBttnCreate:hover {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,275 @@
+:root {
+  --bg-dark: #0a0c10;
+  --card-bg: #ffffff;
+  --accent: #2563eb;
+  --accent-success: #10b981;
+  --accent-danger: #ef4444;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-ui: #f1f5f9;
+  --shadow-pro: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.cVisualizerContainerFull {
+  padding: 40px 20px;
+  background: var(--bg-dark);
+  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
+  background-size: 32px 32px;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.cVizualizerTitle {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+.cVisualizerNavFull {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.cVisualizerSearch, .cVisualizerSelectSearch {
+  background: #ffffff;
+  border: 1px solid var(--border-ui);
+  padding: 14px 22px;
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.cVisualizerSearch:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* --- GRID DE TARJETAS --- */
+.cVizualizerContainerCamerasFull {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.cVisualizerContainerCameraOwn {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-pro);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.cVisualizerContainerCameraOwn:hover {
+  transform: translateY(-8px);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.cVisualizerHeaderCamera {
+  padding: 20px 25px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-ui);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cVisualizerStatusCamera {
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  background: #f1f5f9;
+  color: var(--text-muted);
+  border: 1px solid var(--border-ui);
+}
+
+.cVisualizerMainCamera {
+  padding: 25px;
+  flex-grow: 1;
+}
+
+.cVisualizerIPAddressCamera, .cVisualizerURLAddressCamera {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  background: #eff6ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* --- BOTONES DE LA TARJETA --- */
+.cVisualizerFooterCamera {
+  padding: 20px 25px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  border-top: 1px solid var(--border-ui);
+}
+
+.cVisualizerBttnDelete {
+  background: transparent;
+  color: var(--accent-danger);
+  border: 2px solid rgba(239, 68, 68, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cVisualizerBttnDelete:hover {
+  background: var(--accent-danger);
+  color: #fff;
+  border-color: var(--accent-danger);
+}
+
+.cVisualizerBttnEdit {
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cVisualizerBttnEdit:hover {
+  background: #000;
+  transform: scale(1.02);
+}
+
+/* --- MODAL DE EDICIÓN (CORRECCIÓN DE BOTONES) --- */
+.cVisualizerModalEditFull {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.cVisualizerEditFormFull {
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh; 
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; 
+}
+
+.cVisualizerTitleMEdit {
+  color: var(--text-main);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.cVisualizerContainerOwnEdit {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cVisualizerLabelFormEdit {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cVisualizerInputFormEdit, .cVisualizerSelectEditForm {
+  padding: 12px 15px;
+  border: 1px solid var(--border-ui);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  transition: 0.2s;
+}
+
+.cVisualizerInputFormEdit:focus {
+  background: #fff;
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* --- BOTONES DE ACCIÓN DEL MODAL --- */
+.cVisualizerContainerBttnsEdit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-ui);
+}
+
+.cVisualizerBtnSaveEdit {
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cVisualizerBtnSaveEdit:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.cVisualizerBtnCancelEdit {
+  background: #f1f5f9;
+  color: var(--text-muted);
+  border: none;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cVisualizerBtnCancelEdit:hover {
+  background: #e2e8f0;
+  color: var(--text-main);
+}

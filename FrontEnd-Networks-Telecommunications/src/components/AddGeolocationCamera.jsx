@@ -16,7 +16,7 @@ function LocationMarker({ setCoords }) {
   );
 }
 
-export default function CamerasMap({ setCoords }) {
+export default function AddGeolocationCamera({ setCoords }) {
   return (
     <MapContainer
       center={[9.9281, -84.0907]} // Costa Rica

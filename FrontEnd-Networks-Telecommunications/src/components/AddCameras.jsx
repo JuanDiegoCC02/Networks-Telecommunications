@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { postCameras } from '../services/camerasApi';
-import CamerasMap from './CamerasMap';
+import AddGeolocationCamera from './AddGeolocationCamera';
 
 function AddCameras() {
   const [cameraName, setCameraName] = useState("");
@@ -38,7 +38,7 @@ function AddCameras() {
 
   //create connection camera
     async function create() {
-
+      
       console.log("name:", cameraName)
       console.log("ip_address:", ip_Address)
       console.log("url_address:", url_Address)
@@ -67,6 +67,7 @@ function AddCameras() {
       const requestServer = await postCameras(obj);
 
       console.log("camera register:", requestServer);
+      console.log(obj);
 
       alert("camera connection created successfully");
 
@@ -75,6 +76,7 @@ function AddCameras() {
   } catch (error) {
 
       console.error("Error for create camera:", error);
+      console.log(obj);
 
       alert("Error creating camera");
 
@@ -131,7 +133,7 @@ function AddCameras() {
 
         <div className='addCamerasContainerForm'>
           <label>Select the Camera Direction</label>
-          <CamerasMap setCoords={handleCoords} />
+          <AddGeolocationCamera setCoords={handleCoords} />
 
           <p>Latitude: {latitude}</p>
           <p>Longitude: {longitude}</p>

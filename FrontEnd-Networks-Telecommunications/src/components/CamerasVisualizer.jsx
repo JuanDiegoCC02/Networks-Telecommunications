@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { deleteCameras, getCameras, patchCameras } from '../services/camerasApi'
+import ViewGeolocationCamera from './ViewGeolocationCamera'
 
 function CamerasVisualizer() {
   const [cameras, setCameras] = useState([])
@@ -91,35 +92,35 @@ function CamerasVisualizer() {
  }
 
   return (
-    <div className='cVizualizerContainerFull'>
+    <div className='cVisualizerContainerFull'>
 
-      <div className='cVizualizerContianerTitle'>
+      <div className='cVisualizerContianerTitle'>
         <h3 className='cVizualizerTitle'>Cameras Visualizer</h3>
       </div>
 
-    <div className='cVizualizerNavFull'>
-      <div className='cVizualizerContainerSearch'>
-        <input className='cVizualizerSearch' value={search} onChange={(e)=> setSearch(e.target.value)} type="search" placeholder='Camera Search' name="" id="" />
+    <div className='cVisualizerNavFull'>
+      <div className='cVisualizerContainerSearch'>
+        <input className='cVisualizerSearch' value={search} onChange={(e)=> setSearch(e.target.value)} type="search" placeholder='Camera Search' name="" id="" />
       </div>
 
-      <div className='cVizualizerContainerSelectSearch'>
-        <select className='cVizualizerSelectSearch' value={filterLocation} onChange={(e)=> setFilterLocation(e.target.value)} name="" id="">
-          <option className='cVizualizerOptSearch' value="">select location</option>
-          <option className='cVizualizerOptSearch' value="San José">San José</option>
-          <option className='cVizualizerOptSearch' value="Cartago">Cartago</option>
-          <option className='cVizualizerOptSearch' value="Heredia">Heredia</option>
-          <option className='cVizualizerOptSearch' value="Alajuela">Alajuela</option>
-          <option className='cVizualizerOptSearch' value="Limón">Limón</option>
-          <option className='cVizualizerOptSearch' value="Puntarenas">Puntarenas</option>
-          <option className='cVizualizerOptSearch' value="Guanacaste">Guanacaste</option>
+      <div className='cVisualizerContainerSelectSearch'>
+        <select className='cVisualizerSelectSearch' value={filterLocation} onChange={(e)=> setFilterLocation(e.target.value)} name="" id="">
+          <option className='cVisualizerOptSearch' value="">select location</option>
+          <option className='cVisualizerOptSearch' value="San José">San José</option>
+          <option className='cVisualizerOptSearch' value="Cartago">Cartago</option>
+          <option className='cVisualizerOptSearch' value="Heredia">Heredia</option>
+          <option className='cVisualizerOptSearch' value="Alajuela">Alajuela</option>
+          <option className='cVisualizerOptSearch' value="Limón">Limón</option>
+          <option className='cVisualizerOptSearch' value="Puntarenas">Puntarenas</option>
+          <option className='cVisualizerOptSearch' value="Guanacaste">Guanacaste</option>
         </select>
       </div>
 
-       <div className='cVizualizerContainerSelectSearch'>
-        <select className='cVizualizerSelectSearch' value={filterStatus} onChange={(e)=> setFilterStatus(e.target.value)} name="" id="">
-          <option className='cVizualizerOptSearch' value="">select status</option>
-          <option className='cVizualizerOptSearch' value="Active">Active</option>
-          <option className='cVizualizerOptSearch' value="Inactive">Inactive</option>
+       <div className='cVisualizerContainerSelectSearch'>
+        <select className='cVisualizerSelectSearch' value={filterStatus} onChange={(e)=> setFilterStatus(e.target.value)} name="" id="">
+          <option className='cVisualizerOptSearch' value="">select status</option>
+          <option className='cVisualizerOptSearch' value="Active">Active</option>
+          <option className='cVisualizerOptSearch' value="Inactive">Inactive</option>
         </select>
       </div>
 
@@ -127,28 +128,31 @@ function CamerasVisualizer() {
 
       <div className='cVizualizerContainerCamerasFull'>
         {filteredCameras.map((c) => (
-          <div className='cVizualizerContainerCameraOwn' key={c.id}>
-            <header className='cVizualizerHeaderCamera'> 
-             <h2 className='cVizualizerTitleCamera'> {c.name} </h2>
-             <span className='cVizualizerStatusCamera'> Status Camera:  {c.status} </span>
+          <div className='cVisualizerContainerCameraOwn' key={c.id}>
+            <header className='cVisualizerHeaderCamera'> 
+             <h2 className='cVisualizerTitleCamera'> {c.name} </h2>
+             <span className='cVisualizerStatusCamera'> Status Camera:  {c.status} </span>
             </header>
           
-            <main className='cVizualizerMainCamera'>
-            <h5 className='cVizualizerNameCamera'>Name: {c.name} </h5>
-            <span className='cVizualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br /><br />
-            <span className='cVizualizerURLAddressCamera'>URL Address: {c.url_address} </span><br /><br />
-            <span className='cVizualizerLocationCamera'>Location: {c.location} </span><br />
-            <p className='cVizualizerDescriptionCamera'>Description: {c.description} </p>
+            <main className='cVisualizerMainCamera'>
+            <h5 className='cVisualizerNameCamera'>Name: {c.name} </h5>
+            <span className='cVisualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br /><br />
+            <span className='cVisualizerURLAddressCamera'>URL Address: {c.url_address} </span><br /><br />
+            <p className='cVisualizerDescriptionCamera'>Description: {c.description} </p>
+            <span className='cVisualizerLocationCamera'>Location: {c.location} </span><br />
+            <div className='cVisualizerViewGeolocation'>
+              <ViewGeolocationCamera cameras={[c]}/>
+            </div>
             </main>
 
-            <footer className='cVizualizerFooterCamera'>
-              <button className='cVizualizerBttnDelete' onClick={() => {
+            <footer className='cVisualizerFooterCamera'>
+              <button className='cVisualizerBttnDelete' onClick={() => {
                 DeleteCInfo(c.id)
               }}>
                 Delete
               </button>
 
-              <button className='cVizualizerBttnEdit' onClick={() => openCameraEdit(c)}>
+              <button className='cVisualizerBttnEdit' onClick={() => openCameraEdit(c)}>
                 Edit
               </button>
             </footer>
@@ -157,63 +161,63 @@ function CamerasVisualizer() {
         ))}
       </div>
       {show && (
-        <div className='cVizualizerModalEditFull'>
+        <div className='cVisualizerModalEditFull'>
 
-        <div className='cVizualizerContainerTitleMEdit'>
-          <h5 className='cVizualizerTitleMEdit'>Edit Camera Information</h5>
+        <div className='cVisualizerContainerTitleMEdit'>
+          <h5 className='cVisualizerTitleMEdit'>Edit Camera Information</h5>
         </div>
 
-        <div className='cVizualizerEditFormFull' >
-          <div className='cVizualizerContainerOwnEdit'>
-            <label className='cVizualizerLabelFormEdit' htmlFor="">Name</label>
-            <input className='cVizualizerInputFormEdit' value={editName} onChange={(e) => setEditName(e.target.value)} type="text" />
+        <div className='cVisualizerEditFormFull' >
+          <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">Name</label>
+            <input className='cVisualizerInputFormEdit' value={editName} onChange={(e) => setEditName(e.target.value)} type="text" />
           </div>
 
-           <div className='cVizualizerContainerOwnEdit'>
-            <label className='cVizualizerLabelFormEdit' htmlFor="">Ip_Address</label>
-            <input className='cVizualizerInputFormEdit' value={editIp_Address} onChange={(e) => setEditIp_Address(e.target.value)} type="text" />
+           <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">Ip_Address</label>
+            <input className='cVisualizerInputFormEdit' value={editIp_Address} onChange={(e) => setEditIp_Address(e.target.value)} type="text" />
           </div>
 
-           <div className='cVizualizerContainerOwnEdit'>
-            <label className='cVizualizerLabelFormEdit' htmlFor="">URL_ Address</label>
-            <input className='cVizualizerInputFormEdit' value={editUrl_Address} onChange={(e) => setEditUrl_Address(e.target.value)} type="text" />
+           <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">URL_ Address</label>
+            <input className='cVisualizerInputFormEdit' value={editUrl_Address} onChange={(e) => setEditUrl_Address(e.target.value)} type="text" />
           </div>
 
-          <div className='cVizualizerContainerOwnEdit'>
-            <label className='cVizualizerLabelFormEdit' htmlFor="">Description</label>
-            <input className='cVizualizerInputFormEdit' value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />
+          <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">Description</label>
+            <input className='cVisualizerInputFormEdit' value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />
           </div>
 
-           <div className='cVizualizerContainerOwnEdit'>
-          <label className='cVizualizerLabelFormEdit' htmlFor="">Location </label>
-          <select className='cVizualizerSelectEditForm' name="" id="" value={editLocation} onChange={(e) => setEditLocation(e.target.value)}>
-            <option className='cVizualizerOptEditForm' value="">Select Location</option>
-            <option className='cVizualizerOptEditForm' value="San José">San José</option>
-            <option className='cVizualizerOptEditForm' value="Cartago">Cartago</option>
-            <option className='cVizualizerOptEditForm' value="Heredia">Heredia</option>
-            <option className='cVizualizerOptEditForm' value="Alajuela">Alajuela</option>
-            <option className='cVizualizerOptEditForm' value="Limón">Limón</option>
-            <option className='cVizualizerOptEditForm' value="Puntarenas">Puntarenas</option>
-            <option className='cVizualizerOptEditForm' value="Guanacaste">Guanacaste</option>
+           <div className='cVisualizerContainerOwnEdit'>
+          <label className='cVisualizerLabelFormEdit' htmlFor="">Location </label>
+          <select className='cVisualizerSelectEditForm' name="" id="" value={editLocation} onChange={(e) => setEditLocation(e.target.value)}>
+            <option className='cVisualizerOptEditForm' value="">Select Location</option>
+            <option className='cVisualizerOptEditForm' value="San José">San José</option>
+            <option className='cVisualizerOptEditForm' value="Cartago">Cartago</option>
+            <option className='cVisualizerOptEditForm' value="Heredia">Heredia</option>
+            <option className='cVisualizerOptEditForm' value="Alajuela">Alajuela</option>
+            <option className='cVisualizerOptEditForm' value="Limón">Limón</option>
+            <option className='cVisualizerOptEditForm' value="Puntarenas">Puntarenas</option>
+            <option className='cVisualizerOptEditForm' value="Guanacaste">Guanacaste</option>
           </select>
           </div>
            
-           <div className='cVizualizerContainerOwnEdit'>
-            <label className='cVizualizerLabelFormEdit' htmlFor="">Camera Status</label>
-            <select className='cVizualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
-              <option className='cVizualizerOptEditForm' value="">select status</option>
-              <option className='cVizualizerOptEditForm' value="Active">Active</option>
-              <option className='cVizualizerOptEditForm' value="Inactive">Inactive</option>
+           <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">Camera Status</label>
+            <select className='cVisualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
+              <option className='cVisualizerOptEditForm' value="">select status</option>
+              <option className='cVisualizerOptEditForm' value="Active">Active</option>
+              <option className='cVisualizerOptEditForm' value="Inactive">Inactive</option>
             </select>
           </div>
 
-          <div className='cVizualizerContainerBttnsEdit'>
-            <div className='cVizualizerContainerBtnSaveEdit'>
-              <button className='cVizualizerBtnSaveEdit' onClick={() => UpdateCInfo(user.id)}>Save Changes</button>
+          <div className='cVisualizerContainerBttnsEdit'>
+            <div className='cVisualizerContainerBtnSaveEdit'>
+              <button className='cVisualizerBtnSaveEdit' onClick={() => UpdateCInfo(user.id)}>Save Changes</button>
             </div>
 
-            <div className='cVizualizerContainerBtnCancelEdit'>
-              <button className='cVizualizerBtnCancelEdit' onClick={() => setShow(false)}>Cancel Changes</button>
+            <div className='cVisualizerContainerBtnCancelEdit'>
+              <button className='cVisualizerBtnCancelEdit' onClick={() => setShow(false)}>Cancel Changes</button>
             </div>
 
           </div>

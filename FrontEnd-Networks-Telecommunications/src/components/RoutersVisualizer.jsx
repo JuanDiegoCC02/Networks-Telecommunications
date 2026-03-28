@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { deleteRouters, getRouters, patchRouters } from '../services/routersApi'
+import ViewGeolocationRouter from './ViewGeolocationRouter'
 
 function RoutersVisualizer() {
     const [routers, setRouters] = useState([])
@@ -134,6 +135,10 @@ function RoutersVisualizer() {
                     <span className='rVizualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />
                     <span className='rVizualizerBrandRouter'>Brand: {r.brand}</span><br />
                     <span className='rVizualizerModelRouter'>Model: {r.model}</span><br />
+
+                    <div className='rVisualizerViewGeolocation'>
+                      <ViewGeolocationRouter routers={[r]}/>
+                    </div>
                 </main>
 
                 <footer className='rVizualizerFooterRouter'>

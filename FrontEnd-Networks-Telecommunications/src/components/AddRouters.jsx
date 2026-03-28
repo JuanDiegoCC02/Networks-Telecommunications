@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { postRouters } from '../services/routersApi';
+import AddGeolocationRouter from './AddGeolocationRouter';
 
 function AddRouters() {
     const [routerName, setRouterName] = useState("");
@@ -8,6 +9,8 @@ function AddRouters() {
   const [routerBrand, setRouterBrand] = useState("");
   const [routerModel, setRouterModel] = useState("");
   const [routerLocation, setRouterLocation] = useState("");
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [routerStatus, setRouterStatus] = useState("");
 
   function name(e) {
@@ -28,6 +31,10 @@ function AddRouters() {
    function location(e) {
     setRouterLocation(e.target.value)    
   }
+   function handleCoords(coords) {
+  setLatitude(coords.lat);
+  setLongitude(coords.lng);
+  }
    function status(e) {
     setRouterStatus(e.target.value)    
   }
@@ -42,6 +49,8 @@ function AddRouters() {
       console.log("brand:", routerBrand)
       console.log("model:", routerModel)
       console.log("location:", routerLocation)
+      console.log("latitude:", latitude)
+      console.log("longitude:", longitude)
       console.log("status:", routerStatus)
       
   if (!routerName || !ip_Address || !mac_Address || !routerBrand || !routerModel || !routerLocation || !routerStatus) {
@@ -56,6 +65,8 @@ function AddRouters() {
       brand: routerBrand,
       model: routerModel,
       location: routerLocation,
+      latitude: latitude,
+      longitude: longitude,
       status: routerStatus
   }
 
@@ -126,6 +137,14 @@ function AddRouters() {
               <option className='addRoutersOptionSelect' value="Puntarenas">Puntarenas</option>
               <option className='addRoutersOptionSelect' value="Guanacaste">Guanacaste</option>
             </select>
+          </div>
+
+          <div className='addRoutersContainerForm'>
+            <label>Select the Camera Direction</label>
+            <AddGeolocationRouter setCoords={handleCoords} />
+  
+            <p>Latitude: {latitude}</p>
+            <p>Longitude: {longitude}</p>
           </div>
 
           <div>

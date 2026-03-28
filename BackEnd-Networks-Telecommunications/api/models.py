@@ -73,6 +73,9 @@ class Router(models.Model):
         default='San José'
     )
 
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+
     status = models.CharField(
         max_length=10,
         choices=[('Active', 'Active'), ('Inactive', 'Inactive')],

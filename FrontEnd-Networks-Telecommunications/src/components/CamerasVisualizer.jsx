@@ -141,6 +141,7 @@ function CamerasVisualizer() {
             <span className='cVisualizerURLAddressCamera'>URL Address: {c.url_address} </span><br /><br />
             <p className='cVisualizerDescriptionCamera'>Description: {c.description} </p>
             <span className='cVisualizerLocationCamera'>Location: {c.location} </span><br />
+            
             <div className='cVisualizerViewGeolocation'>
               <ViewGeolocationCamera cameras={[c]}/>
             </div>

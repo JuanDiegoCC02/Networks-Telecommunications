@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { postRouters } from '../services/routersApi';
 import AddGeolocationRouter from './AddGeolocationRouter';
+import "../styles/AddRouters.css"
 
 function AddRouters() {
     const [routerName, setRouterName] = useState("");

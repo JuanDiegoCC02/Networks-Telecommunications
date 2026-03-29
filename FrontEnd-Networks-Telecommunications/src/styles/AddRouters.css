@@ -1,0 +1,150 @@
+:root {
+  --bg-dark: #0a0c10;
+  --card-bg: #ffffff;
+  --accent: #2563eb;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-ui: #f1f5f9;
+  --shadow-pro: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.addRoutersContainerFull {
+  padding: 60px 20px;
+  background: var(--bg-dark);
+  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
+  background-size: 32px 32px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.addRoutersTitle {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+/* form routers full */
+.addRoutersFormFull {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 800px;
+  padding: 45px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-pro);
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px;
+}
+
+.addRoutersContainerTitleForm {
+  grid-column: 1 / -1; 
+  border-bottom: 1px solid var(--border-ui);
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+.addRoutersTitleForm {
+  color: var(--text-main);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* update div */
+.addRoutersContainerForm, .addRoutersFormFull > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addRoutersLabelForm {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.addRoutersInputForm, 
+.addRoutersSelectLocation, 
+.addRoutersSelectStatus {
+  padding: 14px 18px;
+  border: 1px solid var(--border-ui);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  background: #f8fafc;
+  transition: all 0.2s ease;
+  color: var(--text-main);
+}
+
+.addRoutersInputForm:focus, 
+.addRoutersSelectLocation:focus, 
+.addRoutersSelectStatus:focus {
+  background: #ffffff;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  outline: none;
+}
+
+/* geolocation content */
+.addRoutersContainerForm:has(.AddGeolocationRouter), 
+.addRoutersContainerForm:nth-last-child(2) {
+  grid-column: 1 / -1; 
+  background: #f1f5f9;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 10px;
+}
+
+.addRoutersContainerForm p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin: 5px 0 0 0;
+  font-weight: 600;
+}
+
+/* btn action config */
+.addRoutersContainerBtn {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.addRoutersBtn {
+  background: var(--text-main);
+  color: #ffffff;
+  border: none;
+  padding: 18px 60px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.addRoutersBtn:hover {
+  background: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*  responsive  */
+@media (max-width: 600px) {
+  .addRoutersFormFull {
+    grid-template-columns: 1fr;
+    padding: 25px;
+  }
+}

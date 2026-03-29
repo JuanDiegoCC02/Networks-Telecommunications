@@ -1,0 +1,286 @@
+:root {
+  --bg-dark: #0a0c10;
+  --card-bg: #ffffff;
+  --accent: #2563eb;
+  --accent-success: #10b981;
+  --accent-danger: #ef4444;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-ui: #f1f5f9;
+  --shadow-pro: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* routers full container */
+.rVisualizerContainerFull {
+  padding: 40px 20px;
+  background: var(--bg-dark);
+  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
+  background-size: 32px 32px;
+  min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.rVisualizerTitle {
+  color: #fff;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+/* nav & selects */
+.rVisualizerNavFull {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.rVisualizerSearch, .rVisualizerSelectSearch {
+  background: #ffffff;
+  border: 1px solid var(--border-ui);
+  padding: 14px 22px;
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.rVisualizerSearch:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* grid routers full*/
+.rVisualizerContainerRoutersFull {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.rVisualizerContainerRouterOwn {
+  background: var(--card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-pro);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.rVisualizerContainerRouterOwn:hover {
+  transform: translateY(-8px);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.rVisualizerHeaderRouter {
+  padding: 20px 25px;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-ui);
+}
+
+.rVisualizerTitleRouter {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 8px 0;
+}
+
+.rVisualizerStatusRouter, .rVisualizerLocationRouter {
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  background: #f1f5f9;
+  color: var(--text-muted);
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid var(--border-ui);
+}
+
+/* body card */
+.rVisualizerMainRouter {
+  padding: 25px;
+  flex-grow: 1;
+}
+
+.rVisualizerNameRouter {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rVisualizerIPAddressRouter, 
+.rVisualizerMACAddressRouter,
+.rVisualizerBrandRouter,
+.rVisualizerModelRouter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  background: #eff6ff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+/* bttn config*/
+.rVisualizerFooterRouter {
+  padding: 20px 25px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  border-top: 1px solid var(--border-ui);
+}
+
+.rVisualizerBttnDelete {
+  background: transparent;
+  color: var(--accent-danger);
+  border: 2px solid rgba(239, 68, 68, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rVisualizerBttnDelete:hover {
+  background: var(--accent-danger);
+  color: #fff;
+  border-color: var(--accent-danger);
+}
+
+.rVisualizerBttnEdit {
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rVisualizerBttnEdit:hover {
+  background: #000;
+  transform: scale(1.02);
+}
+
+/* Modal Edit */
+.rVisualizerModalEditFull {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.rVisualizerEditFormFull {
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  max-height: 85vh; 
+  padding: 35px;
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.rVisualizerTitleMEdit {
+  color: var(--text-main);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rVisualizerContainerOwnEdit, .rVizualizerContainerOwnEdit {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rVisualizerLabelFormEdit {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.rVisualizerInputFormEdit, .rVisualizerSelectEditForm {
+  padding: 12px;
+  border: 1px solid var(--border-ui);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background: #f8fafc;
+  color: var(--text-main);
+}
+
+.rVisualizerInputFormEdit:focus {
+  background: #fff;
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* bttn modalEdt */
+.rVisualizerBttnsEdit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-ui);
+}
+
+.rVisualizerBtnSaveEdit button {
+  background: var(--text-main);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.rVisualizerBtnCancelEdit {
+  background: #f1f5f9;
+  color: var(--text-muted);
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  width: 100%;
+  cursor: pointer;
+}
+
+.rVisualizerBtnSaveEdit button:hover {
+  background: #000;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteRouters, getRouters, patchRouters } from '../services/routersApi'
 import ViewGeolocationRouter from './ViewGeolocationRouter'
+import "../styles/RoutersVisualizer.css"
 
 function RoutersVisualizer() {
     const [routers, setRouters] = useState([])

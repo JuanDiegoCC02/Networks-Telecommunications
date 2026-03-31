@@ -1,28 +1,41 @@
-import React from 'react'
+import React from 'react';
+import '../styles/FooterPage.css';
 
 function FooterPage() {
   return (
-    <div>
-    
-    <div>
-        <h3>networks</h3>
-        <span>access</span>
-    </div>
+    <footer className='footerContainerFull'>
+      <div className='footerContentGrid'>
+        
+        {/* Column 1: Project Data */}
+        <div className='footerSection'>
+          <h3 className='footerLogoTitle'>NET<span>WORKS</span></h3>
+          <p className='footerTagline'>Advanced Management System for Cameras and Routers.</p>
+        </div>
 
-    <div>
-        <h2>All Rights Reserved</h2>
-        <span>Terms and Conditions</span>
-    </div>
-     <div>
-        <p>2026</p>
-     </div>
+        {/* Column 2: Access flash */}
+        <div className='footerSection'>
+          <h4 className='footerSubTitle'>Platform</h4>
+          <ul className='footerLinks'>
+            <li><a href="#access">System Access</a></li>
+            <li><a href="#terms">Terms and Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
 
-     <div>
-        <h3>contact us</h3>
-        <span>access</span>
-     </div>
-    </div>
-  )
+        {/* Column 3: Contact */}
+        <div className='footerSection'>
+          <h4 className='footerSubTitle'>Support</h4>
+          <p className='footerContactText'>Contact Us</p>
+          <span className='footerAccessLink'>Support Portal</span>
+        </div>
+
+      </div>
+
+      <div className='footerBottomBar'>
+        <p>&copy; {new Date().getFullYear()} Juan Diego Corella Camacho. All Rights Reserved.</p>
+      </div>
+    </footer>
+  );
 }
 
-export default FooterPage
+export default FooterPage;

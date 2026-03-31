@@ -1,0 +1,108 @@
+.footerContainerFull {
+  background: #05070a; /* Un negro más profundo que el body */
+  color: #ffffff;
+  padding: 60px 20px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Inter', sans-serif;
+  margin-top: auto; /* Empuja el footer al final si usas flex en el layout */
+}
+
+.footerContentGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* --- ESTILO LOGO Y TEXTO --- */
+.footerLogoTitle {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.footerLogoTitle span {
+  color: #2563eb; /* El azul accent que venimos usando */
+}
+
+.footerTagline {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 300px;
+}
+
+/* --- COLUMNAS DE LINKS --- */
+.footerSubTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerLinks li {
+  margin-bottom: 12px;
+}
+
+.footerLinks a {
+  color: #64748b;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #ffffff;
+}
+
+.footerContactText {
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.footerAccessLink {
+  color: #2563eb;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* --- BARRA INFERIOR --- */
+.footerBottomBar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.footerBottomBar p {
+  color: #475569;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .footerContentGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footerTagline {
+    margin: 0 auto;
+  }
+}

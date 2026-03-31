@@ -11,7 +11,7 @@
     const navigate = useNavigate();
 
     // Manejo de cookies
-    const [cookies, setCookie, removeCookie] = useCookies(["username"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["username", "id", "groupUser"]);
 
     // button logic log in
     const accessLogIn = async () => {
@@ -32,11 +32,17 @@
 
         if (response.ok) {
 
-          // Save username in cookies
-          setCookie("username", data.username, {
-            path: "/",
-            maxAge: 3600
-          });
+         //  Save data in cookies 
+        setCookie("username", data.username, { path: "/", maxAge: 3600 });
+        setCookie("id", data.id, { path: "/", maxAge: 3600 });
+        setCookie("groupUser", data.group, { path: "/", maxAge: 3600 });
+
+        //  Save data in localStorage
+        localStorage.setItem("username", data.username);
+        localStorage.setItem("id", data.id);
+        localStorage.setItem("groupUser", data.group); 
+
+        console.log("Access approved", data.group);
           navigate("/");
 
         } else {

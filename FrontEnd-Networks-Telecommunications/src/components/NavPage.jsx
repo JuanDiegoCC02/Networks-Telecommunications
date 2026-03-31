@@ -1,33 +1,50 @@
-import React from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import "../styles/NavPage.css"
 
 function NavPage() {
-    const navigate = useNavigate ()
-  return (
-    <div>
+    const navigate = useNavigate()
+    const location = useLocation() // Escuchamos cambios en la URL
+    
+    const [group, setGroup] = useState(null)
 
-        <nav className='navContainerFull'>
-            <div className='navContainerOwn'>
-                <a className='accessNav' href="register">Register</a>
-            </div>
-            <div className='navContainerOwn'>
-                <a className='accessNav' href="/logIn">Log In</a>
-            </div>
-            <div className='navContainerOwn'>
-                <a className='accessNav' href="/">Home</a>
-            </div>
-             <div className='navContainerOwn'>
-                <a className='accessNav' href="/cameras">Cameras</a>
-            </div>
-            <div className='navContainerOwn'>
-                <a className='accessNav' href="/routers">Routers</a>
-            </div>
+    useEffect(() => {
+        const storedGroup = localStorage.getItem("groupUser")
+        setGroup(storedGroup)
+    }, [location]) // Se ejecuta cada vez que navegamos
 
-        </nav>
+    return (
+        <div>
+            <nav className='navContainerFull'>
+                <div className='navContainerOwn'>
+                    <a className='accessNav' href="/">Home</a>
+                </div>
 
-    </div>
-  )
+                {group && (
+                    <>
+                        <div className='navContainerOwn'>
+                            <a className='accessNav' href="/cameras">Cameras</a>
+                        </div>
+                        <div className='navContainerOwn'>
+                            <a className='accessNav' href="/routers">Routers</a>
+                        </div>
+                    </>
+                )}
+
+                {!group && (
+                <>
+                 <div className='navContainerOwn'>
+                    <a className='accessNav' href="/register">Register</a>
+                 </div>
+                 <div className='navContainerOwn'>
+                    <a className='accessNav' href="/logIn">Log In</a>
+                 </div>
+                </>
+                )}
+             
+            </nav>
+        </div>
+    )
 }
 
 export default NavPage

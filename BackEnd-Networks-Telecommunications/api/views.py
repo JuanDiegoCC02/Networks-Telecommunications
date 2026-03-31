@@ -11,6 +11,7 @@ from .models import Camera
 from .serializers import CameraSerializer
 from .models import Router
 from .serializers import RouterSerializer
+from django.contrib.auth.models import Group
 
 # Register View
 class RegisterView(APIView):
@@ -27,6 +28,9 @@ class RegisterView(APIView):
         if serializer.is_valid():
             user = serializer.save()
 
+            group, created = Group.objects.get_or_create(name='User')
+            user.groups.add(group)
+
             print("User created:", user.username)  # confirm
 
             return Response(
@@ -37,6 +41,7 @@ class RegisterView(APIView):
         print("Failed serializers", serializer.errors)  # failed
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 # Log In View
 class LoginView(APIView):
@@ -68,10 +73,12 @@ class LoginView(APIView):
 
         if user is not None:
             login(request, user)
+            user_group = user.groups.first().name if user.groups.exists() else "User"  
             return Response({
                 "message": "Login successful",
                 "username": user.username,
-                "email": user.email
+                "email": user.email,
+                "group": user_group
             }, status=status.HTTP_200_OK)
 
         return Response(

@@ -1,11 +1,9 @@
 import React from 'react'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Register from '../pages/Register';
+import Register from '../pages/register';
 import LogIn from '../pages/LogIn';
 import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
-import CamerasVisualizer from '../components/CamerasVisualizer';
-import AddCameras from '../components/AddCameras';
 import Routers from '../pages/Routers';
 
 

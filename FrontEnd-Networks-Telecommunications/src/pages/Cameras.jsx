@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import NavPage from '../components/navPage'
 import AddCameras from '../components/AddCameras'
 import CamerasVisualizer from '../components/CamerasVisualizer'
+import FooterPage from '../components/FooterPage'
 
 
 function Cameras() {
@@ -30,7 +31,9 @@ function Cameras() {
           {view === "visualizer" && <CamerasVisualizer/>}
         </div>
         
-       
+
+       <FooterPage/>
+
     
     </div>
   )

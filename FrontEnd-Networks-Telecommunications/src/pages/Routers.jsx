@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import NavPage from '../components/navPage'
 import AddRouters from '../components/AddRouters'
 import RoutersVisualizer from '../components/RoutersVisualizer'
+import FooterPage from '../components/FooterPage'
 
 function Routers() {
   const  [view, setView] = useState ("add")
@@ -24,6 +25,10 @@ function Routers() {
       {view === "add" && <AddRouters/>}
       {view === "visualizer" && <RoutersVisualizer/>}
      </div>
+
+     
+     <FooterPage/>
+
      
     </div>
   )

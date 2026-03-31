@@ -6,10 +6,12 @@ function FooterPage() {
     
     <div>
         <h3>networks</h3>
+        <span>access</span>
     </div>
 
     <div>
         <h2>All Rights Reserved</h2>
+        <span>Terms and Conditions</span>
     </div>
      <div>
         <p>2026</p>
@@ -17,6 +19,7 @@ function FooterPage() {
 
      <div>
         <h3>contact us</h3>
+        <span>access</span>
      </div>
     </div>
   )

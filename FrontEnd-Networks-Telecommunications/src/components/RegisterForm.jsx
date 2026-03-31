@@ -130,6 +130,12 @@ function registerForm() {
         <div className='registerContainerBttn'>
           <button className='registerBttnAccess' onClick={register} value= "Register" >Register</button>
        </div>
+       
+       <div className="registerContainerLinkLogIn">
+         <label className="registerTitleLinkLogIn" htmlFor="">Already Registered?</label>
+         <a className="registerLinkLogIn" href="/logIn">Log In</a>
+       </div>
+
 
       </div>
 

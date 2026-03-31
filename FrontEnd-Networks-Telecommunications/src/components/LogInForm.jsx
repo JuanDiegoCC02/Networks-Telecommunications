@@ -59,20 +59,25 @@
       <div className="logInFormFull">
         <div className="logInContainerForm">
           <label className="logInLabelForm"> Username or Email </label>
-          <input className="logInInputForm" type="text" placeholder="" value={LogInAccess} onChange={(e) => setLogInAccess(e.target.value)}/>
+          <input className="logInInputForm" type="text" placeholder="Username or Email" value={LogInAccess} onChange={(e) => setLogInAccess(e.target.value)}/>
         </div>
 
         <br/>
 
         <div className="logInContainerForm">
           <label className="logInLabelForm"> Password </label>
-          <input className="logInInputForm" type="password" placeholder="" value={Password} onChange={(e) => setPassword(e.target.value)}/>
+          <input className="logInInputForm" type="password" placeholder="Password" value={Password} onChange={(e) => setPassword(e.target.value)}/>
         </div>
 
         <br/>
       
         <div className="logInContianerBttn">
         <button className="logInBttnAccess" onClick={accessLogIn}> Log In </button>
+        </div>
+
+        <div className="logInContainerLinkRegister">
+          <label className="logInTitleLinkRegister" htmlFor="">Create Account</label>
+          <a className="logInLinkRegister" href="/register">Register</a>
         </div>
 
         </div>

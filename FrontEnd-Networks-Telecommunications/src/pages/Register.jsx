@@ -6,11 +6,23 @@ import FooterPage from '../components/FooterPage';
 
 function Register() {
   return (
-    <div>
+  <div>
+    
+    <nav>
       <NavPage/>
+    </nav>
+
+
+    <body>
       <RegisterForm/>
+    </body>
+
+
+    <footer>
       <FooterPage/>
-    </div>
+    </footer>
+ 
+  </div>
   )
 }
 

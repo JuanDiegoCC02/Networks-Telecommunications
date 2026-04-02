@@ -6,11 +6,23 @@ import FooterPage from '../components/FooterPage'
 function Home() {
   return (
 
-    <div>
+  <div>
+
+    <nav>
       <NavPage/>
+    </nav>
+
+
+    <body>
       <HomeBody/>
+    </body>
+
+
+    <footer>
       <FooterPage/>
-    </div>
+    </footer>
+     
+  </div>
     
   )
 }

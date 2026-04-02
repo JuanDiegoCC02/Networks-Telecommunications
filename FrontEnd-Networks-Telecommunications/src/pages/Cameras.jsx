@@ -9,33 +9,40 @@ import FooterPage from '../components/FooterPage'
 function Cameras() {
   const [view, setView] = useState("add")
   return (
-    <div>  
-        <NavPage/>
-
-        <div>
-          <div>
-            <button onClick={()=> setView("add")}>
-              Add Cameras 
-            </button>
-          </div>
-          <div>
-            <button onClick={()=> setView("visualizer")}>
-               Cameras Visualizer
-            </button>
-          </div>
-        </div>
-
-        {/*Show Container Cameras Components*/}
-        <div>
-          {view === "add" && <AddCameras/>}
-          {view === "visualizer" && <CamerasVisualizer/>}
-        </div>
-        
-
-       <FooterPage/>
-
+  <div>  
     
-    </div>
+    <nav>
+      <NavPage/>
+    </nav>
+
+
+    <body>
+      <div>
+        <div>
+          <button onClick={()=> setView("add")}>
+            Add Cameras 
+          </button>
+        </div>
+        <div>
+          <button onClick={()=> setView("visualizer")}>
+              Cameras Visualizer
+          </button>
+        </div>
+      </div>
+
+      {/*Show Container Cameras Components*/}
+      <div>
+        {view === "add" && <AddCameras/>}
+        {view === "visualizer" && <CamerasVisualizer/>}
+      </div>    
+    </body>
+       
+        
+    <footer>
+      <FooterPage/>
+    </footer>
+    
+  </div>
   )
 }
 

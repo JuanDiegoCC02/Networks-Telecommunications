@@ -6,11 +6,24 @@ import FooterPage from '../components/FooterPage'
 function LogIn() {
   return (
 
-    <div>
+  <div>
+
+     <nav>
       <NavPage/>
-      <LogInForm/>
+    </nav>
+
+
+    <body>
+      <LogInForm/> 
+    </body>
+
+
+    <footer>
       <FooterPage/>
-    </div>
+    </footer>
+
+      
+  </div>
     
   )
 }

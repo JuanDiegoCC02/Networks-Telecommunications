@@ -7,10 +7,14 @@ import FooterPage from '../components/FooterPage'
 function Routers() {
   const  [view, setView] = useState ("add")
   return (
-    <div>
-     <NavPage/>
+  <div>
+    <nav>
+      <NavPage/>
+    </nav>
+     
 
-    <div>
+    <body>
+      <div>
       <div>
         <button onClick={()=> setView("add")}>Add Routers</button>
       </div>
@@ -18,19 +22,23 @@ function Routers() {
       <div>
         <button onClick={()=> setView("visualizer")}>Routers Visualizer</button>
       </div>
-
-    </div>
+      
+      </div>
+      
+      <div>
+        {view === "add" && <AddRouters/>}
+        {view === "visualizer" && <RoutersVisualizer/>}
+      </div>
+    </body>
     
-     <div>
-      {view === "add" && <AddRouters/>}
-      {view === "visualizer" && <RoutersVisualizer/>}
-     </div>
+
+    <footer>
+      <FooterPage/>
+    </footer>
+     
 
      
-     <FooterPage/>
-
-     
-    </div>
+  </div>
   )
 }
 

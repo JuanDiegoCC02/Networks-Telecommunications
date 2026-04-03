@@ -5,6 +5,7 @@ import LogIn from '../pages/LogIn';
 import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
 import Routers from '../pages/Routers';
+import Administration from '../pages/Administration';
 
 
 
@@ -19,9 +20,11 @@ function Routing() {
              <Route path = '/' element = {<Home/>}/> 
 
             {/* Private Routes */} 
-              <Route path = '/cameras' element = {<Cameras/>}/> 
-
+              <Route path = '/cameras' element = {<Cameras/>}/>
               <Route path = '/routers' element = {<Routers/>}/> 
+
+             <Route path = '/administration' element = {<Administration/>}/> 
+
  
         </Routes>
     </Router>

@@ -28,6 +28,9 @@ function NavPage() {
                         <div className='navContainerOwn'>
                             <a className='accessNav' href="/routers">Routers</a>
                         </div>
+                         <div className='navContainerOwn'>
+                            <a className='accessNav' href="/administration">Admin</a>
+                        </div>
                     </>
                 )}
 

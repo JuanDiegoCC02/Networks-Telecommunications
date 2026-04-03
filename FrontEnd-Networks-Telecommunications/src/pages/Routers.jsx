@@ -13,7 +13,7 @@ function Routers() {
     </nav>
      
 
-    <body>
+    <main>
       <div>
       <div>
         <button onClick={()=> setView("add")}>Add Routers</button>
@@ -29,7 +29,7 @@ function Routers() {
         {view === "add" && <AddRouters/>}
         {view === "visualizer" && <RoutersVisualizer/>}
       </div>
-    </body>
+    </main>
     
 
     <footer>

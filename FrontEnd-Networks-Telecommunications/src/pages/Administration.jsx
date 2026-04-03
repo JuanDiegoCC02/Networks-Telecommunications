@@ -1,17 +1,22 @@
 import React from 'react'
 import AdminNav from '../components/AdminNav'
 import AdminBody from '../components/AdminBody'
+import NavPage from '../components/navPage'
 
 function Administration() {
   return (
   <div>
     <nav>
-        <AdminNav/>
+        <NavPage/>
     </nav>
+
+    <div>
+        <AdminNav/>
+    </div>
         
-    <body>
+    <main>
         <AdminBody/>
-    </body>
+    </main>
 
   </div>
   )

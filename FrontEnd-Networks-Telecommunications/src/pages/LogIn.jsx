@@ -13,9 +13,9 @@ function LogIn() {
     </nav>
 
 
-    <body>
+    <main>
       <LogInForm/> 
-    </body>
+    </main>
 
 
     <footer>

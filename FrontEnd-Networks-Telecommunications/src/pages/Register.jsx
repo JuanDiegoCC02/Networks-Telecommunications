@@ -13,9 +13,9 @@ function Register() {
     </nav>
 
 
-    <body>
+    <main>
       <RegisterForm/>
-    </body>
+    </main>
 
 
     <footer>

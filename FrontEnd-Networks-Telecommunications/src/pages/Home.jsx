@@ -13,11 +13,11 @@ function Home() {
     </nav>
 
 
-    <body>
+    <main>
       <HomeBody/>
-    </body>
+    </main>
 
-
+o
     <footer>
       <FooterPage/>
     </footer>

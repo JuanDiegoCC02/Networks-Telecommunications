@@ -16,7 +16,7 @@ function Cameras() {
     </nav>
 
 
-    <body>
+    <main>
       <div>
         <div>
           <button onClick={()=> setView("add")}>
@@ -35,7 +35,7 @@ function Cameras() {
         {view === "add" && <AddCameras/>}
         {view === "visualizer" && <CamerasVisualizer/>}
       </div>    
-    </body>
+    </main>
        
         
     <footer>

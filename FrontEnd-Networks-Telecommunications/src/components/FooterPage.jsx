@@ -6,7 +6,7 @@ function FooterPage() {
     <footer className='footerContainerFull'>
       <div className='footerContentGrid'>
         
-        {/* Column 1: Project Data */}
+        {/* Column 1: Public information */}
         <div className='footerSection'>
           <h3 className='footerLogoTitle'>NET<span>WORKS</span></h3>
           <p className='footerTagline'>Advanced Management System for Cameras and Routers.</p>

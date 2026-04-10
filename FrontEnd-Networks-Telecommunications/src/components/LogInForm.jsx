@@ -11,7 +11,7 @@
     const navigate = useNavigate();
 
     // Manejo de cookies
-    const [cookies, setCookie, removeCookie] = useCookies(["username", "id", "groupUser"]);
+    const [setCookie, ] = useCookies(["username", "id", "groupUser"]);
 
     // button logic log in
     const accessLogIn = async () => {

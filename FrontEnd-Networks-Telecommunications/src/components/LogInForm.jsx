@@ -11,8 +11,7 @@
     const navigate = useNavigate();
 
     // Manejo de cookies
-    const [setCookie, ] = useCookies(["username", "id", "groupUser"]);
-
+    const [cookies, setCookie] = useCookies(["username", "id", "groupUser"]);
     // button logic log in
     const accessLogIn = async () => {
       try {
@@ -46,7 +45,8 @@
           navigate("/");
 
         } else {
-           console.error("Error: invalid credentials", error);
+           console.error("Error: invalid credentials", data.message|| "Unknown error");
+        alert("Credenciales incorrectas");
         }
       } catch (error) {
         console.error("Error:", error);

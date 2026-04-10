@@ -1,50 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom' 
 import "../styles/NavPage.css"
 
 function NavPage() {
-    const navigate = useNavigate()
-    const location = useLocation() // Escuchamos cambios en la URL
+    const location = useLocation()
     
-    const [group, setGroup] = useState(null)
+    const [group, setGroup] = useState(() => {
+        return localStorage.getItem("groupUser")
+    })
 
     useEffect(() => {
         const storedGroup = localStorage.getItem("groupUser")
         setGroup(storedGroup)
-    }, [location]) // Se ejecuta cada vez que navegamos
+    }, [location])
 
     return (
         <div>
             <nav className='navContainerFull'>
                 <div className='navContainerOwn'>
-                    <a className='accessNav' href="/">Home</a>
+                    <Link className='accessNav' to="/">Home</Link>
                 </div>
 
                 {group && (
                     <>
                         <div className='navContainerOwn'>
-                            <a className='accessNav' href="/cameras">Cameras</a>
+                            <Link className='accessNav' to="/cameras">Cameras</Link>
                         </div>
                         <div className='navContainerOwn'>
-                            <a className='accessNav' href="/routers">Routers</a>
+                            <Link className='accessNav' to="/routers">Routers</Link>
                         </div>
-                         <div className='navContainerOwn'>
-                            <a className='accessNav' href="/administration">Admin</a>
+                        <div className='navContainerOwn'>
+                            <Link className='accessNav' to="/administration">Administrator</Link>
                         </div>
                     </>
                 )}
 
                 {!group && (
-                <>
-                 <div className='navContainerOwn'>
-                    <a className='accessNav' href="/register">Register</a>
-                 </div>
-                 <div className='navContainerOwn'>
-                    <a className='accessNav' href="/logIn">Log In</a>
-                 </div>
-                </>
+                    <>
+                        <div className='navContainerOwn'>
+                            <Link className='accessNav' to="/register">Register</Link>
+                        </div>
+                        <div className='navContainerOwn'>
+                            <Link className='accessNav' to="/logIn">Log In</Link>
+                        </div>
+                    </>
                 )}
-             
             </nav>
         </div>
     )

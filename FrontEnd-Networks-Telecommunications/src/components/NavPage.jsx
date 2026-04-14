@@ -20,9 +20,6 @@ function NavPage() {
                 <div className='navContainerOwn'>
                     <Link className='accessNav' to="/">Home</Link>
                 </div>
-                <div className='navContainerOwn'>
-                    <Link className='accessNav' to="/">Reset</Link>
-                </div>
 
                 {group && (
                     <>
@@ -32,11 +29,18 @@ function NavPage() {
                         <div className='navContainerOwn'>
                             <Link className='accessNav' to="/routers">Routers</Link>
                         </div>
-                        <div className='navContainerOwn'>
-                            <Link className='accessNav' to="/administration">Administrator</Link>
-                        </div>
+                       
                     </>
                 )}
+
+            
+            {group === "Administrator" && (
+                <>
+                 <div className='navContainerOwn'>
+                    <Link className='accessNav' to="/administration">Administrator</Link>
+                 </div>
+                </>
+            )}
 
                 {!group && (
                     <>

@@ -20,8 +20,6 @@ function CamerasVisualizer() {
   const [editStatus, setEditStatus] = useState("")
   const [show, setShow] = useState(false)
 
-  const [alerDelete, setAlertDelete] = useState(false)
-  const [idCameraDelete, setIdCameraDelete] = useState(null)
 
 
   useEffect(() => {

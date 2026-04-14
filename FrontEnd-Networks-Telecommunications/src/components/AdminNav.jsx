@@ -2,7 +2,9 @@ import React from 'react'
 
 function AdminNav() {
   return (
-    <div>AdminNav</div>
+    <div>
+      
+    </div>
   )
 }
 

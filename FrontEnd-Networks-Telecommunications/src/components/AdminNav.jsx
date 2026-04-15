@@ -3,7 +3,7 @@ import React from 'react'
 function AdminNav() {
   return (
     <div>
-      
+        <nav></nav>
     </div>
   )
 }

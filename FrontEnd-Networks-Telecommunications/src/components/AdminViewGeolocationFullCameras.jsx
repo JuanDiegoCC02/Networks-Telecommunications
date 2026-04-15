@@ -1,40 +1,21 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 
 export default function AdminViewGeolocationFullCameras({ cameras }) {
-  // Coordenadas centrales de Costa Rica por defecto
-  const defaultCenter = [9.7489, -83.7534];
-
   return (
     <MapContainer
-      center={defaultCenter}
-      zoom={7}
-      style={{ height: "500px", width: "100%", borderRadius: "8px" }}
+      center={[9.7489, -83.7534]}
+      zoom={8}
+      style={{ height: "400px", width: "100%", borderRadius: "12px", border: '2px solid #00d4ff', marginBottom: "20px" }}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-
-      {cameras.map((cam) => {
-        // Validación de coordenadas para evitar errores de renderizado
-        if (!cam.latitude || !cam.longitude) return null;
-
-        return (
-          <Marker 
-            key={cam.id} 
-            position={[parseFloat(cam.latitude), parseFloat(cam.longitude)]}
-          >
-            <Popup>
-              <div style={{ textAlign: "center" }}>
-                <strong>{cam.name}</strong> <br />
-                IP: {cam.ip_address} <br />
-                Estado: {cam.status}
-              </div>
-            </Popup>
-          </Marker>
-        );
-      })}
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      {cameras.map((c) => c.latitude && c.longitude && (
+        <Marker key={`map-cam-${c.id}`} position={[parseFloat(c.latitude), parseFloat(c.longitude)]}>
+          <Popup>
+            <strong>📸 Cámara:</strong> {c.name}<br/>
+            {c.location}
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 }

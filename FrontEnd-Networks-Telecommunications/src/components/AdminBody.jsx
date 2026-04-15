@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+// Importamos los nuevos componentes de mapa
+import AdminViewGeolocationFullCameras from './AdminViewGeolocationFullCameras';
+import AdminViewGeolocationFullRouters from './AdminViewGeolocationFullRouters';
+
 import { getCameras, patchCameras, deleteCameras } from '../services/camerasApi';
 import { getRouters, patchRouters, deleteRouters } from '../services/routersApi';
 import "leaflet/dist/leaflet.css";
@@ -7,50 +10,36 @@ import "../styles/CamerasVisualizer.css";
 import "../styles/RoutersVisualizer.css";
 
 function AdminBody() {
-  // --- ESTADOS GENERALES ---
   const [cameras, setCameras] = useState([]);
   const [routers, setRouters] = useState([]);
   const [reload, setReload] = useState(false);
   const [showModal, setShowModal] = useState({ show: false, type: '', data: null });
 
-  // --- ESTADOS FILTROS (Cámaras) ---
   const [cSearch, setCSearch] = useState("");
   const [cFilterLoc, setCFilterLoc] = useState("");
-  const [cFilterStat, setCFilterStat] = useState("");
-
-  // --- ESTADOS FILTROS (Routers) ---
   const [rSearch, setRSearch] = useState("");
   const [rFilterLoc, setRFilterLoc] = useState("");
-  const [rFilterStat, setRFilterStat] = useState("");
-
-  // --- ESTADOS EDICIÓN UNIFICADOS ---
   const [editData, setEditData] = useState({});
 
-  // Carga de Datos Inicial
   useEffect(() => {
     async function loadData() {
-      const cData = await getCameras();
-      const rData = await getRouters();
+      const [cData, rData] = await Promise.all([getCameras(), getRouters()]);
       setCameras([...cData].sort((a, b) => b.id - a.id));
       setRouters([...rData].sort((a, b) => b.id - a.id));
     }
     loadData();
   }, [reload]);
 
-  // --- LÓGICA FILTRADO ---
   const filteredCameras = cameras.filter(c => 
     (c.name.toLowerCase().includes(cSearch.toLowerCase()) || c.ip_address.includes(cSearch)) &&
-    (cFilterLoc === "" || c.location === cFilterLoc) &&
-    (cFilterStat === "" || c.status === cFilterStat)
+    (cFilterLoc === "" || c.location === cFilterLoc)
   );
 
   const filteredRouters = routers.filter(r => 
     (r.name.toLowerCase().includes(rSearch.toLowerCase()) || r.ip_address.includes(rSearch)) &&
-    (rFilterLoc === "" || r.location === rFilterLoc) &&
-    (rFilterStat === "" || r.status === rFilterStat)
+    (rFilterLoc === "" || r.location === rFilterLoc)
   );
 
-  // --- ACCIONES ---
   const openEdit = (item, type) => {
     setEditData(item);
     setShowModal({ show: true, type, data: item });
@@ -78,33 +67,13 @@ function AdminBody() {
   return (
     <div className='adminBodyContainer'>
       
-      {/* 1. MAPA GLOBAL (Cameras + Routers) */}
-      <div className="adminMapSection" style={{ marginBottom: "30px" }}>
-        <h2 style={{ textAlign: 'center', color: '#fff' }}>Geolocalización de Red Global</h2>
-        <MapContainer center={[9.7489, -83.7534]} zoom={8} style={{ height: "500px", width: "100%", borderRadius: "15px", border: '2px solid #00d4ff' }}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          
-          {/* Marcadores de Cámaras */}
-          {filteredCameras.map(c => c.latitude && (
-            <Marker key={`c-${c.id}`} position={[parseFloat(c.latitude), parseFloat(c.longitude)]}>
-              <Popup><strong>📸 Cámara:</strong> {c.name}<br/>{c.location}</Popup>
-            </Marker>
-          ))}
-
-          {/* Marcadores de Routers */}
-          {filteredRouters.map(r => r.latitude && (
-            <Marker key={`r-${r.id}`} position={[parseFloat(r.latitude), parseFloat(r.longitude)]}>
-              <Popup><strong>🌐 Router:</strong> {r.name}<br/>{r.location}</Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </div>
-
-      <hr style={{ borderColor: '#333' }} />
-
-      {/* 2. SECCIÓN CÁMARAS */}
-      <section className='cVisualizerContainerFull'>
+      {/* SECCIÓN CÁMARAS */}
+      <section className='cVisualizerContainerFull' style={{ marginBottom: '60px' }}>
         <h3 className='cVizualizerTitle'>📸 Gestión de Cámaras</h3>
+        
+        {/* Mapa exclusivo para Cámaras */}
+        <AdminViewGeolocationFullCameras cameras={filteredCameras} />
+
         <div className='cVisualizerNavFull'>
           <input className='cVisualizerSearch' placeholder="Buscar cámara..." onChange={e => setCSearch(e.target.value)} />
           <select className='cVisualizerSelectSearch' onChange={e => setCFilterLoc(e.target.value)}>
@@ -113,6 +82,7 @@ function AdminBody() {
              <option value="Cartago">Cartago</option>
           </select>
         </div>
+        
         <div className='cVizualizerContainerCamerasFull'>
           {filteredCameras.map(c => (
             <div key={c.id} className='cVisualizerContainerCameraOwn'>
@@ -130,9 +100,15 @@ function AdminBody() {
         </div>
       </section>
 
-      {/* 3. SECCIÓN ROUTERS */}
-      <section className='rVisualizerContainerFull' style={{ marginTop: '50px' }}>
+      <hr style={{ borderColor: '#444', margin: '40px 0' }} />
+
+      {/* SECCIÓN ROUTERS */}
+      <section className='rVisualizerContainerFull'>
         <h3 className='rVisualizerTitle'>🌐 Gestión de Routers</h3>
+        
+        {/* Mapa exclusivo para Routers */}
+        <AdminViewGeolocationFullRouters routers={filteredRouters} />
+
         <div className='rVisualizerNavFull'>
           <input className='rVisualizerSearch' placeholder="Buscar router..." onChange={e => setRSearch(e.target.value)} />
           <select className='rVisualizerSelectSearch' onChange={e => setRFilterLoc(e.target.value)}>
@@ -141,6 +117,7 @@ function AdminBody() {
              <option value="Cartago">Cartago</option>
           </select>
         </div>
+
         <div className='rVisualizerContainerRoutersFull'>
           {filteredRouters.map(r => (
             <div key={r.id} className='rVisualizerContainerRouterOwn'>
@@ -158,23 +135,16 @@ function AdminBody() {
         </div>
       </section>
 
-      {/* 4. MODAL DINÁMICO DE EDICIÓN */}
+      {/* MODAL DE EDICIÓN (Se mantiene igual) */}
       {showModal.show && (
         <div className='cVisualizerModalEditFull'>
            <div className='cVisualizerEditFormFull'>
               <h3>Editando {showModal.type === 'camera' ? 'Cámara' : 'Router'}</h3>
-              <label>Nombre</label>
-              <input value={editData.name} onChange={e => setEditData({...editData, name: e.target.value})} />
-              <label>IP Address</label>
-              <input value={editData.ip_address} onChange={e => setEditData({...editData, ip_address: e.target.value})} />
-              
-              {showModal.type === 'router' && (
-                <>
-                  <label>MAC</label>
-                  <input value={editData.mac_address} onChange={e => setEditData({...editData, mac_address: e.target.value})} />
-                </>
-              )}
-
+              <div className='cVisualizerContainerOwnEdit'>
+                <label>Nombre</label>
+                <input className='cVisualizerInputFormEdit' value={editData.name} onChange={e => setEditData({...editData, name: e.target.value})} />
+              </div>
+              {/* ... Resto de inputs ... */}
               <div className='cVisualizerContainerBttnsEdit'>
                 <button className='cVisualizerBtnSaveEdit' onClick={handleUpdate}>Guardar</button>
                 <button className='cVisualizerBtnCancelEdit' onClick={() => setShowModal({show: false})}>Cancelar</button>

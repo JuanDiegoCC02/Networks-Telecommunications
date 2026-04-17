@@ -3,6 +3,7 @@ import NavPage from '../components/navPage'
 import AddRouters from '../components/AddRouters'
 import RoutersVisualizer from '../components/RoutersVisualizer'
 import FooterPage from '../components/FooterPage'
+import "../styles/PageRouters.css"
 
 function Routers() {
   const  [view, setView] = useState ("add")
@@ -15,12 +16,12 @@ function Routers() {
 
     <main>
       <div>
-      <div>
-        <button onClick={()=> setView("add")}>Add Routers</button>
+      <div className='bttnsNavContainer'>
+        <button className='bttnsNav' onClick={()=> setView("add")}>Add Routers</button>
       </div>
 
       <div>
-        <button onClick={()=> setView("visualizer")}>Routers Visualizer</button>
+        <button className='bttnsNav' onClick={()=> setView("visualizer")}>Routers Visualizer</button>
       </div>
       
       </div>

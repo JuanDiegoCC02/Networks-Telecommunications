@@ -105,12 +105,12 @@ function AddCameras() {
 
         <div className='addCamerasContainerForm'>
           <label className='addCamerasLabelForm' htmlFor=""> IP Address Camera </label>
-          <input className='addCamerasInputForm' type="text"  placeholder='Insert IP' value={ip_Address} onChange={ip_address}  />
+          <input className='addCamerasInputForm' type="text"  placeholder='Insert IP Address' value={ip_Address} onChange={ip_address}  />
         </div> 
 
          <div className='addCamerasContainerForm'>
           <label className='addCamerasLabelForm' htmlFor=""> URL Address Camera </label>
-          <input className='addCamerasInputForm' type="text"  placeholder='Insert URL' value={url_Address} onChange={url_address}  />
+          <input className='addCamerasInputForm' type="text"  placeholder='Insert URL Address' value={url_Address} onChange={url_address}  />
         </div> 
 
         <div className='addCamerasContainerForm'>

@@ -103,27 +103,27 @@ function AddRouters() {
 
           <div className='addRoutersContainerForm'>
             <label className='addRoutersLabelForm' htmlFor=""> Name </label>
-            <input className='addRoutersInputForm' type="text" value={routerName} onChange={name}/>
+            <input className='addRoutersInputForm' placeholder='Insert Name' type="text" value={routerName} onChange={name}/>
           </div>
 
           <div>
             <label className='addRoutersLabelForm' htmlFor=""> IP Address </label>
-            <input className='addRoutersInputForm' type="text" value={ip_Address} onChange={ip_address}/>
+            <input className='addRoutersInputForm' placeholder='Insert IP Address' type="text" value={ip_Address} onChange={ip_address}/>
           </div>
 
           <div>
             <label className='addRoutersLabelForm' htmlFor=""> MAC Address </label>
-            <input className='addRoutersInputForm' type="text" value={mac_Address} onChange={mac_address}/>
+            <input className='addRoutersInputForm' placeholder='Insert MAC Address' type="text" value={mac_Address} onChange={mac_address}/>
           </div>
 
           <div>
             <label className='addRoutersLabelForm' htmlFor=""> Brand </label>
-            <input className='addRoutersInputForm' type="text" value={routerBrand} onChange={brand}/>
+            <input className='addRoutersInputForm' placeholder='Insert Brand' type="text" value={routerBrand} onChange={brand}/>
           </div>
 
           <div>
             <label className='addRoutersLabelForm' htmlFor=""> Model </label>
-            <input className='addRoutersInputForm' type="text" value={routerModel} onChange={model}/>
+            <input className='addRoutersInputForm' placeholder='Insert Model' type="text" value={routerModel} onChange={model}/>
           </div>
 
           <div className='addRoutersContainerForm'>

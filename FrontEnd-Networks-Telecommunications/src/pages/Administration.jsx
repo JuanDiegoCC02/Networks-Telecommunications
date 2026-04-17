@@ -11,11 +11,6 @@ function Administration() {
     <nav>
         <NavPage/>
     </nav>
-
-
-      <div>
-        <AdminNav/>
-     </div>
   
     <main>
         <AdminBody/>

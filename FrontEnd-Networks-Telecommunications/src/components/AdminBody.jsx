@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import AdminNav from './AdminNav'; 
 import { getCameras, patchCameras, deleteCameras } from '../services/camerasApi';
 import { getRouters, patchRouters, deleteRouters } from '../services/routersApi';
-
+import "../styles/AdminBody.css"
 import "leaflet/dist/leaflet.css";
 import "../styles/CamerasVisualizer.css";
 import "../styles/RoutersVisualizer.css";
@@ -75,10 +75,10 @@ function AdminBody() {
 
       {/* rendering of sections */}
       {activeTab === 'cameras' ? (
-        <section className='cVisualizerContainerFull animate__animated animate__fadeIn'>
-          <h3 className='cVizualizerTitle'>📸 Control Cameras</h3>
+        <section className='adminBdContainerFull'>
+          <h3 className='adminBdTitle'>📸 Control Cameras</h3>
 
-          <div className="adminMapSection" style={{ marginBottom: "30px" }}>
+          <div className="adminMapSection">
             <MapContainer center={[9.7489, -83.7534]} zoom={8} style={{ height: "400px", width: "100%", borderRadius: "15px", border: '2px solid #00d4ff' }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {filteredCameras.map(c => c.latitude && (
@@ -89,43 +89,43 @@ function AdminBody() {
             </MapContainer>
           </div>
 
-          <div className='cVisualizerNavFull'>
-            <input className='cVisualizerSearch' placeholder="Camera Search..." onChange={e => setCSearch(e.target.value)} />
-            <select className='cVisualizerSelectSearch' onChange={e => setCFilterLoc(e.target.value)}>
-               <option value="">All Locations</option>
-               <option value="San José">San José</option>
-               <option value="Cartago">Cartago</option>
-               <option value="Heredia">Heredia</option>
-               <option value="Alajuela">Alajuela</option>
-               <option value="Limón">Limón</option>
-               <option value="Puntarenas">Puntarenas</option>
-               <option value="Guanacaste">Guanacaste</option>
+          <div className='adminBdNavFull'>
+            <input className='adminBdSearch' placeholder="Camera Search..." onChange={e => setCSearch(e.target.value)} />
+            <select className='adminBdSelectSearch' onChange={e => setCFilterLoc(e.target.value)}>
+               <option className='adminBdOption' value="">All Locations</option>
+               <option className='adminBdOption'  value="San José">San José</option>
+               <option className='adminBdOption' value="Cartago">Cartago</option>
+               <option className='adminBdOption' value="Heredia">Heredia</option>
+               <option className='adminBdOption' value="Alajuela">Alajuela</option>
+               <option className='adminBdOption' value="Limón">Limón</option>
+               <option className='adminBdOption' value="Puntarenas">Puntarenas</option>
+               <option className='adminBdOption' value="Guanacaste">Guanacaste</option>
             </select>
           </div>
 
-          <div className='cVizualizerContainerCamerasFull'>
+          <div className='adminBdContainerCamerasFull'>
             {filteredCameras.map(c => (
-              <div key={c.id} className='cVisualizerContainerCameraOwn'>
-                <header className='cVisualizerHeaderCamera'><h4>{c.name}</h4><span>{c.status}</span></header>
-                <main className='cVisualizerMainCamera'>
-                  <p>Location: {c.location}</p>
-                  <small>{c.description}</small>
-                  <p>IP: {c.ip_address}</p>
-                  <p>URL: {c.url_address}</p> 
+              <div key={c.id} className='adminBdContainerCameraOwn'>
+                <header className='adminBdHeaderCamera'><h4>{c.name}</h4><span>{c.status}</span></header>
+                <main className='adminBdMainCamera'>
+                  <p className='adminBdCamerasLocation'>Location: {c.location}</p>
+                  <small className='adminBdCamerasDescrip'>{c.description}</small>
+                  <p className='adminBdCamerasIP'>IP: {c.ip_address}</p>
+                  <p className='adminBdCamerasURL'>URL: {c.url_address}</p> 
                 </main>
-                <footer className='cVisualizerFooterCamera'>
-                  <button className='cVisualizerBttnEdit' onClick={() => openEdit(c, 'camera')}>Edit</button>
-                  <button className='cVisualizerBttnDelete' onClick={() => handleDelete(c.id, 'camera')}>Delete</button>
+                <footer className='adminBdFooterCamera'>
+                  <button className='adminBdBttnEdit' onClick={() => openEdit(c, 'camera')}>Edit</button>
+                  <button className='adminBdBttnDelete' onClick={() => handleDelete(c.id, 'camera')}>Delete</button>
                 </footer>
               </div>
             ))}
           </div>
         </section>
       ) : (
-        <section className='rVisualizerContainerFull animate__animated animate__fadeIn'>
-          <h3 className='rVisualizerTitle'>🌐 Control Routers</h3>
+        <section className='adminBdContainerFull '>
+          <h3 className='adminBdTitle'>🌐 Control Routers</h3>
 
-          <div className="adminMapSection" style={{ marginBottom: "30px" }}>
+          <div className="adminMapSection">
             <MapContainer center={[9.7489, -83.7534]} zoom={8} style={{ height: "400px", width: "100%", borderRadius: "15px", border: '2px solid #ff9f00' }}>
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {filteredRouters.map(r => r.latitude && (
@@ -136,34 +136,34 @@ function AdminBody() {
             </MapContainer>
           </div>
 
-          <div className='rVisualizerNavFull'>
-            <input className='rVisualizerSearch' placeholder="Router Search..." onChange={e => setRSearch(e.target.value)} />
-            <select className='rVisualizerSelectSearch' onChange={e => setRFilterLoc(e.target.value)}>
-               <option value="">All Locations</option>
-               <option value="San José">San José</option>
-               <option value="Cartago">Cartago</option>
-               <option value="Heredia">Heredia</option>
-               <option value="Alajuela">Alajuela</option>
-               <option value="Limón">Limón</option>
-               <option value="Puntarenas">Puntarenas</option>
-               <option value="Guanacaste">Guanacaste</option>
+          <div className='adminBdNavFull'>
+            <input className='adminBdSearch' placeholder="Router Search..." onChange={e => setRSearch(e.target.value)} />
+            <select className='adminBdSelectSearch' onChange={e => setRFilterLoc(e.target.value)}>
+               <option className='adminBdOption' value="">All Locations</option>
+               <option className='adminBdOption' value="San José">San José</option>
+               <option className='adminBdOption' value="Cartago">Cartago</option>
+               <option className='adminBdOption' value="Heredia">Heredia</option>
+               <option className='adminBdOption' value="Alajuela">Alajuela</option>
+               <option className='adminBdOption' value="Limón">Limón</option>
+               <option className='adminBdOption' value="Puntarenas">Puntarenas</option>
+               <option className='adminBdOption' value="Guanacaste">Guanacaste</option>
             </select>
           </div>
 
-          <div className='rVisualizerContainerRoutersFull'>
+          <div className='adminBdContainerRoutersFull'>
             {filteredRouters.map(r => (
-              <div key={r.id} className='rVisualizerContainerRouterOwn'>
-                <header className='rVisualizerHeaderRouter'><h4>{r.name}</h4><span>{r.status}</span></header>
-                <main className='rVisualizerMainRouter'>
-                  <p>Location: {r.location}</p>
-                  <p>IP: {r.ip_address}</p>
-                  <p>MAC: {r.mac_address}</p>
-                  <p>Brand: {r.brand}</p>
-                  <p>Model: {r.model}</p>
+              <div key={r.id} className='adminBdContainerRouterOwn'>
+                <header className='adminBdHeaderRouter'><h4>{r.name}</h4><span>{r.status}</span></header>
+                <main className='adminBdMainRouter'>
+                  <p className='adminBdRoutersLocation'>Location: {r.location}</p>
+                  <p className='adminBdRoutersIP'>IP: {r.ip_address}</p>
+                  <p className='adminBdRoutersMAC'>MAC: {r.mac_address}</p>
+                  <p className='adminBd RoutersBrand'>Brand: {r.brand}</p>
+                  <p className='adminBdModel'>Model: {r.model}</p>
                 </main>
-                <footer className='rVisualizerFooterRouter'>
-                  <button className='cVisualizerBttnEdit' onClick={() => openEdit(r, 'router')}>Edit</button>
-                  <button className='cVisualizerBttnDelete' onClick={() => handleDelete(r.id, 'router')}>Delete</button>
+                <footer className='adminBdFooterRouter'>
+                  <button className='adminBdBttnEdit' onClick={() => openEdit(r, 'router')}>Edit</button>
+                  <button className='adminBdBttnDelete' onClick={() => handleDelete(r.id, 'router')}>Delete</button>
                 </footer>
               </div>
             ))}
@@ -173,45 +173,45 @@ function AdminBody() {
 
       {/* one modal for two forms */}
       {showModal.show && (
-        <div className='cVisualizerModalEditFull'>
-           <div className='cVisualizerEditFormFull'>
-              <header className='modalHeader'>
-                <h3>Editando {showModal.type === 'camera' ? 'Cámara' : 'Router'}</h3>
+        <div className='adminBdModalEditFull'>
+           <div className='adminBdEditFormFull'>
+              <header className='adminBdModalHeader'>
+                <h3 className='adminBdModalTitle'>Editando {showModal.type === 'camera' ? 'Cámara' : 'Router'}</h3>
               </header>
 
-              <div className='modalBodyScroll'>
+              <div className='adminBdModalBodyScroll'>
                 {/* CAMPOS COMUNES */}
-                <label>Name</label>
-                <input value={editData.name || ''} onChange={e => setEditData({...editData, name: e.target.value})} />
+                <label className='adminBdLbModal'>Name</label>
+                <input className='adminBdINPModal' value={editData.name || ''} onChange={e => setEditData({...editData, name: e.target.value})} />
                 
-                <label>Address IP</label>
-                <input value={editData.ip_address || ''} onChange={e => setEditData({...editData, ip_address: e.target.value})} />
+                <label className='adminBdLbModal'>Address IP</label>
+                <input className='adminBdINPModal' value={editData.ip_address || ''} onChange={e => setEditData({...editData, ip_address: e.target.value})} />
 
                 {/* cameras form */}
                 {showModal.type === 'camera' && (
                   <>
-                    <label>URL Address</label>
-                    <input value={editData.url_address || ''} onChange={e => setEditData({...editData, url_address: e.target.value})} />
+                    <label className='adminBdLbModal'>URL Address</label>
+                    <input className='adminBdINPModal' value={editData.url_address || ''} onChange={e => setEditData({...editData, url_address: e.target.value})} />
                     
-                    <label>Description</label>
-                    <textarea value={editData.description || ''} onChange={e => setEditData({...editData, description: e.target.value})} />
+                    <label className='adminBdLbModal'>Description</label>
+                    <textarea className='adminBdINPModal' value={editData.description || ''} onChange={e => setEditData({...editData, description: e.target.value})} />
                   </>
                 )}
 
                 {/* routers form */}
                 {showModal.type === 'router' && (
                   <>
-                    <label>Address MAC</label>
-                    <input value={editData.mac_address || ''} onChange={e => setEditData({...editData, mac_address: e.target.value})} />
+                    <label className='adminBdLbModal'>Address MAC</label>
+                    <input className='adminBdINPModal' value={editData.mac_address || ''} onChange={e => setEditData({...editData, mac_address: e.target.value})} />
                     
                     <div className='inputGroupTwo'>
                       <div>
-                        <label>Brand</label>
-                        <input value={editData.brand || ''} onChange={e => setEditData({...editData, brand: e.target.value})} />
+                        <label className='adminBdLbModal'>Brand</label>
+                        <input className='adminBdINPModal' value={editData.brand || ''} onChange={e => setEditData({...editData, brand: e.target.value})} />
                       </div>
                       <div>
-                        <label>Model</label>
-                        <input value={editData.model || ''} onChange={e => setEditData({...editData, model: e.target.value})} />
+                        <label className='adminBdLbModal'>Model</label>
+                        <input className='adminBdINPModal' value={editData.model || ''} onChange={e => setEditData({...editData, model: e.target.value})} />
                       </div>
                     </div>
                   </>
@@ -220,26 +220,26 @@ function AdminBody() {
                 {/* latitude / longitude */}
                 <div className='inputGroupTwo'>
                   <div>
-                    <label>Latitude</label>
-                    <input type="number" value={editData.latitude || ''} onChange={e => setEditData({...editData, latitude: e.target.value})} />
+                    <label className='adminBdLbModal'>Latitude</label>
+                    <input className='adminBdINPModal' type="number" value={editData.latitude || ''} onChange={e => setEditData({...editData, latitude: e.target.value})} />
                   </div>
                   <div>
-                    <label>Longitude</label>
-                    <input type="number" value={editData.longitude || ''} onChange={e => setEditData({...editData, longitude: e.target.value})} />
+                    <label className='adminBdLbModal'>Longitude</label>
+                    <input className='adminBdINPModal' type="number" value={editData.longitude || ''} onChange={e => setEditData({...editData, longitude: e.target.value})} />
                   </div>
                 </div>
                 
-                <label>Status</label>
-                <select value={editData.status || ''} onChange={e => setEditData({...editData, status: e.target.value})}>
-                  <option value="Active">Active</option>
-                  <option value="Inactive">Inactive</option>
-                  <option value="Maintenance">Maintenance</option>
+                <label className='adminBdLbModal'>Status</label>
+                <select className='adminBdSelectModal' value={editData.status || ''} onChange={e => setEditData({...editData, status: e.target.value})}>
+                  <option className='adminBdOptModal' value="Active">Active</option>
+                  <option className='adminBdOptModal' value="Inactive">Inactive</option>
+                  <option className='adminBdOptModal' value="Maintenance">Maintenance</option>
                 </select>
               </div>
 
-              <div className='cVisualizerContainerBttnsEdit'>
-                <button className='cVisualizerBtnSaveEdit' onClick={handleUpdate}>Save Changes</button>
-                <button className='cVisualizerBtnCancelEdit' onClick={() => setShowModal({show: false})}>Cancel</button>
+              <div className='adminBdContainerBttnsEdit'>
+                <button className='adminBdBtnSaveEdit' onClick={handleUpdate}>Save Changes</button>
+                <button className='adminBdBtnCancelEdit' onClick={() => setShowModal({show: false})}>Cancel</button>
               </div>
            </div>
         </div>

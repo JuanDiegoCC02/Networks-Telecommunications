@@ -4,6 +4,7 @@ import NavPage from '../components/navPage'
 import AddCameras from '../components/AddCameras'
 import CamerasVisualizer from '../components/CamerasVisualizer'
 import FooterPage from '../components/FooterPage'
+import NavCameras from '../components/NavCameras'
 
 
 function Cameras() {
@@ -17,24 +18,12 @@ function Cameras() {
 
 
     <main>
-      <div>
-        <div>
-          <button onClick={()=> setView("add")}>
-            Add Cameras 
-          </button>
-        </div>
-        <div>
-          <button onClick={()=> setView("visualizer")}>
-              Cameras Visualizer
-          </button>
-        </div>
+      <NavCameras view={view} setView={setView} />
+      
+      <div className="contentSection">
+        {view === "add" && <AddCameras />}
+        {view === "visualizer" && <CamerasVisualizer />}
       </div>
-
-      {/*Show Container Cameras Components*/}
-      <div>
-        {view === "add" && <AddCameras/>}
-        {view === "visualizer" && <CamerasVisualizer/>}
-      </div>    
     </main>
        
         

@@ -20,6 +20,10 @@ function NavPage() {
                 <div className='navContainerOwn'>
                     <Link className='accessNav' to="/">Home</Link>
                 </div>
+                 <div className='navContainerOwn'>
+                    <Link className='accessNav' to="/contactUs">Contact Us</Link>
+                </div>
+
 
                 {group && (
                     <>

@@ -1,4 +1,6 @@
 import React from 'react';
+import "../styles/NavCamRou.css";
+
 
 export default function NavRouters({ view, setView }) {
   return (

@@ -61,6 +61,8 @@ class Camera(models.Model):
 # RouterModel
 class Router(models.Model):
     name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    
     ip_address = models.CharField(max_length=80)
     mac_address = models.CharField(max_length=50)
 

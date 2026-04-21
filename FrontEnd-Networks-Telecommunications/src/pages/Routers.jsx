@@ -4,7 +4,6 @@ import AddRouters from '../components/AddRouters'
 import RoutersVisualizer from '../components/RoutersVisualizer'
 import FooterPage from '../components/FooterPage'
 import NavRouters from '../components/NavRouters'
-import "../styles/PageRouters.css"
 
 function Routers() {
   const  [view, setView] = useState ("add")

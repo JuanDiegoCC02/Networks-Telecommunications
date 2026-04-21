@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     watch: {
       usePolling: true,
-      interval: 100, // Revisa cambios cada 100 milisegundos
+      interval: 100, // request the file system every 100ms to check for changes
     },
-    host: true, // Esto ayuda a que la red local reconozca mejor el servidor
+    host: false, // state that the server should only be accessible from localhost
   },
 })

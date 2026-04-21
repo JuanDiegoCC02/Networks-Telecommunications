@@ -10,7 +10,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import Camera, Router
-from .serializers import UserProfileSerializer, CameraSerializer, RouterSerializer
+from .serializers import UserProfileSerializer, CameraSerializer, RouterSerializer, ProfileDetailSerializer
 
 
 # View LogIn (JWT) 
@@ -68,13 +68,17 @@ class MyProfileView(APIView):
         # Usamos .get para evitar errores si el perfil no existe
         profile = getattr(user, 'profile', None)
         
+        if profile:
+            serializer = ProfileDetailSerializer(profile)
+            return Response(serializer.data)
+
         return Response({
             "username": user.username,
             "email": user.email,
             "first_name": user.first_name,
             "last_name": user.last_name,
-            "phone": profile.phone_number if profile else None,
-            "birth_date": profile.birth_date if profile else None
+            "phone": None,
+            "birth_date": None
         })
 
 #View Cameras

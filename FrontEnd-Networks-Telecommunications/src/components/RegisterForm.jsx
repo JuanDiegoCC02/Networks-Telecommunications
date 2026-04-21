@@ -1,146 +1,98 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { postUsers } from '../services/usersApi'
 import "../styles/RegisterForm.css"
 
+function RegisterForm() {
+    const [UserName, setUserName] = useState("")
+    const [FirstName, setFirstName] = useState("")
+    const [LastName, setLastName] = useState("")
+    const [Password, setPassword] = useState("")
+    const [Email, setEmail] = useState("")
+    const [Birthday, setBirthday] = useState("")
+    const [Phone, setPhone] = useState("")
 
+    const navigate = useNavigate();
 
-function registerForm() {
-  
-  const [UserName, setUserName] = useState ("")
-  const [FirstName, setFirstName] = useState("")
-  const [LastName, setLastName] = useState("")
-  const [Password, setPassword] = useState("")
-  const [Email, setEmail] = useState("")
-  const [Birthday, setBirthday] = useState("")
-  const [Phone, setPhone] = useState("")
+    async function register() {
+        if (!UserName || !FirstName || !LastName || !Password || !Email || !Birthday || !Phone) {
+            alert("Complete all fields");
+            return;
+        }
 
-     const navigate = useNavigate();
+        const obj = {
+            username: UserName,
+            first_name: FirstName,
+            last_name: LastName,
+            password: Password,
+            email: Email,
+            birth_date: Birthday,
+            phone_number: Phone
+        }
 
-  function username(e) {
-    setUserName(e.target.value)
-  }
-  function firstname(e) {
-    setFirstName(e.target.value)
-  }
-  function lastname(e) {
-    setLastName(e.target.value)    
-  }
-  function password(e) {
-    setPassword(e.target.value)
-  }
-  function email(e) {
-    setEmail(e.target.value)
-  }
-  function birthday(e) {
-    setBirthday(e.target.value)
-  }
-  function phone(e) {
-    setPhone(e.target.value)
-  }
+        try {
+            await postUsers(obj);
+            alert("User created successfully");
+            navigate("/logIn");
+        } catch (error) {
+            console.error("Error al registrar:", error);
+            alert("Error creating user");
+        }
+    }
 
-     async function register() {
+    return (
+        <div className='registerContainerFull'>
+            <div className='registerContainerTitle'>
+                <h1 className='registerTitle'>Register</h1>
+            </div>
 
-      console.log("UserName:", UserName)
-      console.log("FirstName:", FirstName)
-      console.log("LastName:", LastName)
-      console.log("Password:", Password)
-      console.log("Email:", Email)
-      console.log("Birthday:", Birthday)
-      console.log("Phone:", Phone)
+            <div className='registerFormFull'>
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Username</label>
+                    <input className='registerInputForm' placeholder='Username' value={UserName} onChange={(e) => setUserName(e.target.value)} type="text" />
+                </div>
 
-  if (!UserName || !FirstName || !LastName || !Password || !Email || !Birthday || !Phone) {
-      alert("Complete all fields");
-      return;
-  }
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Firstname</label>
+                    <input className='registerInputForm' placeholder='Firstname' value={FirstName} onChange={(e) => setFirstName(e.target.value)} type="text" />
+                </div>
 
-  const obj = {
-      username: UserName,
-      first_name: FirstName,
-      last_name: LastName,
-      password: Password,
-      email: Email,
-      birth_date: Birthday,
-      phone_number: Phone
-  }
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Lastname</label>
+                    <input className='registerInputForm' placeholder='Lastname' value={LastName} onChange={(e) => setLastName(e.target.value)} type="text" />
+                </div>
 
-  try {
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Password</label>
+                    <input className='registerInputForm' placeholder='Password' value={Password} onChange={(e) => setPassword(e.target.value)} type="password" />
+                </div>
 
-      const requestServer = await postUsers(obj);
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Email</label>
+                    <input className='registerInputForm' placeholder='Email' value={Email} onChange={(e) => setEmail(e.target.value)} type="email" />
+                </div>
 
-      console.log("Usuario registrado:", requestServer);
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Birthday</label>
+                    <input className='registerInputForm' placeholder='Birthday' value={Birthday} onChange={(e) => setBirthday(e.target.value)} type="date" />
+                </div>
 
-      alert("User created successfully");
-
-      navigate("/logIn");
-
-  } catch (error) {
-
-      console.error("Error al registrar:", error);
-
-      alert("Error creating user");
-
-  }
+                <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Phone</label>
+                    <input className='registerInputForm' placeholder='Phone' value={Phone} onChange={(e) => setPhone(e.target.value)} type="text" />
+                </div>
+                
+                <div className='registerContainerBttn'>
+                    <button className='registerBttnAccess' onClick={register}>Register</button>
+                </div>
+                
+                <div className="registerContainerLinkLogIn">
+                    <span className="registerTitleLinkLogIn">Already Registered?</span>
+                    <Link className="registerLinkLogIn" to="/logIn">Log In</Link>
+                </div>
+            </div>
+        </div>
+    )
 }
 
-  return (
-       <div className='registerContainerFull'>
-
-      <div className='registerContainerTitle'>
-        <h1 className='registerTitle'>Register</h1>
-      </div>
-
-      <div className='registerFormFull'>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Username</label>
-          <input className='registerInputForm' placeholder='Username' value={UserName} onChange={username} type="text" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Firstname</label>
-          <input className='registerInputForm' placeholder='Firstname' value={FirstName} onChange={firstname} type="text" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Lastname</label>
-          <input className='registerInputForm' placeholder='Lastname' value={LastName} onChange={lastname} type="text" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Password</label>
-          <input className='registerInputForm' placeholder='Password' value={Password} onChange={password} type="password" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Email</label>
-          <input className='registerInputForm' placeholder='Email' value={Email} onChange={email} type="email" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Birthday</label>
-          <input className='registerInputForm' placeholder='Birthday' value={Birthday} onChange={birthday} type="date" />
-        </div>
-
-        <div className='registerContainerForm'>
-          <label className='registerLabelForm' htmlFor="">Phone</label>
-          <input className='registerInputForm' placeholder='Phone' value={Phone} onChange={phone} type="text" />
-        </div>
-        
-        <div className='registerContainerBttn'>
-          <button className='registerBttnAccess' onClick={register} value= "Register" >Register</button>
-       </div>
-       
-       <div className="registerContainerLinkLogIn">
-         <label className="registerTitleLinkLogIn" htmlFor="">Already Registered?</label>
-         <a className="registerLinkLogIn" href="/logIn">Log In</a>
-       </div>
-
-
-      </div>
-
-    </div>
-  )
-}
-
-export default registerForm
+export default RegisterForm;

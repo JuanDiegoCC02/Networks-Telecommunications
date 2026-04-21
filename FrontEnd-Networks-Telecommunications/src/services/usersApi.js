@@ -21,28 +21,28 @@ async function getUsers() {
 
 
 // HOOKS Post Users
-async function postUsers(obj) {
-  try {
-    const response = await fetch("http://127.0.0.1:8000/api/users/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(obj),
-    });
+ async function postUsers(obj) {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/api/users/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            // SE ELIMINÓ credentials: "include" porque causaba el bloqueo de CORS
+            body: JSON.stringify(obj),
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    if (!response.ok) {
-      throw { response: { data } };
+        if (!response.ok) {
+            throw { response: { data } };
+        }
+
+        return data;
+    } catch (error) {
+        console.error("Error PostUsuarios:", error);
+        throw error;
     }
-
-    return data;
-  } catch (error) {
-    console.error("Error PostUsuarios:", error);
-    throw error;
-  }
 }
 
 

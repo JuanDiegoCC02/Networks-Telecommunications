@@ -24,14 +24,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         }
 
     def create(self, validated_data):
-        # 1 obtain profile data
-        birth_date = validated_data.pop('birth_date')
-        phone_number = validated_data.pop('phone_number')
+        birth_date = validated_data.pop('birth_date', None)
+        phone_number = validated_data.pop('phone_number', None)
 
-        # 2 create userBase / encrypts the password
         user = User.objects.create_user(**validated_data)
 
-        # 3 create user & perfil automatic
         Profile.objects.create(
             user=user, 
             birth_date=birth_date, 

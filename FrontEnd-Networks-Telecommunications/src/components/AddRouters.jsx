@@ -4,7 +4,8 @@ import AddGeolocationRouter from './AddGeolocationRouter';
 import "../styles/AddRouters.css"
 
 function AddRouters() {
-    const [routerName, setRouterName] = useState("");
+  const [routerName, setRouterName] = useState("");
+  const [routerDescription, setRouterDescription] = useState("");
   const [ip_Address, setIp_Address] = useState("");
   const [mac_Address, setMac_Address] = useState("");
   const [routerBrand, setRouterBrand] = useState("");
@@ -16,6 +17,9 @@ function AddRouters() {
 
   function name(e) {
     setRouterName(e.target.value)    
+  }
+  function description(e) {
+    setRouterDescription(e.target.value)    
   }
    function ip_address(e) {
     setIp_Address(e.target.value)    
@@ -45,6 +49,7 @@ function AddRouters() {
     async function create() {
 
       console.log("name:", routerName)
+      console.log("description:", routerDescription)
       console.log("ip_address:", ip_Address)
       console.log("mac_address:", mac_Address)
       console.log("brand:", routerBrand)
@@ -61,6 +66,7 @@ function AddRouters() {
 
   const obj = {
       name: routerName,
+      description: "routerDescription",
       ip_address: ip_Address,
       mac_address: mac_Address,
       brand: routerBrand,
@@ -105,7 +111,10 @@ function AddRouters() {
             <label className='addRoutersLabelForm' htmlFor=""> Name </label>
             <input className='addRoutersInputForm' placeholder='Insert Name' type="text" value={routerName} onChange={name}/>
           </div>
-
+          <div className='addRoutersContainerForm'>
+            <label className='addRoutersLabelForm' htmlFor=""> Description </label>
+            <input className='addRoutersInputForm' placeholder='Insert Description' type="text" value={routerDescription} onChange={description}/>
+          </div>
           <div>
             <label className='addRoutersLabelForm' htmlFor=""> IP Address </label>
             <input className='addRoutersInputForm' placeholder='Insert IP Address' type="text" value={ip_Address} onChange={ip_address}/>

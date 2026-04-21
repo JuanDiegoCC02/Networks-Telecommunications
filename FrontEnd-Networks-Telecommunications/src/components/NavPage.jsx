@@ -1,18 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom' 
+import { Link, useLocation, useNavigate } from 'react-router-dom' 
 import "../styles/NavPage.css"
 
 function NavPage() {
-    const location = useLocation()
+    const navigate = useNavigate()
+    const location = useLocation() 
     
     const [group, setGroup] = useState(() => {
         return localStorage.getItem("groupUser")
     })
 
+    const [showConfig, setShowConfig] = useState(false)
+
     useEffect(() => {
         const storedGroup = localStorage.getItem("groupUser")
         setGroup(storedGroup)
     }, [location])
+
+    const handleLogout = () => {
+        localStorage.clear()
+        setGroup(null)
+        setShowConfig(false)
+        navigate("/logIn")
+    }
 
     return (
         <div>
@@ -45,6 +55,33 @@ function NavPage() {
                  </div>
                 </>
             )}
+            {group && (
+                <>
+                <div>
+                    <button onClick={setShowConfig} className=''>
+                        Config
+                    </button>
+
+                    {showConfig && (
+                        <div className=''>
+                           <div className=''>
+                            <Link to="/myProfile" onClick={() => setShowConfig(false)} className=''>
+                                My Profile
+                            </Link>
+                           </div>
+
+                           <div className=''>
+                            <button onClick={handleLogout} className=''>
+                                Log out
+                            </button>
+                           </div>
+                          </div>
+                    )}
+
+                </div>
+                </>
+            )}
+            
 
                 {!group && (
                     <>

@@ -6,8 +6,8 @@ import "../styles/NavPage.css";
 function NavPage() {
     const navigate = useNavigate();
     const location = useLocation();
-    
-    const [cookies, removeCookie] = useCookies(['groupUser', 'access_token']);
+
+    const [cookies, setCookie, removeCookie] = useCookies(['groupUser', 'access_token']);
     const [showConfig, setShowConfig] = useState(false);
 
     const group = cookies.groupUser;
@@ -17,15 +17,18 @@ function NavPage() {
     }, [location]);
 
     const handleLogout = () => {
-        removeCookie('access_token', { path: '/' });
-        removeCookie('refresh_token', { path: '/' });
-        removeCookie('groupUser', { path: '/' });
-        removeCookie('username', { path: '/' });
-        removeCookie('id', { path: '/' });
+        const options = { path: '/' };
+
+        removeCookie('access_token', options);
+        removeCookie('groupUser', options);
+        removeCookie('username', options);
+        removeCookie('id', options);
 
         localStorage.clear();
 
+        setShowConfig(false);
         navigate("/logIn");
+        window.location.reload(); 
     };
 
     return (

@@ -13,6 +13,7 @@ function RoutersVisualizer() {
     const [filterStatus, setFilterStatus] = useState("")
 
     const [editName,setEditName] = useState("")
+    const [editDescription, setEditDescription] = useState("")
     const [editIp, setEditIp] = useState("")
     const [editMac, setEditMac] = useState("")
     const [editBrand, setEditBrand] = useState("")
@@ -34,6 +35,7 @@ function RoutersVisualizer() {
     function openRoUterEdit(user) {
         setUser(user)
         setEditName(user.name)
+        setEditDescription(user.description)
         setEditIp(user.ip_address)
         setEditMac(user.mac_address)
         setEditBrand(user.brand)
@@ -46,6 +48,7 @@ function RoutersVisualizer() {
     async function UpdateRData(id) {
         const updRouter ={
             "name" : editName,
+            "description" : editDescription,
             "ip_address" : editIp,
             "mac_address" : editMac,
             "brand" : editBrand,
@@ -132,6 +135,7 @@ function RoutersVisualizer() {
 
                 <main className='rVisualizerMainRouter'>
                     <h4 className='rVisualizerNameRouter'>Name: {r.name}</h4>
+                    <p className='rVisualizerDescriptionRouter'>Description: {r.description}</p>
                     <span className='rVisualizerIPAddressRouter'>IP Address: {r.ip_address}</span><br />
                     <span className='rVisualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />
                     <span className='rVisualizerBrandRouter'>Brand: {r.brand}</span><br />
@@ -165,6 +169,11 @@ function RoutersVisualizer() {
                     <div className='rVisualizerContainerOwnEdit'>
                         <label className='rVisualizerLabelFormEdit' htmlFor=""> Name </label>
                         <input className='rVisualizerInputFormEdit' value={editName} onChange={(e)=> setEditName(e.target.value)} type="text" />
+                    </div>
+
+                    <div className='rVisualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> Description </label>
+                        <input className='rVisualizerInputFormEdit' value={editDescription} onChange={(e)=> setEditDescription(e.target.value)} type="text" />
                     </div>
 
                     <div className='rVisualizerContainerOwnEdit'>

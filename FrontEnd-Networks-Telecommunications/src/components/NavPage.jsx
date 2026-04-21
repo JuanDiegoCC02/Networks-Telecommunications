@@ -1,101 +1,96 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom' 
-import "../styles/NavPage.css"
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie'; 
+import "../styles/NavPage.css";
 
 function NavPage() {
-    const navigate = useNavigate()
-    const location = useLocation() 
+    const navigate = useNavigate();
+    const location = useLocation();
     
-    const [group, setGroup] = useState(() => {
-        return localStorage.getItem("groupUser")
-    })
+    const [cookies, removeCookie] = useCookies(['groupUser', 'access_token']);
+    const [showConfig, setShowConfig] = useState(false);
 
-    const [showConfig, setShowConfig] = useState(false)
+    const group = cookies.groupUser;
 
     useEffect(() => {
-        const storedGroup = localStorage.getItem("groupUser")
-        setGroup(storedGroup)
-    }, [location])
+        setShowConfig(false);
+    }, [location]);
 
     const handleLogout = () => {
-        localStorage.clear()
-        setGroup(null)
-        setShowConfig(false)
-        navigate("/logIn")
-    }
+        removeCookie('access_token', { path: '/' });
+        removeCookie('refresh_token', { path: '/' });
+        removeCookie('groupUser', { path: '/' });
+        removeCookie('username', { path: '/' });
+        removeCookie('id', { path: '/' });
+
+        localStorage.clear();
+
+        navigate("/logIn");
+    };
 
     return (
-        <div>
-            <nav className='navContainerFull'>
-                <div className='navContainerOwn'>
-                    <Link className='accessNav' to="/">Home</Link>
-                </div>
-                 <div className='navContainerOwn'>
-                    <Link className='accessNav' to="/contactUs">Contact Us</Link>
-                </div>
+        <nav className='navContainerFull'>
+            {/* public access */}
+            <div className='navContainerOwn'>
+                <Link className='accessNav' to="/">Home</Link>
+            </div>
+            <div className='navContainerOwn'>
+                <Link className='accessNav' to="/contactUs">Contact Us</Link>
+            </div>
 
-
-                {group && (
-                    <>
-                        <div className='navContainerOwn'>
-                            <Link className='accessNav' to="/cameras">Cameras</Link>
-                        </div>
-                        <div className='navContainerOwn'>
-                            <Link className='accessNav' to="/routers">Routers</Link>
-                        </div>
-                       
-                    </>
-                )}
-
-            
-            {group === "Administrator" && (
-                <>
-                 <div className='navContainerOwn'>
-                    <Link className='accessNav' to="/administration">Administrator</Link>
-                 </div>
-                </>
-            )}
+            {/* users */}
             {group && (
                 <>
-                <div>
-                    <button onClick={setShowConfig} className=''>
+                    <div className='navContainerOwn'>
+                        <Link className='accessNav' to="/cameras">Cameras</Link>
+                    </div>
+                    <div className='navContainerOwn'>
+                        <Link className='accessNav' to="/routers">Routers</Link>
+                    </div>
+                </>
+            )}
+
+            {/* administrator */}
+            {group === "Administrator" && (
+                <div className='navContainerOwn'>
+                    <Link className='accessNav' to="/administration">Administrator</Link>
+                </div>
+            )}
+
+            {/* configuration */}
+            {group ? (
+                <div className='navContainerOwn configWrapper'>
+                    <button 
+                        onClick={() => setShowConfig(!showConfig)} 
+                        className='accessNav btnConfig'
+                    >
                         Config
                     </button>
 
                     {showConfig && (
-                        <div className=''>
-                           <div className=''>
-                            <Link to="/myProfile" onClick={() => setShowConfig(false)} className=''>
+                        <div className='configDropdown'>
+                            <Link to="/myProfile" className='dropdownItem'>
                                 My Profile
                             </Link>
-                           </div>
-
-                           <div className=''>
-                            <button onClick={handleLogout} className=''>
+                            <button onClick={handleLogout} className='dropdownItem btnLogout'>
                                 Log out
                             </button>
-                           </div>
-                          </div>
+                        </div>
                     )}
-
                 </div>
+            ) : (
+                /* without group */
+                <>
+                    <div className='navContainerOwn'>
+                        <Link className='accessNav' to="/register">Register</Link>
+                    </div>
+                    <div className='navContainerOwn'>
+                        <Link className='accessNav' to="/logIn">Log In</Link>
+                    </div>
                 </>
             )}
-            
-
-                {!group && (
-                    <>
-                        <div className='navContainerOwn'>
-                            <Link className='accessNav' to="/register">Register</Link>
-                        </div>
-                        <div className='navContainerOwn'>
-                            <Link className='accessNav' to="/logIn">Log In</Link>
-                        </div>
-                    </>
-                )}
-            </nav>
-        </div>
-    )
+        </nav>
+    );
 }
 
-export default NavPage
+export default NavPage;

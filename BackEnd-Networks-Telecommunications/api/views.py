@@ -1,125 +1,99 @@
-from django.shortcuts import render
+from django.contrib.auth.models import Group
+from django.contrib.auth import logout
+
+from rest_framework import status, viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from .serializers import UserProfileSerializer
-from rest_framework import viewsets
-from .models import Camera
-from .serializers import CameraSerializer
-from .models import Router
-from .serializers import RouterSerializer
-from django.contrib.auth.models import Group
 
-# Register View
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from .models import Camera, Router
+from .serializers import UserProfileSerializer, CameraSerializer, RouterSerializer
+
+
+# View LogIn (JWT) 
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    """Personaliza la respuesta del token para incluir info del usuario."""
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        user = self.user
+        user_groups = user.groups.values_list('name', flat=True)
+
+        data.update({
+            'id': user.id,
+            'username': user.username,
+            'email': user.email,
+            'group': 'Administrator' if 'Administrator' in user_groups else (user_groups[0] if user_groups else 'User')
+        })
+        return data
+
+class LoginView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+#View Register
 class RegisterView(APIView):
-
     permission_classes = [AllowAny]
 
     def post(self, request):
-
-        # show data return 
-        print("DATA return:", request.data)  
-
         serializer = UserProfileSerializer(data=request.data)
-
         if serializer.is_valid():
             user = serializer.save()
-
-            group, created = Group.objects.get_or_create(name='User')
+            # Asignación automática de grupo
+            group, _ = Group.objects.get_or_create(name='User')
             user.groups.add(group)
-
-            print("User created:", user.username)  # confirm
-
+            
             return Response(
-                {"message": "User and Profile created successfully"},
+                {"message": "User created successfully"}, 
                 status=status.HTTP_201_CREATED
             )
-
-        print("Failed serializers", serializer.errors)  # failed
-
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# Log In View
-class LoginView(APIView):
-    permission_classes = [AllowAny]
-
-    def post(self, request):
-        login_access = request.data.get('loginAccess')
-        password = request.data.get('password')
-
-        user = None
-
-        if login_access and "@" in login_access:
-            try:
-                user_obj = User.objects.get(email__iexact=login_access)
-                user = authenticate(
-                    request,
-                    username=user_obj.username,
-                    password=password
-                )
-            except User.DoesNotExist:
-                user = None
-
-        else:
-            user = authenticate(
-                request,
-                username=login_access,
-                password=password
-            )
-
-        if user is not None:
-            login(request, user)
-            user_group = user.groups.first().name if user.groups.exists() else "User"  
-            return Response({
-                "message": "Login successful",
-                "username": user.username,
-                "email": user.email,
-                "group": user_group
-            }, status=status.HTTP_200_OK)
-
-        return Response(
-            {"error": "Invalid username or password"},
-            status=status.HTTP_401_UNAUTHORIZED
-        )
-
-# Log Out View
+#View Log out
 class LogoutView(APIView):
-    # close session
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        logout(request)
+        logout(request) # Limpia la sesión en el servidor
         return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
-# Profile View 
+
 class MyProfileView(APIView):
-    # view segurity
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
         user = request.user
-        # access profile model
+        # Usamos .get para evitar errores si el perfil no existe
+        profile = getattr(user, 'profile', None)
+        
         return Response({
             "username": user.username,
             "email": user.email,
             "first_name": user.first_name,
             "last_name": user.last_name,
-            "phone": user.profile.phone_number,
-            "birth_date": user.profile.birth_date
+            "phone": profile.phone_number if profile else None,
+            "birth_date": profile.birth_date if profile else None
         })
 
-#Camera View CRUD system
+#View Cameras
 class CameraViewSet(viewsets.ModelViewSet):
-    queryset = Camera.objects.all()
     serializer_class = CameraSerializer
+    permission_classes = [IsAuthenticated]
 
-#Router View CRUD system
+    def get_queryset(self):
+        user = self.request.user
+        # Los administradores ven todo, los usuarios regulares solo sus cámaras
+        if user.is_staff or user.groups.filter(name='Administrator').exists():
+            return Camera.objects.all()
+        return Camera.objects.filter(user=user)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+#View Routers
 class RouterViewSet(viewsets.ModelViewSet):
     queryset = Router.objects.all()
     serializer_class = RouterSerializer
-
-
+    permission_classes = [IsAuthenticated]

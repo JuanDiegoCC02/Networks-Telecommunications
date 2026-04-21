@@ -52,14 +52,14 @@ function CamerasVisualizer() {
   })
 
 // Funtion Open Modal for the Camera Edit
- function openCameraEdit(user) {
-    setUser(user)
-    setEditName(user.name)
-    setEditIp_Address(user.ip_address)
-    setEditUrl_Address(user.url_address)
-    setEditLocation(user.location)
-    setEditDescription(user.description)
-    setEditStatus(user.status)
+ function openCameraEdit(c) {
+    setUser(c)
+    setEditName(c.name)
+    setEditIp_Address(c.ip_address)
+    setEditUrl_Address(c.url_address)
+    setEditLocation(c.location)
+    setEditDescription(c.description)
+    setEditStatus(c.status)
     setShow(true)
     
  }

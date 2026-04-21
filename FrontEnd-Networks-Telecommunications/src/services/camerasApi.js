@@ -1,11 +1,22 @@
+import { Cookies } from 'react-cookie';
+const cookies = new Cookies();
+
+// Función auxiliar privada para no repetir código
+const getHeaders = () => {
+  const token = cookies.get('access_token');
+  return {
+    "Content-Type": "application/json",
+    // Si hay token, lo agregamos; si no, enviamos solo el content-type
+    ...(token ? { "Authorization": `Bearer ${token}` } : {})
+  };
+};
+
 //  Get Cameras
 async function getCameras() {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // <--- Usa los headers con Token
     });
 
     if (!response.ok) {
@@ -19,15 +30,12 @@ async function getCameras() {
   }
 }
 
-
 //  Post Cameras
 async function postCameras(obj) {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // <--- Usa los headers con Token
       body: JSON.stringify(obj),
     });
 
@@ -44,38 +52,12 @@ async function postCameras(obj) {
   }
 }
 
-
-//  Update Cameras
-async function updateCameras(obj, id) {
-  try {
-    const response = await fetch(`http://127.0.0.1:8000/api/cameras-update/${id}/`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(obj),
-    });
-
-    if (!response.ok) {
-      throw new Error("Error updating camera");
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error update camera:", error);
-    throw error;
-  }
-}
-
-// patch cameras
+// patch cameras (Este es el que usas en tu visualizador)
 async function patchCameras(obj, id) {
   try {
-    // CAMBIO: Quité "-update" de la URL
     const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(), // <--- Usa los headers con Token
       body: JSON.stringify(obj)
     });
 
@@ -95,26 +77,23 @@ async function deleteCameras(id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // <--- Usa los headers con Token
     });
 
     if (!response.ok) {
-      throw new Error(`Error deleting user with id ${id}`);
+      throw new Error(`Error deleting camera with id ${id}`);
     }
 
-    return { message: `User with id ${id} deleted successfully` };
+    return { message: `Camera with id ${id} deleted successfully` };
   } catch (error) {
     console.error("Error deleting Camera:", error);
     throw error;
   }
 }
 
-export{
+export {
     getCameras,
     postCameras,
-    updateCameras,
     patchCameras,
     deleteCameras
-}
+};

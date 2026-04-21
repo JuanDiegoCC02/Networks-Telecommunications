@@ -57,6 +57,10 @@ class CameraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camera
         fields = '__all__'
+        # adjustment to load the user
+        extra_kwargs = {
+            'user': {'read_only': True}
+        }
 
 
 class RouterSerializer(serializers.ModelSerializer):

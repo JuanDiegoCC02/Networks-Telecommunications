@@ -28,6 +28,7 @@ class Profile(models.Model):
  # CameraModel
 class Camera(models.Model):
     name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cameras') 
 
     ip_address = models.CharField(max_length=80)
 

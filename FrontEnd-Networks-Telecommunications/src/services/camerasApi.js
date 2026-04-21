@@ -4,11 +4,11 @@ const cookies = new Cookies();
 // Función auxiliar privada para no repetir código
 const getHeaders = () => {
   const token = cookies.get('access_token');
+  console.log("Token recuperado de la cookie:", token);
   return {
     "Content-Type": "application/json",
     // Si hay token, lo agregamos; si no, enviamos solo el content-type
-    ...(token ? { "Authorization": `Bearer ${token}` } : {})
-  };
+...(token ? { "Authorization": `Bearer ${token}` } : {})  };
 };
 
 //  Get Cameras

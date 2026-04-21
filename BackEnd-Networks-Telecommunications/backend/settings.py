@@ -140,6 +140,17 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+# JTW Authentication settings
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization", 
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
 #Metodos 
 CORS_ALLOW_METHODS = [
     'GET',

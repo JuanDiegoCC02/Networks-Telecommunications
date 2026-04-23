@@ -41,7 +41,8 @@ class RegisterView(APIView):
         serializer = UserProfileSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            # Asignación automática de grupo
+
+            # automatically add the user to the "User" group
             group, _ = Group.objects.get_or_create(name='User')
             user.groups.add(group)
             
@@ -56,7 +57,7 @@ class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        logout(request) # Limpia la sesión en el servidor
+        logout(request)
         return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
 
@@ -65,7 +66,7 @@ class MyProfileView(APIView):
 
     def get(self, request):
         user = request.user
-        # Usamos .get para evitar errores si el perfil no existe
+        # if it don't have a profile, return the basic user info
         profile = getattr(user, 'profile', None)
         
         if profile:

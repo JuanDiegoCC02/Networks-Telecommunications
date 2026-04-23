@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('cameras', CameraViewSet, basename='camera')
-router.register('routers', RouterViewSet)
+router.register('routers', RouterViewSet, basename='router')
 
 
 urlpatterns = [

@@ -1,11 +1,22 @@
-//  Get Cameras
+import { Cookies } from 'react-cookie';
+const cookies = new Cookies();
+
+// funtion to get headers with token if exists
+const getHeaders = () => {
+  const token = cookies.get('access_token');
+  console.log("Token recuperado de la cookie:", token);
+  return {
+    "Content-Type": "application/json",
+    // if token exists, include the Authorization header
+...(token ? { "Authorization": `Bearer ${token}` } : {})  };
+};
+
+//  Get Routers
 async function getRouters() {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/routers/", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // use the headers with token
     });
 
     if (!response.ok) {
@@ -20,14 +31,12 @@ async function getRouters() {
 }
 
 
-//  Post Cameras
+//  Post Routers
 async function postRouters(obj) {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/routers/", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // use the headers with token
       body: JSON.stringify(obj),
     });
 
@@ -46,14 +55,12 @@ async function postRouters(obj) {
 }
 
 
-//  Update Cameras
+//  Update Routers
 async function updateRouters(obj, id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/routers/${id}/`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // use the headers with token
       body: JSON.stringify(obj),
     });
 
@@ -68,15 +75,13 @@ async function updateRouters(obj, id) {
   }
 }
 
-// patch cameras
+// Patch Routers
 async function patchRouters(obj, id) {
   try {
     // CAMBIO: Quité "-update" de la URL
     const response = await fetch(`http://127.0.0.1:8000/api/routers/${id}/`, {
       method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: getHeaders(), // use the headers with token
       body: JSON.stringify(obj)
     });
 
@@ -91,21 +96,19 @@ async function patchRouters(obj, id) {
   }
 }
 
-// Delete Cameras 
+// Delete Routers
 async function deleteRouters(id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/routers/${id}/`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), // use the headers with token
     });
 
     if (!response.ok) {
-      throw new Error(`Error deleting user with id ${id}`);
+      throw new Error(`Error deleting router with id ${id}`);
     }
 
-    return { message: `User with id ${id} deleted successfully` };
+    return { message: `Router with id ${id} deleted successfully` };
   } catch (error) {
     console.error("Error deleting router:", error);
     throw error;

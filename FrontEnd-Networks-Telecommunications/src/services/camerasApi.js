@@ -1,13 +1,13 @@
 import { Cookies } from 'react-cookie';
 const cookies = new Cookies();
 
-// Función auxiliar privada para no repetir código
+// funtion to get headers with token if exists
 const getHeaders = () => {
   const token = cookies.get('access_token');
   console.log("Token recuperado de la cookie:", token);
   return {
     "Content-Type": "application/json",
-    // Si hay token, lo agregamos; si no, enviamos solo el content-type
+    // if token exists, include the Authorization header
 ...(token ? { "Authorization": `Bearer ${token}` } : {})  };
 };
 
@@ -16,7 +16,7 @@ async function getCameras() {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "GET",
-      headers: getHeaders(), // <--- Usa los headers con Token
+      headers: getHeaders(), // use the headers with token
     });
 
     if (!response.ok) {
@@ -35,7 +35,7 @@ async function postCameras(obj) {
   try {
     const response = await fetch("http://127.0.0.1:8000/api/cameras/", {
       method: "POST",
-      headers: getHeaders(), // <--- Usa los headers con Token
+      headers: getHeaders(), // use the headers with token
       body: JSON.stringify(obj),
     });
 
@@ -52,12 +52,12 @@ async function postCameras(obj) {
   }
 }
 
-// patch cameras (Este es el que usas en tu visualizador)
+// Patch Cameras 
 async function patchCameras(obj, id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
       method: 'PATCH',
-      headers: getHeaders(), // <--- Usa los headers con Token
+      headers: getHeaders(), // use the headers with token
       body: JSON.stringify(obj)
     });
 
@@ -77,7 +77,7 @@ async function deleteCameras(id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/cameras/${id}/`, {
       method: "DELETE",
-      headers: getHeaders(), // <--- Usa los headers con Token
+      headers: getHeaders(), //  use the headers with token
     });
 
     if (!response.ok) {

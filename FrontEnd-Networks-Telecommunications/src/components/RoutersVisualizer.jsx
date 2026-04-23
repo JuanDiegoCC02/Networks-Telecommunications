@@ -98,7 +98,7 @@ function RoutersVisualizer() {
         {/*  search & select Request Card */}
         <div className='rVisualizerNavFull'>
             <div className='rVisualizerContainerSearch'>
-                <input className='rVisualizerSearch' value={search} onChange={(e)=> setSearch(e.target.value)} type="search" />
+                <input placeholder='Router Search' className='rVisualizerSearch' value={search} onChange={(e)=> setSearch(e.target.value)} type="search" />
             </div>
 
             <div className='rVisualizerContainerSelectSearch'>

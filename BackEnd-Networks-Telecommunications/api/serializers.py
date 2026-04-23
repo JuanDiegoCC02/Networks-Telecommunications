@@ -67,4 +67,8 @@ class RouterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Router
         fields = '__all__'
+        # adjustment to load the user
+        extra_kwargs = {
+            'user': {'read_only': True}
+        }
 

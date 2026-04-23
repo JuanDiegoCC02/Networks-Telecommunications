@@ -88,7 +88,6 @@ class CameraViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        # Los administradores ven todo, los usuarios regulares solo sus cámaras
         if user.is_staff or user.groups.filter(name='Administrator').exists():
             return Camera.objects.all()
         return Camera.objects.filter(user=user)
@@ -98,6 +97,14 @@ class CameraViewSet(viewsets.ModelViewSet):
 
 #View Routers
 class RouterViewSet(viewsets.ModelViewSet):
-    queryset = Router.objects.all()
     serializer_class = RouterSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classses = [IsAuthenticated]
+
+    def get_queryset(self):
+        user =self.request.user
+        if user.is_staff or user.groups.filter(name='Administrator').exists():
+            return Router.objects.all()
+        return Router.objects.filter(user=user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

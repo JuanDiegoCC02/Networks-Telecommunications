@@ -1,24 +1,24 @@
+/* --- NUEVAS VARIABLES DE IDENTIDAD --- */
 :root {
-  --bg-dark: #0a0c10;
-  --nav-bg: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --accent: #2563eb; 
-  --border-ui: #f1f5f9;
-  
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --nav-bg-glass: rgba(10, 12, 16, 0.85); /* Basado en tu --bg-dark */
+  --neon-cyan: #00d4ff;
+  --neon-blue: #2563eb;
+  --text-silver: #94a3b8;
+  --glass-stroke: rgba(255, 255, 255, 0.08);
 }
 
 .navContainerFull {
   width: 100%;
   display: flex;
   justify-content: center;
-  background: var(--nav-bg);
-  border-bottom: 1px solid #e2e8f0;
+  background: var(--nav-bg-glass);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  border-bottom: 1px solid var(--glass-stroke);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: var(--shadow-soft);
+  z-index: 2000; /* Asegurar que esté por encima de todo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .navContainerOwn {
@@ -26,55 +26,131 @@
   align-items: center;
 }
 
+/* --- LINKS DE NAVEGACIÓN ESTILO "DASHBOARD" --- */
 .accessNav {
   text-decoration: none;
-  color: var(--text-muted);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 24px 30px;
-  text-transform: capitalize; 
-  transition: all 0.3s ease;
+  color: var(--text-silver);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 22px 25px;
+  text-transform: uppercase; /* Más profesional/técnico */
+  letter-spacing: 1px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
+/* El punto indicador ahora es un LED de estado */
 .accessNav::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  background: transparent;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 
 .accessNav:hover {
-  color: var(--text-main);
-  background-color: #f8fafc;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .accessNav:hover::before {
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  background: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
 
+/* Línea de activación futurista (gradiente) */
 .accessNav::after {
   content: '';
   position: absolute;
-  bottom: -1px; 
-  left: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 0;
   height: 2px;
-  background: var(--accent);
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  transition: width 0.4s ease;
 }
 
 .accessNav:hover::after {
-  width: 100%;
+  width: 80%;
 }
 
-.accessNav[href="/cameras"], .accessNav[href="/routers"] {
-  font-weight: 700;
+/* --- BOTÓN CONFIG Y DROPDOWN --- */
+.btnConfig {
+  color: var(--neon-cyan) !important;
+  border-left: 1px solid var(--glass-stroke) !important;
+  margin-left: 10px;
+}
+
+.configWrapper {
+  position: relative;
+}
+
+.configDropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 220px;
+  background: #0f172a;
+  border: 1px solid var(--glass-stroke);
+  border-radius: 0 0 12px 12px;
+  padding: 10px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  animation: slideDropdown 0.3s ease-out;
+}
+
+@keyframes slideDropdown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: var(--text-silver);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: 0.2s;
+  width: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--neon-cyan);
+}
+
+.btnLogout {
+  color: #f87171 !important;
+  border-top: 1px solid var(--glass-stroke) !important;
+  margin-top: 5px;
+  padding-top: 15px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 800px) {
+  .navContainerFull {
+    padding: 0 10px;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+  
+  .accessNav {
+    padding: 20px 15px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
 }

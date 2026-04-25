@@ -1,6 +1,6 @@
-/* --- NUEVAS VARIABLES DE IDENTIDAD --- */
+/* base styles of root */
 :root {
-  --nav-bg-glass: rgba(10, 12, 16, 0.85); /* Basado en tu --bg-dark */
+  --nav-bg-glass: rgba(10, 12, 16, 0.85); 
   --neon-cyan: #00d4ff;
   --neon-blue: #2563eb;
   --text-silver: #94a3b8;
@@ -17,7 +17,7 @@
   border-bottom: 1px solid var(--glass-stroke);
   position: sticky;
   top: 0;
-  z-index: 2000; /* Asegurar que esté por encima de todo */
+  z-index: 2000; 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -26,7 +26,7 @@
   align-items: center;
 }
 
-/* --- LINKS DE NAVEGACIÓN ESTILO "DASHBOARD" --- */
+/* navigation links  */
 .accessNav {
   text-decoration: none;
   color: var(--text-silver);
@@ -34,7 +34,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   padding: 22px 25px;
-  text-transform: uppercase; /* Más profesional/técnico */
+  text-transform: uppercase; 
   letter-spacing: 1px;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 
-/* El punto indicador ahora es un LED de estado */
+/* indicator is a LED */
 .accessNav::before {
   content: '';
   width: 4px;
@@ -66,7 +66,7 @@
   box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
 
-/* Línea de activación futurista (gradiente) */
+/* activation line */
 .accessNav::after {
   content: '';
   position: absolute;
@@ -83,7 +83,7 @@
   width: 80%;
 }
 
-/* --- BOTÓN CONFIG Y DROPDOWN --- */
+/* bttn config */
 .btnConfig {
   color: var(--neon-cyan) !important;
   border-left: 1px solid var(--glass-stroke) !important;
@@ -115,14 +115,14 @@
 .dropdownItem {
   display: flex;
   align-items: center;
-  padding: 12px 15px;
+  padding: 12px 14px;
   color: var(--text-silver);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 600;
   border-radius: 8px;
   transition: 0.2s;
-  width: 100%;
+  width: 80%;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -140,7 +140,7 @@
   padding-top: 15px;
 }
 
-/* --- RESPONSIVE --- */
+/* responsive */
 @media (max-width: 800px) {
   .navContainerFull {
     padding: 0 10px;

@@ -33,6 +33,8 @@ function NavPage() {
 
     return (
         <nav className='navContainerFull'>
+
+
             {/* public access */}
             <div className='navContainerOwn'>
                 <Link className='accessNav' to="/">Home</Link>
@@ -40,6 +42,7 @@ function NavPage() {
             <div className='navContainerOwn'>
                 <Link className='accessNav' to="/contactUs">Contact Us</Link>
             </div>
+
 
             {/* users */}
             {group && (
@@ -53,12 +56,19 @@ function NavPage() {
                 </>
             )}
 
+
             {/* administrator */}
             {group === "Administrator" && (
+                <>
                 <div className='navContainerOwn'>
                     <Link className='accessNav' to="/adminNetworks">Admin Networks</Link>
                 </div>
+                <div className='navContainerOwn'>
+                    <Link className='accessNav' to="/adminUsers">Admin Users</Link>
+                </div>
+             </>
             )}
+
 
             {/* configuration */}
             {group ? (

@@ -6,6 +6,7 @@ import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
 import Routers from '../pages/Routers';
 import AdminNetworks from '../pages/AdminNetworks';
+import AdminUsers from '../pages/AdminUsers';
 import ContactUs from '../pages/ContactUs';
 import MyProfile from '../pages/MyProfile';
 
@@ -32,9 +33,9 @@ function Routing() {
 
             {/* Administration Routes */} 
              <Route path = '/adminNetworks' element = {<AdminNetworks/>}/> 
-             
+             <Route path = '/adminUsers' element = {<AdminUsers/>}/> 
 
-
+    
  
         </Routes>
     </Router>

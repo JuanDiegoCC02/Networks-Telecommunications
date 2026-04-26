@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminNav from '../components/AdminNav'
-import AdminBody from '../components/AdminBody'
+import AdminNav from '../components/AdminNetworksNav'
+import AdminNetworksBody from '../components/AdminNetworksBody'
 import NavPage from '../components/navPage'
 import FooterPage from '../components/FooterPage'
 
@@ -13,7 +13,7 @@ function Administration() {
     </nav>
   
     <main>
-        <AdminBody/>
+        <AdminNetworksBody/>
     </main>
 
 

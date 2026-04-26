@@ -5,7 +5,7 @@ import LogIn from '../pages/LogIn';
 import Cameras from '../pages/Cameras';
 import Home from '../pages/home';
 import Routers from '../pages/Routers';
-import Administration from '../pages/Administration';
+import AdminNetworks from '../pages/AdminNetworks';
 import ContactUs from '../pages/ContactUs';
 import MyProfile from '../pages/MyProfile';
 
@@ -29,7 +29,11 @@ function Routing() {
              <Route path = '/cameras' element = {<Cameras/>}/>
              <Route path = '/routers' element = {<Routers/>}/> 
 
-             <Route path = '/administration' element = {<Administration/>}/> 
+
+            {/* Administration Routes */} 
+             <Route path = '/adminNetworks' element = {<AdminNetworks/>}/> 
+             
+
 
  
         </Routes>

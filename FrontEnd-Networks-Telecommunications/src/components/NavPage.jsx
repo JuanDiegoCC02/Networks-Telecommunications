@@ -7,7 +7,7 @@ function NavPage() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [cookies, setCookie, removeCookie] = useCookies(['groupUser', 'access_token']);
+    const [cookies, removeCookie] = useCookies(['groupUser', 'access_token']);
     const [showConfig, setShowConfig] = useState(false);
 
     const group = cookies.groupUser;
@@ -56,7 +56,7 @@ function NavPage() {
             {/* administrator */}
             {group === "Administrator" && (
                 <div className='navContainerOwn'>
-                    <Link className='accessNav' to="/administration">Administrator</Link>
+                    <Link className='accessNav' to="/adminNetworks">Admin Networks</Link>
                 </div>
             )}
 

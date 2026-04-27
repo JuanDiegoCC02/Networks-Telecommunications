@@ -1,11 +1,22 @@
-// HOOKS Get Users
+import { Cookies } from 'react-cookie';
+const cookies = new Cookies();
+
+// funtion to get headers with token if exists
+const getHeaders = () => {
+  const token = cookies.get('access_token');
+  console.log("Token recuperado de la cookie (Users):", token);
+  return {
+    "Content-Type": "application/json",
+    ...(token ? { "Authorization": `Bearer ${token}` } : {})
+  };
+};
+
+//  Get Users
 async function getUsers() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/usersGet/", {
+    const response = await fetch("http://127.0.0.1:8000/api/users/", {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), 
     });
 
     if (!response.ok) {
@@ -19,16 +30,12 @@ async function getUsers() {
   }
 }
 
-
-// HOOKS Post Users
+//  Post Users
  async function postUsers(obj) {
     try {
         const response = await fetch("http://127.0.0.1:8000/api/users/", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            // SE ELIMINÓ credentials: "include" porque causaba el bloqueo de CORS
+            headers: getHeaders(), 
             body: JSON.stringify(obj),
         });
 
@@ -45,15 +52,12 @@ async function getUsers() {
     }
 }
 
-
-// HOOKS Update Users
+//  Update Users
 async function updateUsers(obj, id) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/api/users-update/${id}/`, {
+    const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(),
       body: JSON.stringify(obj),
     });
 
@@ -68,15 +72,12 @@ async function updateUsers(obj, id) {
   }
 }
 
-
-//HOOKS Delete Users 
+// Delete Users 
 async function deleteUsers(id) {
   try {
     const response = await fetch(`http://127.0.0.1:8000/api/users/${id}/`, {
       method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: getHeaders(), 
     });
 
     if (!response.ok) {

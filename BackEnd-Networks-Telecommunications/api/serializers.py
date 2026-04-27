@@ -3,9 +3,8 @@ from django.contrib.auth.models import User
 from .models import Profile, Camera, Router
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    #data profile
-    birth_date = serializers.DateField(write_only=True)
-    phone_number = serializers.CharField(write_only=True, max_length=20)
+    birth_date = serializers.DateField(source='profile.birth_date', required=False, allow_null=True)
+    phone_number = serializers.CharField(source='profile.phone_number', required=False, allow_null=True, max_length=20)
     
     username = serializers.CharField(required=True)
     email = serializers.EmailField(required=True)
@@ -17,28 +16,45 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'last_name', 'birth_date', 'phone_number'
         ]
         extra_kwargs = {
-            'password': {'write_only': True},
-            'email': {'required': True},
+            'password': {'write_only': True, 'required': False},
             'first_name': {'required': True},
             'last_name': {'required': True}
         }
 
     def create(self, validated_data):
-        birth_date = validated_data.pop('birth_date', None)
-        phone_number = validated_data.pop('phone_number', None)
-
+        profile_data = validated_data.pop('profile', {})
+        
+        # create the user
         user = User.objects.create_user(**validated_data)
 
+        # create the profile
         Profile.objects.create(
             user=user, 
-            birth_date=birth_date, 
-            phone_number=phone_number
+            birth_date=profile_data.get('birth_date'), 
+            phone_number=profile_data.get('phone_number')
         )
-        
         return user
 
-class ProfileDetailSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop('profile', {})
+        
+        password = validated_data.pop('password', None)
+        if password:
+            instance.set_password(password)
 
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+
+        profile, created = Profile.objects.get_or_create(user=instance)
+        if profile_data:
+            profile.birth_date = profile_data.get('birth_date', profile.birth_date)
+            profile.phone_number = profile_data.get('phone_number', profile.phone_number)
+            profile.save()
+
+        return instance
+
+class ProfileDetailSerializer(serializers.ModelSerializer):
     user_details = serializers.SerializerMethodField()
 
     class Meta:
@@ -52,23 +68,14 @@ class ProfileDetailSerializer(serializers.ModelSerializer):
             "full_name": f"{obj.user.first_name} {obj.user.last_name}"
         }
 
-
 class CameraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Camera
         fields = '__all__'
-        # adjustment to load the user
-        extra_kwargs = {
-            'user': {'read_only': True}
-        }
-
+        extra_kwargs = {'user': {'read_only': True}}
 
 class RouterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Router
         fields = '__all__'
-        # adjustment to load the user
-        extra_kwargs = {
-            'user': {'read_only': True}
-        }
-
+        extra_kwargs = {'user': {'read_only': True}}

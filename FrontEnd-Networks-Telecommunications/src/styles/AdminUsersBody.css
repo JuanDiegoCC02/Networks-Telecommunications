@@ -1,0 +1,226 @@
+/* --- CONTAINER & HEADER --- */
+.usersManagementMain {
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.usersManagementHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  padding-bottom: 20px;
+}
+
+.mainTitle {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #f8fafc;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.subTitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+
+.systemStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.statusLabel { font-size: 0.75rem; color: #94a3b8; font-weight: 700; }
+.statusText { font-size: 0.75rem; color: #10b981; font-weight: 800; text-transform: uppercase; }
+
+.statusPulse {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 15px #10b981; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+/* --- DATA TABLE --- */
+.registryTableContainer {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.registryTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.registryTable th {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  text-align: left;
+  font-size: 0.7rem;
+  color: #00d4ff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-bottom: 2px solid rgba(0, 212, 255, 0.1);
+}
+
+.registryRow td {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  color: #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.registryRow:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.registryRow.isEditing {
+  background: rgba(0, 212, 255, 0.03);
+}
+
+/* --- CELL STYLES --- */
+.userHandleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userIcon {
+  background: #1e293b;
+  color: #64748b;
+  font-size: 0.6rem;
+  font-weight: 900;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.userHandle {
+  font-family: 'JetBrains Mono', monospace;
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.phoneCell { font-family: 'JetBrains Mono', monospace; color: #64748b; }
+
+/* --- ACTION BUTTONS --- */
+.actionBtn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.editBtn {
+  background: transparent;
+  color: #00d4ff;
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.editBtn:hover { background: #00d4ff; color: #000; }
+
+.deleteBtn {
+  background: transparent;
+  color: #ef4444;
+  margin-left: 10px;
+}
+
+.deleteBtn:hover { text-decoration: underline; color: #f87171; }
+
+/* --- CONFIG PANEL (EXPANDED) --- */
+.configPanel {
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.configPanelTitle {
+  margin-bottom: 25px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #94a3b8;
+}
+
+.configGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.inputField label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #00d4ff;
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.inputField input {
+  width: 100%;
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 12px;
+  color: #fff;
+  border-radius: 4px;
+  outline: none;
+}
+
+.inputField input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+.configActions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.commitBtn {
+  background: #00d4ff;
+  color: #020617;
+  padding: 12px 30px;
+  border-radius: 4px;
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.commitBtn:hover {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}

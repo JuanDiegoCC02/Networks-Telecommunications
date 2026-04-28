@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { deleteUsers, getUsers, updateUsers } from '../services/usersApi';
+import "../styles/AdminUsersBody.css";
 
 function AdminUsersBody() {
   const [users, setUsers] = useState([]);
@@ -50,87 +51,95 @@ function AdminUsersBody() {
   }
 
   async function handleDelete(id) {
-    if (window.confirm("CRITICAL ACTION: Are you sure you want to permanently delete this user?")) {
+    if (window.confirm("CRITICAL ACTION: Are you sure you want to permanently delete this user from the registry?")) {
       await deleteUsers(id);
       setReload(!reload);
     }
   }
 
   return (
-    <div className="adminUsersContainer">
-      <header className="adminUsersHeader">
-        <h2 className="adminUsersTitle">User Management Engine</h2>
-        <p className="adminUsersSubtitle">Administrative override and profile synchronization</p>
+    <main className="usersManagementMain">
+      <header className="usersManagementHeader">
+        <div className="headerText">
+          <h2 className="mainTitle">User Registry Engine</h2>
+          <p className="subTitle">Monitoring and administrative synchronization of network accounts</p>
+        </div>
+        <div className="systemStatus">
+          <span className="statusLabel">Database Connection:</span>
+          <span className="statusPulse"></span>
+          <span className="statusText">Active</span>
+        </div>
       </header>
 
-      <div className="adminUsersTableWrapper">
-        <table className="adminUsersTable">
+      <section className="registryTableContainer">
+        <table className="registryTable">
           <thead>
             <tr>
-              <th>System ID / User</th>
-              <th>Full Name</th>
-              <th>Email Address</th>
-              <th>Contact Node</th>
-              <th>Operations</th>
+              <th>System Handle</th>
+              <th>Full Identity</th>
+              <th>Network Email</th>
+              <th>Comms Node</th>
+              <th>Control Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
               <React.Fragment key={user.id}>
-                <tr className={`userRow ${userID === user.id ? "rowEditing" : ""}`}>
+                <tr className={`registryRow ${userID === user.id ? "isEditing" : ""}`}>
                   <td>
-                    <div className="userNameCell">
-                      <span className="userStatusDot"></span>
-                      <span className="userBadge">@{user.username}</span>
+                    <div className="userHandleWrapper">
+                      <div className="userIcon">ID</div>
+                      <span className="userHandle">@{user.username}</span>
                     </div>
                   </td>
-                  <td className="textPrimary">{user.first_name} {user.last_name}</td>
-                  <td className="textSecondary">{user.email}</td>
-                  <td className="textMono">{user.phone_number || "NO_DATA"}</td>
-                  <td className="tableActions">
-                    <button className="btnEdit" onClick={() => handleEdit(user)}>
+                  <td className="identityCell">{user.first_name} {user.last_name}</td>
+                  <td className="emailCell">{user.email}</td>
+                  <td className="phoneCell">{user.phone_number || "NULL_STUB"}</td>
+                  <td className="actionCell">
+                    <button className="actionBtn editBtn" onClick={() => handleEdit(user)}>
                       {userID === user.id ? "Abort" : "Edit"}
                     </button>
-                    <button className="btnDelete" onClick={() => handleDelete(user.id)}>
+                    <button className="actionBtn deleteBtn" onClick={() => handleDelete(user.id)}>
                       Delete
                     </button>
                   </td>
                 </tr>
 
-                {/* Inline Expansion Form */}
+                {/* Inline Configuration Panel */}
                 {userID === user.id && (
-                  <tr className="editRowExpanded">
+                  <tr className="expansionRow">
                     <td colSpan="5">
-                      <div className="editUserForm">
-                        <div className="editFormGrid">
-                          <div className="fieldBox">
-                            <label>Username Handle</label>
-                            <input value={editUsername} onChange={(e) => setEditUsername(e.target.value)} placeholder="e.g. quantum_user" />
+                      <div className="configPanel">
+                        <h4 className="configPanelTitle">Modify Identity Parameters</h4>
+                        <div className="configGrid">
+                          <div className="inputField">
+                            <label>System Username</label>
+                            <input value={editUsername} onChange={(e) => setEditUsername(e.target.value)} placeholder="e.g. admin_node_01" />
                           </div>
-                          <div className="fieldBox">
+                          <div className="inputField">
                             <label>Given Name</label>
                             <input value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} placeholder="First Name" />
                           </div>
-                          <div className="fieldBox">
+                          <div className="inputField">
                             <label>Family Name</label>
                             <input value={editLastName} onChange={(e) => setEditLastName(e.target.value)} placeholder="Last Name" />
                           </div>
-                          <div className="fieldBox">
-                            <label>Network Email</label>
-                            <input value={editEmail} onChange={(e) => setEditEmail(e.target.value)} placeholder="user@domain.com" />
+                          <div className="inputField">
+                            <label>Primary Email</label>
+                            <input value={editEmail} onChange={(e) => setEditEmail(e.target.value)} placeholder="name@telecom.com" />
                           </div>
-                          <div className="fieldBox">
+                          <div className="inputField">
                             <label>Registry Date</label>
                             <input type="date" value={editBirthDate} onChange={(e) => setEditBirthDate(e.target.value)} />
                           </div>
-                          <div className="fieldBox">
-                            <label>Direct Line</label>
-                            <input value={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)} placeholder="+1 000-0000" />
+                          <div className="inputField">
+                            <label>Contact Line</label>
+                            <input value={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)} placeholder="+506 0000-0000" />
                           </div>
                         </div>
-                        <div className="editFormActions">
-                          <button className="btnSaveUpdate" onClick={() => handleUpdate(user.id)}>
-                            Commit Changes
+                        <div className="configActions">
+                          <button className="commitBtn" onClick={() => handleUpdate(user.id)}>
+                            Commit Synchronization
                           </button>
                         </div>
                       </div>
@@ -141,8 +150,8 @@ function AdminUsersBody() {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

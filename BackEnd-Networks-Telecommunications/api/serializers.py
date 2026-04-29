@@ -23,7 +23,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'last_name': {'required': True}
         }\
         
-    def getGroup(self, obj):
+    def get_group(self, obj):
         user_groups = obj.groups.values_list('name', flat=True)
         if 'Administrator' in user_groups:
             return 'Administrator'

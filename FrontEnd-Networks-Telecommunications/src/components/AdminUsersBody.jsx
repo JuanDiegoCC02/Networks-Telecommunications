@@ -13,8 +13,7 @@ function AdminUsersBody() {
   const [editEmail, setEditEmail] = useState("");
   const [editBirthDate, setEditBirthDate] = useState("");
   const [editPhoneNumber, setEditPhoneNumber] = useState("");
-  // Estado para el rol/grupo
-  const [editRole, setEditRole] = useState("");
+  const [editGroup, setEditGroup] = useState("");
 
   useEffect(() => {
     async function list() {
@@ -35,8 +34,7 @@ function AdminUsersBody() {
       setEditEmail(user.email);
       setEditBirthDate(user.birth_date || "");
       setEditPhoneNumber(user.phone_number || "");
-      // Asignar el rol (asumiendo que viene como un string o primer elemento de array)
-      setEditRole(user.role || (user.groups && user.groups[0]) || "Standard User");
+      setEditGroup(user.role || (user.groups && user.groups[0]) || "Standard User");
     }
   };
 
@@ -48,9 +46,9 @@ function AdminUsersBody() {
       email: editEmail,
       birth_date: editBirthDate,
       phone_number: editPhoneNumber,
-      role: editRole // Asegúrate que tu backend reciba este campo
+      group: editGroup 
     };
-    await updateUsers(obj, id); // Nota: invertí el orden si tu api espera (obj, id)
+    await updateUsers(obj, id); 
     setReload(!reload);
     setUserID(null);
   }
@@ -83,8 +81,8 @@ function AdminUsersBody() {
               <th>System Handle</th>
               <th>Full Identity</th>
               <th>Network Email</th>
-              <th>Birth Date</th> {/* Columna restaurada */}
-              <th>Access Level</th> {/* Nueva columna para Rol/Grupo */}
+              <th>Birth Date</th> 
+              <th>Access Level</th> 
               <th>Control Actions</th>
             </tr>
           </thead>
@@ -103,7 +101,7 @@ function AdminUsersBody() {
                   <td className="birthDateCell">{user.birth_date || "N/A"}</td>
                   <td className="roleCell">
                     <span className="roleBadge">
-                      {user.role || (user.groups && user.groups[0]) || "Standard"}
+                      {user.group || (user.groups && user.groups[0]) || "Standard"}
                     </span>
                   </td>
                   <td className="actionCell">

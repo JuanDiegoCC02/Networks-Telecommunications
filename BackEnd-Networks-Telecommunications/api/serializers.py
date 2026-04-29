@@ -5,6 +5,8 @@ from .models import Profile, Camera, Router
 class UserProfileSerializer(serializers.ModelSerializer):
     birth_date = serializers.DateField(source='profile.birth_date', required=False, allow_null=True)
     phone_number = serializers.CharField(source='profile.phone_number', required=False, allow_null=True, max_length=20)
+
+    group = serializers.SerializerMethodField()
     
     username = serializers.CharField(required=True)
     email = serializers.EmailField(required=True)
@@ -13,13 +15,19 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'id', 'username', 'password', 'email', 'first_name', 
-            'last_name', 'birth_date', 'phone_number'
+            'last_name', 'birth_date', 'phone_number', "group"
         ]
         extra_kwargs = {
             'password': {'write_only': True, 'required': False},
             'first_name': {'required': True},
             'last_name': {'required': True}
-        }
+        }\
+        
+    def getGroup(self, obj):
+        user_groups = obj.groups.values_list('name', flat=True)
+        if 'Administrator' in user_groups:
+            return 'Administrator'
+        return'User'
 
     def create(self, validated_data):
         profile_data = validated_data.pop('profile', {})

@@ -13,6 +13,8 @@ function AdminUsersBody() {
   const [editEmail, setEditEmail] = useState("");
   const [editBirthDate, setEditBirthDate] = useState("");
   const [editPhoneNumber, setEditPhoneNumber] = useState("");
+  // Estado para el rol/grupo
+  const [editRole, setEditRole] = useState("");
 
   useEffect(() => {
     async function list() {
@@ -31,8 +33,10 @@ function AdminUsersBody() {
       setEditFirstName(user.first_name);
       setEditLastName(user.last_name);
       setEditEmail(user.email);
-      setEditBirthDate(user.birth_date);
-      setEditPhoneNumber(user.phone_number);
+      setEditBirthDate(user.birth_date || "");
+      setEditPhoneNumber(user.phone_number || "");
+      // Asignar el rol (asumiendo que viene como un string o primer elemento de array)
+      setEditRole(user.role || (user.groups && user.groups[0]) || "Standard User");
     }
   };
 
@@ -43,15 +47,16 @@ function AdminUsersBody() {
       last_name: editLastName,
       email: editEmail,
       birth_date: editBirthDate,
-      phone_number: editPhoneNumber
+      phone_number: editPhoneNumber,
+      role: editRole // Asegúrate que tu backend reciba este campo
     };
-    await updateUsers(id, obj);
+    await updateUsers(obj, id); // Nota: invertí el orden si tu api espera (obj, id)
     setReload(!reload);
     setUserID(null);
   }
 
   async function handleDelete(id) {
-    if (window.confirm("CRITICAL ACTION: Are you sure you want to permanently delete this user from the registry?")) {
+    if (window.confirm("CRITICAL ACTION: Are you sure you want to permanently delete this user?")) {
       await deleteUsers(id);
       setReload(!reload);
     }
@@ -78,7 +83,8 @@ function AdminUsersBody() {
               <th>System Handle</th>
               <th>Full Identity</th>
               <th>Network Email</th>
-              <th>Comms Node</th>
+              <th>Birth Date</th> {/* Columna restaurada */}
+              <th>Access Level</th> {/* Nueva columna para Rol/Grupo */}
               <th>Control Actions</th>
             </tr>
           </thead>
@@ -94,7 +100,12 @@ function AdminUsersBody() {
                   </td>
                   <td className="identityCell">{user.first_name} {user.last_name}</td>
                   <td className="emailCell">{user.email}</td>
-                  <td className="phoneCell">{user.phone_number || "NULL_STUB"}</td>
+                  <td className="birthDateCell">{user.birth_date || "N/A"}</td>
+                  <td className="roleCell">
+                    <span className="roleBadge">
+                      {user.role || (user.groups && user.groups[0]) || "Standard"}
+                    </span>
+                  </td>
                   <td className="actionCell">
                     <button className="actionBtn editBtn" onClick={() => handleEdit(user)}>
                       {userID === user.id ? "Abort" : "Edit"}
@@ -108,33 +119,37 @@ function AdminUsersBody() {
                 {/* Inline Configuration Panel */}
                 {userID === user.id && (
                   <tr className="expansionRow">
-                    <td colSpan="5">
+                    <td colSpan="6"> {/* Aumentado colSpan a 6 */}
                       <div className="configPanel">
                         <h4 className="configPanelTitle">Modify Identity Parameters</h4>
                         <div className="configGrid">
                           <div className="inputField">
                             <label>System Username</label>
-                            <input value={editUsername} onChange={(e) => setEditUsername(e.target.value)} placeholder="e.g. admin_node_01" />
+                            <input value={editUsername} onChange={(e) => setEditUsername(e.target.value)} />
                           </div>
                           <div className="inputField">
                             <label>Given Name</label>
-                            <input value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} placeholder="First Name" />
+                            <input value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} />
                           </div>
                           <div className="inputField">
                             <label>Family Name</label>
-                            <input value={editLastName} onChange={(e) => setEditLastName(e.target.value)} placeholder="Last Name" />
+                            <input value={editLastName} onChange={(e) => setEditLastName(e.target.value)} />
                           </div>
                           <div className="inputField">
                             <label>Primary Email</label>
-                            <input value={editEmail} onChange={(e) => setEditEmail(e.target.value)} placeholder="name@telecom.com" />
+                            <input value={editEmail} onChange={(e) => setEditEmail(e.target.value)} />
                           </div>
                           <div className="inputField">
-                            <label>Registry Date</label>
+                            <label>Birth Date</label>
                             <input type="date" value={editBirthDate} onChange={(e) => setEditBirthDate(e.target.value)} />
                           </div>
                           <div className="inputField">
-                            <label>Contact Line</label>
-                            <input value={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)} placeholder="+506 0000-0000" />
+                            <label>System Group</label>
+                            <select value={editRole} onChange={(e) => setEditRole(e.target.value)}>
+                              <option value="Standard">Standard User</option>
+                              <option value="Administrator">Administrator</option>
+                              <option value="User">User</option>
+                            </select>
                           </div>
                         </div>
                         <div className="configActions">

@@ -143,7 +143,7 @@ function AdminUsersBody() {
                           </div>
                           <div className="inputField">
                             <label>System Group</label>
-                            <select value={editRole} onChange={(e) => setEditRole(e.target.value)}>
+                            <select value={editGroup} onChange={(e) => setEditGroup(e.target.value)}>
                               <option value="Standard">Standard User</option>
                               <option value="Administrator">Administrator</option>
                               <option value="User">User</option>

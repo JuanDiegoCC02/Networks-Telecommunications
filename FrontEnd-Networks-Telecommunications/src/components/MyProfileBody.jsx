@@ -82,60 +82,60 @@ function MyProfileBody() {
   }
 
   return (
-    <div>
-      <ul className='UlPerfil'>
+    <div className='FullContainerProfile'>
+      <ul className='UlProfile'>
         {myUser ? (
-          <li key={myUser.id} className='LiPerfil'>
-            <div>
-              <h2>{myUser.username}</h2>
-              <div>
-                <p>Name: {myUser.first_name} {myUser.last_name}</p>
-                <p>Email: {myUser.email}</p>
-                <p>Birth Date: {myUser.birth_date}</p>
-                <p>Phone Number: {myUser.phone_number}</p>
+          <li key={myUser.id} className='LiProfile'>
+            <div className='FullContarinerInfoProfile'>
+              <h2 className='TitleUsernameProfile'>{myUser.username}</h2>
+              <div className='ContarinerInfoProfile'>
+                <p className='FullNameProfile'>Name: {myUser.first_name} {myUser.last_name}</p>
+                <p className='EmailProfile'>Email: {myUser.email}</p>
+                <p className='BirthDateProfile'>Birth Date: {myUser.birth_date}</p>
+                <p className='PhoneNumberProfile'>Phone Number: {myUser.phone_number}</p>
               </div>
             </div>
           </li>
         ) : (
-          <p>Loading profile information...</p>
+          <p className='LoadProfileInfo'>Loading profile information...</p>
         )}
       </ul>
 
-      <button className='' onClick={handleEditClick}> 
+      <button className='EditProfileButton' onClick={handleEditClick}> 
         Edit Profile 
       </button>
 
       {openEdit && (
-        <div className='EditProfile'>
-          <h2>Edit Profile</h2>
+        <div className='FullContainerEditProfile'>
+          <h2 className='TitleEditProfile'>Edit Profile</h2>
           
-          <div>
-            <label>Username:</label>
-            <input type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>Username:</label>
+            <input className='inputEditProfile' type="text" value={editUsername} onChange={(e) => setEditUsername(e.target.value)} />
           </div>
-          <div>
-            <label>First Name:</label>
-            <input type="text" value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>First Name:</label>
+            <input className='inputEditProfile' type="text" value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} />
           </div>
-          <div>
-            <label>Last Name:</label>
-            <input type="text" value={editLastName} onChange={(e) => setEditLastName(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>Last Name:</label>
+            <input className='inputEditProfile'  type="text" value={editLastName} onChange={(e) => setEditLastName(e.target.value)} />
           </div>
-          <div>
-            <label>Email:</label>
-            <input type="email" value={editEmail} onChange={(e) => setEditEmail(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>Email:</label>
+            <input className='inputEditProfile' type="email" value={editEmail} onChange={(e) => setEditEmail(e.target.value)} />
           </div>
-          <div>
-            <label>Birth Date:</label>
-            <input type="date" value={editBirthDate} onChange={(e) => setEditBirthDate(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>Birth Date:</label>
+            <input className='inputEditProfile' type="date" value={editBirthDate} onChange={(e) => setEditBirthDate(e.target.value)} />
           </div>
-          <div>
-            <label>Phone Number:</label>
-            <input type="tel" value={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)} />
+          <div className='ContainerSecondEditProfile'>
+            <label className='labelEditProfile'>Phone Number:</label>
+            <input className='inputEditProfile'  type="tel" value={editPhoneNumber} onChange={(e) => setEditPhoneNumber(e.target.value)} />
           </div>
           
-          <button onClick={() => Edit(myUser.id)}>Save Changes</button>
-          <button onClick={() => setOpenEdit(false)}>Cancel</button>
+          <button className='SaveChangesButton' onClick={() => Edit(myUser.id)}>Save Changes</button>
+          <button className='CancelButton' onClick={() => setOpenEdit(false)}>Cancel</button>
         </div>
       )}
     </div>

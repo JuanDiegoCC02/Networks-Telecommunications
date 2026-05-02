@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers, updateUsers } from '../services/usersApi';
+import '../styles/MyProfileBody.css';
 
 function MyProfileBody() {
   // helper function to read cookies directly from the browser

@@ -1,0 +1,197 @@
+/* root styles myProfileBody*/
+:root {
+  --neon-cyan: #00d4ff;
+  --neon-glow: rgba(0, 212, 255, 0.4);
+  --deep-space: #020617;
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --tech-border: rgba(0, 212, 255, 0.15);
+  --font-main: 'Inter', system-ui, sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+}
+
+.FullContainerProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  min-height: 100vh;
+  background-color: var(--deep-space);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 70%),
+    linear-gradient(rgba(0, 212, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.01) 1px, transparent 1px);
+  background-size: 100% 100%, 30px 30px, 30px 30px;
+}
+
+.UlProfile {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 550px;
+  perspective: 1000px; 
+}
+
+.LiProfile {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--tech-border);
+  border-radius: 12px;
+  padding: 45px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.LiProfile:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.TitleUsernameProfile {
+  font-family: var(--font-code);
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 35px;
+  text-align: center;
+  text-shadow: 0 0 15px var(--neon-glow);
+  letter-spacing: -2px;
+}
+
+.ContarinerInfoProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ContarinerInfoProfile p {
+  position: relative;
+  margin: 0;
+  padding: 18px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: default;
+}
+
+.ContarinerInfoProfile p:hover {
+  background: rgba(0, 212, 255, 0.05);
+  border-color: var(--neon-cyan);
+  color: #fff;
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.ContarinerInfoProfile p::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--neon-cyan);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.ContarinerInfoProfile p:hover::after {
+  transform: scaleY(1);
+}
+
+/* bttn principal */
+.EditProfileButton {
+  margin-top: 30px;
+  background: linear-gradient(45deg, var(--neon-cyan), #2563eb);
+  color: #fff;
+  border: none;
+  padding: 15px 45px;
+  border-radius: 6px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  transition: 0.3s;
+}
+
+.EditProfileButton:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 25px var(--neon-glow);
+  letter-spacing: 3px;
+}
+
+/*  edit panel */
+.FullContainerEditProfile {
+  margin-top: 50px;
+  background: #0f172a;
+  border: 1px solid var(--neon-cyan);
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+  animation: scanLine 0.5s ease-out forwards;
+}
+
+@keyframes scanLine {
+  0% { clip-path: inset(0 0 100% 0); opacity: 0; }
+  100% { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.labelEditProfile {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--neon-cyan);
+  margin-bottom: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.inputEditProfile {
+  width: 100%;
+  background: #020617;
+  border: 1px solid #334155;
+  padding: 14px;
+  color: #fff;
+  font-family: var(--font-code);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.inputEditProfile:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  background: rgba(0, 212, 255, 0.05);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+}
+
+/*  bttns styles */
+.SaveChangesButton {
+  background: var(--neon-cyan);
+  color: #000;
+  border: none;
+  padding: 15px 30px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.CancelButton {
+  background: transparent;
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  padding: 15px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+}

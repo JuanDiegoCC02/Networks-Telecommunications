@@ -96,7 +96,7 @@ class ProfileDetailSerializer(serializers.ModelSerializer):
             "email": obj.user.email,
             "full_name": f"{obj.user.first_name} {obj.user.last_name}"
         }
-
+ 
 # Serializer for Camera
 class CameraSerializer(serializers.ModelSerializer):
     class Meta:

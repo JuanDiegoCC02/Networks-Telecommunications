@@ -2,14 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { getUsers, updateUsers } from '../services/usersApi';
 
 function MyProfileBody() {
-  // get the ID from cookies 
-  const userId = Number(CookieStore.getItem('userID'));
+  // helper function to read cookies directly from the browser
+  const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
+  // get the Id from your login cookie
+  const userId = Number(getCookie('id'));
   
   const [myUser, setMyUser] = useState(null);
   const [reload, setReload] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
 
-  // states for editing
+  //  states for the editing form
   const [editUsername, setEditUsername] = useState('');
   const [editFirstName, setEditFirstName] = useState('');
   const [editLastName, setEditLastName] = useState('');
@@ -19,31 +27,38 @@ function MyProfileBody() {
 
   useEffect(() => {
     async function requestUser() {
-      if (!userId) return;
+      // logic: only proceed if userId exists in cookies
+      if (!userId) {
+        console.warn("User ID not found in cookies. Make sure you are logged in.");
+        return;
+      }
+
       try {
         const data_users = await getUsers(`api/usersGet/`);
         
+        // find the specific user that matches the Id from the cookie
         const info_user = data_users.find(u => u.id === userId);
         
-        setMyUser(info_user);
-        console.log("My User Info:", info_user);
+        if (info_user) {
+          setMyUser(info_user);
+          console.log("Profile loaded for user:", info_user.username);
+        }
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching user data from API:", error);
       }
     }
     requestUser();
   }, [reload, userId]);
 
-  // function to populate form fields and open modal
   const handleEditClick = () => {
     if (myUser) {
       setOpenEdit(true);
-      setEditUsername(myUser.username);
-      setEditFirstName(myUser.first_name);
-      setEditLastName(myUser.last_name);
-      setEditEmail(myUser.email);
-      setEditBirthDate(myUser.birth_date);
-      setEditPhoneNumber(myUser.phone_number);
+      setEditUsername(myUser.username || '');
+      setEditFirstName(myUser.first_name || '');
+      setEditLastName(myUser.last_name || '');
+      setEditEmail(myUser.email || '');
+      setEditBirthDate(myUser.birth_date || '');
+      setEditPhoneNumber(myUser.phone_number || '');
     }
   };
 
@@ -62,7 +77,7 @@ function MyProfileBody() {
       setReload(!reload); 
       setOpenEdit(false);
     } catch (error) {
-      console.error("Error updating user:", error);
+      console.error("Error updating user info:", error);
     }
   }
 
@@ -82,11 +97,10 @@ function MyProfileBody() {
             </div>
           </li>
         ) : (
-          <p>Loading profile...</p>
+          <p>Loading profile information...</p>
         )}
       </ul>
 
-      {/* bttn to show edit profile section */}
       <button className='' onClick={handleEditClick}> 
         Edit Profile 
       </button>

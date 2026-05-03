@@ -11,7 +11,11 @@ function ContactUsBody() {
     </div>
 
     <div>
-      <span>Story</span>
+      <span>Objectives</span>
+    </div>
+    
+    <div>
+      <span>Goals</span>
     </div>
 
     <div>
@@ -22,7 +26,7 @@ function ContactUsBody() {
     </div>
 
      <div>
-      <span>Contact Information</span>
+      <span>Redes de Telecomunicaciones <br /> Todos los derechos reservados.</span>
     </div>
 
     </div>

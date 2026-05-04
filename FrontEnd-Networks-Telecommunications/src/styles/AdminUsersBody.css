@@ -17,13 +17,13 @@
 .mainTitle {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #f8fafc;
+  color: #c7efff;
   text-transform: uppercase;
   letter-spacing: -1px;
 }
 
 .subTitle {
-  color: #64748b;
+  color: #dddddd;
   font-size: 0.95rem;
   margin-top: 5px;
 }
@@ -58,7 +58,7 @@
 
 /* --- DATA TABLE --- */
 .registryTableContainer {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
@@ -70,11 +70,11 @@
 }
 
 .registryTable th {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(2, 0, 8, 0.856);
   padding: 20px;
   text-align: left;
   font-size: 0.7rem;
-  color: #00d4ff;
+  color: #cac6ff;
   text-transform: uppercase;
   letter-spacing: 2px;
   border-bottom: 2px solid rgba(0, 212, 255, 0.1);
@@ -88,11 +88,11 @@
 }
 
 .registryRow:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(4, 9, 37, 0.788);
 }
 
 .registryRow.isEditing {
-  background: rgba(0, 212, 255, 0.03);
+  background: rgba(4, 9, 37, 0.788);
 }
 
 /* --- CELL STYLES --- */

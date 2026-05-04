@@ -1,4 +1,4 @@
-/* root styles myProfileBody*/
+/* root styles myprofilebody */
 :root {
   --neon-cyan: #00d4ff;
   --neon-glow: rgba(0, 212, 255, 0.4);
@@ -9,6 +9,7 @@
   --font-code: 'JetBrains Mono', monospace;
 }
 
+/* background setup */
 .FullContainerProfile {
   display: flex;
   flex-direction: column;
@@ -16,9 +17,9 @@
   justify-content: center;
   padding: 80px 20px;
   min-height: 100vh;
-
 }
 
+/* profile list wrapper */
 .UlProfile {
   list-style: none;
   padding: 0;
@@ -27,6 +28,7 @@
   perspective: 1000px; 
 }
 
+/* profile card main style */
 .LiProfile {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
@@ -38,11 +40,13 @@
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* card hover effect */
 .LiProfile:hover {
   transform: translateY(-5px);
   border-color: rgba(0, 212, 255, 0.3);
 }
 
+/* username header */
 .TitleUsernameProfile {
   font-family: var(--font-code);
   font-size: 2.2rem;
@@ -53,12 +57,14 @@
   letter-spacing: -2px;
 }
 
+/* info container list */
 .ContarinerInfoProfile {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* user info data rows */
 .ContarinerInfoProfile p {
   position: relative;
   margin: 0;
@@ -74,6 +80,7 @@
   cursor: default;
 }
 
+/* data row hover state */
 .ContarinerInfoProfile p:hover {
   background: rgba(0, 212, 255, 0.05);
   border-color: var(--neon-cyan);
@@ -82,6 +89,7 @@
   box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
 }
 
+/* high tech hover line */
 .ContarinerInfoProfile p::after {
   content: '';
   position: absolute;
@@ -121,17 +129,49 @@
   letter-spacing: 3px;
 }
 
-/*  edit panel */
+/* modal overlay */
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 13, 22, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* edit panel */
 .FullContainerEditProfile {
-  margin-top: 50px;
-  background: #131f3b;
+  background: #00203bb0;
   border: 1px solid var(--neon-cyan);
   padding: 40px;
   border-radius: 12px;
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
   animation: scanLine 0.5s ease-out forwards;
+}
+
+/* modal form grid */
+.ModalGridInputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* modal footer actions */
+.ModalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  padding-top: 25px;
 }
 
 @keyframes scanLine {
@@ -139,6 +179,7 @@
   100% { clip-path: inset(0 0 0 0); opacity: 1; }
 }
 
+/* form labels */
 .labelEditProfile {
   display: block;
   font-size: 0.7rem;
@@ -149,6 +190,7 @@
   letter-spacing: 1px;
 }
 
+/* form inputs */
 .inputEditProfile {
   width: 100%;
   background: #020617;
@@ -157,10 +199,10 @@
   color: #fff;
   font-family: var(--font-code);
   border-radius: 6px;
-  margin-bottom: 20px;
   transition: 0.3s;
 }
 
+/* input focus state */
 .inputEditProfile:focus {
   outline: none;
   border-color: var(--neon-cyan);
@@ -168,7 +210,7 @@
   box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
 }
 
-/*  bttns styles */
+/* bttns styles */
 .SaveChangesButton {
   background: rgb(34, 83, 124);
   color: #76cee4;
@@ -178,7 +220,6 @@
   text-transform: uppercase;
   border-radius: 4px;
   cursor: pointer;
-  margin-right: 15px;
 }
 
 .CancelButton {
@@ -189,4 +230,4 @@
   border-radius: 4px;
   cursor: pointer;
   text-transform: uppercase;
-}
+} 

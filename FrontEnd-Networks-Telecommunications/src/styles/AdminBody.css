@@ -10,7 +10,6 @@
 }
 
 .adminBodyContainer {
-  background: var(--bg-dark);
   min-height: 100vh;
   padding-bottom: 50px;
   font-family: 'Inter', sans-serif;
@@ -30,7 +29,7 @@
   letter-spacing: -0.02em;
 }
 
-/* --- SECCIÓN DEL MAPA --- */
+/* map section */
 .adminMapSection {
   margin-bottom: 40px;
   box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
@@ -38,7 +37,7 @@
   overflow: hidden;
 }
 
-/* --- BARRA DE BÚSQUEDA Y FILTROS --- */
+/* search and filters */
 .adminBdNavFull {
   display: flex;
   gap: 15px;
@@ -58,7 +57,7 @@
 .adminBdSearch { flex-grow: 1; }
 .adminBdSearch:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1); }
 
-/* --- GRID DE TARJETAS (CÁMARAS Y ROUTERS) --- */
+/* grid container cameras and routers */
 .adminBdContainerCamerasFull, .adminBdContainerRoutersFull {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -77,7 +76,7 @@
 
 .adminBdContainerCameraOwn:hover { transform: translateY(-5px); }
 
-/* HEADER DE TARJETA */
+/* card header */
 .adminBdHeaderCamera, .adminBdHeaderRouter {
   padding: 15px 20px;
   background: #f8fafc;
@@ -98,7 +97,7 @@
   text-transform: uppercase;
 }
 
-/* CUERPO DE TARJETA */
+/* card body */
 .adminBdMainCamera, .adminBdMainRouter {
   padding: 20px;
   flex-grow: 1;
@@ -121,7 +120,7 @@
   margin: 5px 0;
 }
 
-/* FOOTER DE TARJETA */
+/* footer card  */
 .adminBdFooterCamera, .adminBdFooterRouter {
   padding: 15px 20px;
   display: flex;
@@ -149,7 +148,7 @@
   cursor: pointer;
 }
 
-/* --- MODAL DE EDICIÓN --- */
+/* edit modal */
 .adminBdModalEditFull {
   position: fixed;
   top: 0; left: 0;

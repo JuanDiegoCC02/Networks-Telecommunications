@@ -16,12 +16,7 @@
   justify-content: center;
   padding: 80px 20px;
   min-height: 100vh;
-  background-color: var(--deep-space);
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.03) 0%, transparent 70%),
-    linear-gradient(rgba(0, 212, 255, 0.01) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.01) 1px, transparent 1px);
-  background-size: 100% 100%, 30px 30px, 30px 30px;
+
 }
 
 .UlProfile {
@@ -106,8 +101,8 @@
 /* bttn principal */
 .EditProfileButton {
   margin-top: 30px;
-  background: linear-gradient(45deg, var(--neon-cyan), #2563eb);
-  color: #fff;
+  background: linear-gradient(5deg, var(--neon-cyan), #013350);
+  color: #ffffff;
   border: none;
   padding: 15px 45px;
   border-radius: 6px;
@@ -116,20 +111,20 @@
   font-size: 0.85rem;
   letter-spacing: 2px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 15px rgba(46, 112, 255, 0.514);
   transition: 0.3s;
 }
 
 .EditProfileButton:hover {
-  filter: brightness(1.2);
-  box-shadow: 0 0 25px var(--neon-glow);
+  filter: brightness(1.0);
+  box-shadow: 0 0 10px var(--neon-glow);
   letter-spacing: 3px;
 }
 
 /*  edit panel */
 .FullContainerEditProfile {
   margin-top: 50px;
-  background: #0f172a;
+  background: #131f3b;
   border: 1px solid var(--neon-cyan);
   padding: 40px;
   border-radius: 12px;
@@ -175,8 +170,8 @@
 
 /*  bttns styles */
 .SaveChangesButton {
-  background: var(--neon-cyan);
-  color: #000;
+  background: rgb(34, 83, 124);
+  color: #76cee4;
   border: none;
   padding: 15px 30px;
   font-weight: 900;
@@ -188,7 +183,7 @@
 
 .CancelButton {
   background: transparent;
-  color: #f87171;
+  color: #fa2626;
   border: 1px solid rgba(248, 113, 113, 0.3);
   padding: 15px 30px;
   border-radius: 4px;

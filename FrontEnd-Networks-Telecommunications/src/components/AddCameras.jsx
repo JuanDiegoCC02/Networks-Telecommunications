@@ -88,12 +88,12 @@ function AddCameras() {
     <div className='addCamerasContainerFull'>
 
       <div className='addCamerasContainerTitle'>
-        <h3 className='addCamerasTitle'>Add New Camera Connection</h3>
+        <h3 className='addCamerasTitle'>Add New Cameras Connection</h3>
       </div>
 
       <div className='addCamerasFormFull'>
         <div className='addCamerasContainerTitleForm'>
-         <h4 className='addCamerasTitleForm'>Camera Connection</h4>
+         <h4 className='addCamerasTitleForm'>Cameras Connection</h4>
         </div>
 
         <div className='addCamerasContainerForm'>

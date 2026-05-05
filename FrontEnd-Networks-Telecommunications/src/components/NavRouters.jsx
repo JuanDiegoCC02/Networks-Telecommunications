@@ -10,7 +10,7 @@ export default function NavRouters({ view, setView }) {
           className={`adminNavLi ${view === 'add' ? 'active' : ''}`} 
           onClick={() => setView("add")}
         >
-          <span className="navIcon">➕</span>
+          <span className="navIcon">📝</span>
           <span className="navLabel">Add Routers</span>
           {view === "add" && <div className="activeIndicator" />}
         </li>
@@ -19,7 +19,7 @@ export default function NavRouters({ view, setView }) {
           className={`adminNavLi ${view === 'visualizer' ? 'active' : ''}`} 
           onClick={() => setView("visualizer")}
         >
-          <span className="navIcon">🔍</span>
+          <span className="navIcon">🔎</span>
           <span className="navLabel">Routers Visualizer</span>
           {view === "visualizer" && <div className="activeIndicator" />}
         </li>

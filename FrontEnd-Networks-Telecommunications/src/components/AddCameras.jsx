@@ -150,7 +150,7 @@ function AddCameras() {
 
 
         <div className='addCamerasContainerBttn'>
-          <button className='addCamerasBttnCreate' onClick={create} value="Create">Add Camera</button>
+          <button className='addCamerasBttnCreate' onClick={create} value="Create">Add Camera Connection</button>
         </div>
 
       </div>

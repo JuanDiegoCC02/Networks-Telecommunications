@@ -1,4 +1,4 @@
-/* --- Enterprise Industrial Camera Style --- */
+/* --- Enterprise Industrial Style - CAMERAS --- */
 :root {
   --bg-deep: #000000;
   --panel-bg: #09090b;       
@@ -13,7 +13,7 @@
 .addCamerasContainerFull {
   min-height: 100vh;
   padding: 80px 24px;
-  background-position: center;
+  background-color: var(--bg-deep);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,6 @@
   width: 100%;
   max-width: 900px;
   text-align: center;
-  margin-bottom: 40px;
 }
 
 .addCamerasTitle {
@@ -35,12 +34,13 @@
   letter-spacing: -0.05em;
 }
 
-/* Subtítulo dinámico vía CSS */
 .addCamerasContainerTitle::after {
   content: "Register and link new high-definition imaging units to the security grid.";
   display: block;
   color: var(--text-secondary);
   font-size: 1rem;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .addCamerasFormFull {
@@ -70,7 +70,6 @@
   letter-spacing: 0.05em;
 }
 
-/* Grupos de Input */
 .addCamerasContainerForm {
   display: flex;
   flex-direction: column;
@@ -84,7 +83,6 @@
   margin-bottom: 4px;
 }
 
-/* Inputs y Selects */
 .addCamerasInputForm, 
 .addCamerasSelectLocation, 
 .addCamerasSelectStatus {
@@ -102,15 +100,12 @@
   border-color: #3f3f46;
 }
 
-.addCamerasInputForm:focus,
-.addCamerasSelectLocation:focus,
-.addCamerasSelectStatus:focus {
+.addCamerasInputForm:focus {
   outline: none;
   border-color: var(--accent-primary);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
-/* Sección de Geolocalización / Map */
 .addCamerasContainerForm:has(.AddGeolocationRouter),
 .addCamerasContainerForm.geo-section {
   grid-column: 1 / -1;
@@ -118,11 +113,8 @@
   border: 1px solid var(--border-subtle);
   padding: 32px;
   border-radius: 8px;
-  margin-top: 10px;
 }
 
-/* Estilo para las coordenadas */
-.coordinates-display, 
 .addCamerasContainerForm p {
   font-family: ui-monospace, 'SFMono-Regular', monospace;
   color: var(--success);
@@ -135,11 +127,10 @@
   border: 1px solid rgba(34, 197, 94, 0.2);
 }
 
-/* Botón de Acción Principal (Invertido) */
 .addCamerasContainerBttn {
-  grid-column: 1 / -1;
   margin-top: 32px;
   width: 100%;
+  max-width: 900px;
 }
 
 .addCamerasBttnCreate {
@@ -147,13 +138,14 @@
   background: var(--text-primary); 
   color: var(--bg-deep);
   border: 1px solid var(--text-primary);
-  padding: 16px;
+  padding: 14px;
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
   transition: all 0.2s ease;
   letter-spacing: 0.025em;
+  text-transform: uppercase;
 }
 
 .addCamerasBttnCreate:hover {
@@ -161,18 +153,9 @@
   color: var(--text-primary);
 }
 
-.addCamerasBttnCreate:active {
-  transform: scale(0.98);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   .addCamerasFormFull {
     grid-template-columns: 1fr;
     padding: 24px;
-  }
-  
-  .addCamerasTitle {
-    font-size: 1.75rem;
   }
 }

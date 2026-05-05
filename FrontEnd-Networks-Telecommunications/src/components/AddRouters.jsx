@@ -166,14 +166,14 @@ function AddRouters() {
             <p>Longitude: {longitude}</p>
           </div>
 
-       
-
-        </div>
-
         <div className='addRoutersContainerBtn'>
-          <button className='addRoutersBtn' value="create" onClick={create}>Add Router</button>
+          <button className='addRoutersBtn' value="create" onClick={create}>Add Router Connection</button>
         </div>
 
+
+        </div>
+
+    
     </div>
   )
 }

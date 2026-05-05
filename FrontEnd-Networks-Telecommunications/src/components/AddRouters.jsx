@@ -149,14 +149,6 @@ function AddRouters() {
             </select>
           </div>
 
-          <div className='addRoutersContainerForm'>
-            <label>Select the Camera Direction</label>
-            <AddGeolocationRouter setCoords={handleCoords} />
-  
-            <p>Latitude: {latitude}</p>
-            <p>Longitude: {longitude}</p>
-          </div>
-
           <div>
             <label className='addRoutersLabelForm' htmlFor="">Status</label>
             <select className='addRoutersSelectStatus' name="" id="" value={routerStatus} onChange={status}>
@@ -165,6 +157,16 @@ function AddRouters() {
               <option className='addRoutersOptionSelect' value="Inactive">Inactive</option>
             </select>
           </div>
+
+          <div className='addRoutersContainerForm'>
+            <label>Select the Camera Direction</label>
+            <AddGeolocationRouter setCoords={handleCoords} />
+  
+            <p>Latitude: {latitude}</p>
+            <p>Longitude: {longitude}</p>
+          </div>
+
+       
 
         </div>
 

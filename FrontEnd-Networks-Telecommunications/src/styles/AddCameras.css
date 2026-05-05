@@ -1,189 +1,205 @@
+/* --- Enterprise Network Manager Style --- */
 :root {
-  --brand-primary: #2563eb;
-  --brand-primary-dark: #1d4ed8;
-  --surface-bg: #f8fafc;
-  --surface-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  --input-bg: #ffffff;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
-  --radius: 8px;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: rgba(79, 70, 229, 0.1);
+  --bg-main: #f1f5f9; /* Fondo un poco más profundo para resaltar el card */
+  --text-dark: #0f172a; /* Slate 900 para mejor legibilidad */
+  --text-muted: #475569; /* Slate 600 */
+  --border: #e2e8f0;
+  --border-focus: #cbd5e1;
+  --white: #ffffff;
+  --radius-lg: 16px; /* Bordes más modernos */
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 }
 
-.camera-manager {
-  min-height: 100vh;
-  background-color: var(--surface-bg);
-  padding: 3rem 1.5rem;
+/* Contenedor Principal */
+.addCamerasContainerFull {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Inter', system-ui, sans-serif;
+  padding: 60px 24px;
+  background-color: var(--bg-main);
+  background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px); /* Micro-patrón de fondo profesional */
+  background-size: 24px 24px;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, sans-serif;
 }
 
-.camera-manager__header {
+/* Cabecera del Módulo */
+.addCamerasContainerTitle {
   width: 100%;
-  max-width: 800px;
-  margin-bottom: 2rem;
+  max-width: 680px;
+  margin-bottom: 32px;
+  text-align: left;
 }
 
-.camera-manager__title {
+.addCamerasTitle {
   font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin: 0;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.025em;
 }
 
-.camera-manager__subtitle {
-  color: var(--text-muted);
-  margin-top: 0.5rem;
-}
-
-/* Estructura del Formulario */
-.camera-form {
-  width: 100%;
-  max-width: 800px;
-  background: var(--surface-card);
-  border-radius: var(--radius);
+/* El Card del Formulario */
+.addCamerasFormFull {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-color);
-  overflow: hidden;
+  width: 100%;
+  max-width: 680px;
+  backdrop-filter: blur(8px);
 }
 
-.camera-form__section {
-  padding: 2rem;
-  border-bottom: 1px solid var(--border-color);
+/* Título interno del formulario */
+.addCamerasContainerTitleForm {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.camera-form__section-title {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 1.5rem;
+.addCamerasTitleForm {
+  color: var(--primary);
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  background: var(--primary-light);
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
-.camera-form__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-
-/* Campos del Formulario */
-.camera-form__group {
+/* Grupos de Input */
+.addCamerasContainerForm {
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
-.camera-form__group--full {
-  grid-column: span 2;
-}
-
-.camera-form__label {
+.addCamerasLabelForm {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-.camera-form__input,
-.camera-form__select,
-.camera-form__textarea {
-  padding: 0.625rem 0.875rem;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  background-color: var(--input-bg);
-}
-
-.camera-form__textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.camera-form__input:focus,
-.camera-form__select:focus {
-  outline: none;
-  border-color: var(--brand-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-/* Sección Geo */
-.camera-form__geo {
-  background-color: #f1f5f9;
-  padding: 1rem;
-  border-radius: var(--radius);
-}
-
-.camera-form__coords {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.camera-form__coord-tag {
-  background: #fff;
-  padding: 0.25rem 0.75rem;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  border: 1px solid var(--border-color);
-  color: var(--brand-primary);
-}
-
-/* Footer y Botones */
-.camera-form__footer {
-  padding: 1.25rem 2rem;
-  background-color: #f8fafc;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.camera-form__btn {
-  padding: 0.625rem 1.25rem;
-  border-radius: 6px;
   font-weight: 600;
-  font-size: 0.875rem;
+  color: var(--text-dark);
+  margin-left: 2px;
+}
+
+/* Inputs, Selects y Textareas */
+.addCamerasInputForm, 
+.addCamerasSelectLocation, 
+.addCamerasSelectStatus {
+  padding: 12px 16px;
+  border: 1.5px solid var(--border); /* Borde un poco más grueso para look robusto */
+  border-radius: var(--radius-md);
+  background-color: var(--white);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: all 0.2s ease-in-out;
+}
+
+.addCamerasInputForm:hover, 
+.addCamerasSelectLocation:hover {
+  border-color: var(--border-focus);
+}
+
+.addCamerasInputForm:focus, 
+.addCamerasSelectLocation:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-light);
+  background-color: #fff;
+}
+
+/* Sección de Geolocalización (Refinada) */
+.addCamerasContainerForm.geo-section {
+  background-color: #f8fafc;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin: 32px 0;
+  position: relative;
+}
+
+.addCamerasContainerForm.geo-section::before {
+  content: "Network Map Interface";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: var(--white);
+  padding: 0 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.coordinates-display {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.coordinates-display p, 
+.coordinates-display span {
+  background: var(--white);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Botón de Acción Principal */
+.addCamerasContainerBttn {
+  margin-top: 40px;
+}
+
+.addCamerasBttnCreate {
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s;
-  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
-.camera-form__btn--primary {
-  background-color: var(--brand-primary);
-  color: white;
+.addCamerasBttnCreate:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2);
+  transform: translateY(-2px);
 }
 
-.camera-form__btn--primary:hover {
-  background-color: var(--brand-primary-dark);
+.addCamerasBttnCreate:active {
+  transform: translateY(0px);
 }
 
-.camera-form__btn--secondary {
-  background-color: white;
-  border-color: var(--border-color);
-  color: var(--text-main);
-}
-
-.camera-form__btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Responsividad */
-@media (max-width: 640px) {
-  .camera-form__grid {
+/* Responsive */
+@media (max-width: 768px) {
+  .addCamerasFormFull {
+    padding: 24px;
+  }
+  .addCamerasTitle {
+    font-size: 1.5rem;
+  }
+  .coordinates-display {
     grid-template-columns: 1fr;
-  }
-  
-  .camera-form__group--full {
-    grid-column: span 1;
-  }
-  
-  .camera-manager {
-    padding: 1rem;
   }
 }

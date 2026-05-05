@@ -1,150 +1,150 @@
 :root {
-  --bg-dark: #0a0c10;
-  --card-bg: #ffffff;
-  --accent: #2563eb;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-ui: #f1f5f9;
-  --shadow-pro: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Paleta Técnica Pro */
+  --bg-deep: #000000;
+  --panel-bg: #09090b;       
+  --accent-primary: #ffffff; 
+  --border-subtle: #27272a;  
+  --input-field: #09090b;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --success: #22c55e;
 }
 
 .addRoutersContainerFull {
-  padding: 60px 20px;
-  background: var(--bg-dark);
-  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
-  background-size: 32px 32px;
   min-height: 100vh;
+  padding: 80px 24px;
+
+  background-position: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Geist', 'Inter', system-ui, sans-serif;
 }
 
 .addRoutersTitle {
-  color: #fff;
-  font-size: 2.2rem;
-  font-weight: 800;
-  margin-bottom: 2.5rem;
-  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.05em;
+}
+
+.addRoutersContainerTitle::after {
+  content: "Configure and deploy new network nodes to your infrastructure.";
+  display: block;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 40px;
   text-align: center;
 }
 
-/* form routers full */
 .addRoutersFormFull {
-  background: var(--card-bg);
+  background: var(--panel-bg);
   width: 100%;
-  max-width: 800px;
-  padding: 45px;
-  border-radius: 24px;
-  box-shadow: var(--shadow-pro);
+  max-width: 900px;
+  padding: 40px;
+  border-radius: 12px; 
+  border: 1px solid var(--border-subtle);
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .addRoutersContainerTitleForm {
-  grid-column: 1 / -1; 
-  border-bottom: 1px solid var(--border-ui);
-  padding-bottom: 15px;
-  margin-bottom: 10px;
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
 }
 
 .addRoutersTitleForm {
-  color: var(--text-main);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-/* update div */
-.addRoutersContainerForm, .addRoutersFormFull > div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.addRoutersLabelForm {
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: var(--text-muted);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
+/* Inputs y Selects Estilo Monolítico */
 .addRoutersInputForm, 
 .addRoutersSelectLocation, 
 .addRoutersSelectStatus {
-  padding: 14px 18px;
-  border: 1px solid var(--border-ui);
-  border-radius: 12px;
-  font-size: 0.95rem;
-  background: #f8fafc;
+  background: var(--input-field);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
   transition: all 0.2s ease;
-  color: var(--text-main);
 }
 
-.addRoutersInputForm:focus, 
-.addRoutersSelectLocation:focus, 
-.addRoutersSelectStatus:focus {
-  background: #ffffff;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+.addRoutersInputForm:hover,
+.addRoutersSelectLocation:hover {
+  border-color: #3f3f46;
+}
+
+.addRoutersInputForm:focus {
   outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
-/* geolocation content */
-.addRoutersContainerForm:has(.AddGeolocationRouter), 
-.addRoutersContainerForm:nth-last-child(2) {
-  grid-column: 1 / -1; 
-  background: #f1f5f9;
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 10px;
+.addRoutersLabelForm {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* Geolocation - Aspecto de Módulo Independiente */
+.addRoutersContainerForm:has(.AddGeolocationRouter) {
+  grid-column: 1 / -1;
+  background: #000;
+  border: 1px solid var(--border-subtle);
+  padding: 32px;
+  border-radius: 8px;
 }
 
 .addRoutersContainerForm p {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85rem;
-  color: var(--accent);
-  margin: 5px 0 0 0;
-  font-weight: 600;
+  font-family: ui-monospace, 'SFMono-Regular', monospace;
+  color: var(--success);
+  font-size: 0.8rem;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-top: 12px;
 }
 
-/* btn action config */
+/* Botón de Acción Principal */
 .addRoutersContainerBtn {
-  grid-column: 1 / -1;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  margin-top: 32px;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .addRoutersBtn {
-  background: var(--text-main);
-  color: #ffffff;
-  border: none;
-  padding: 18px 60px;
-  border-radius: 14px;
-  font-weight: 700;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   width: 100%;
+  background: var(--text-primary); 
+  color: var(--bg-deep);
+  border: 1px solid var(--text-primary);
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .addRoutersBtn:hover {
-  background: #000;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: var(--text-primary);
 }
 
-/*  responsive  */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 768px) {
   .addRoutersFormFull {
     grid-template-columns: 1fr;
-    padding: 25px;
+    padding: 24px;
   }
 }

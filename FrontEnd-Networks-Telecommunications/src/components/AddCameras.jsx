@@ -131,14 +131,6 @@ function AddCameras() {
         </div> 
 
         <div className='addCamerasContainerForm'>
-          <label>Select the Camera Direction</label>
-          <AddGeolocationCamera setCoords={handleCoords} />
-
-          <p>Latitude: {latitude}</p>
-          <p>Longitude: {longitude}</p>
-        </div>
-              
-        <div className='addCamerasContainerForm'>
           <label className='addCamerasLabelForm' htmlFor=""> Camera Status </label>
           <select  className='addCamerasSelectStatus' value={cameraStatus} onChange={status} name="" id="">
             <option className='addCamerasOptionStatus' value="">Select Status</option>
@@ -146,6 +138,16 @@ function AddCameras() {
             <option className='addCamerasOptionStatus' value="Inactive">Inactive</option>
           </select>
         </div>
+
+        <div className='addCamerasContainerForm'>
+          <label>Select the Camera Direction</label>
+          <AddGeolocationCamera setCoords={handleCoords} />
+
+          <p>Latitude: {latitude}</p>
+          <p>Longitude: {longitude}</p>
+        </div>
+              
+
 
         <div className='addCamerasContainerBttn'>
           <button className='addCamerasBttnCreate' onClick={create} value="Create">Add Camera</button>

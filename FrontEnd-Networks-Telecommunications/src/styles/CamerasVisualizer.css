@@ -1,162 +1,185 @@
-/* --- CAMERAS VISUALIZER: HIGH-CONTRAST PROFESSIONAL OLED --- */
+/* --- CAMERAS VISUALIZER: INFRASTRUCTURE DARK EDITION (MATCHED) --- */
 
 :root {
-  --bg-dark-absolute: #000000;
-  --bg-card-surface: #0a0a0a;
-  --bg-input-deep: #050505;
-  --accent-blue: #3b82f6;
-  --accent-cyan: #22d3ee;
-  --border-subtle: #1f1f23;
-  --text-white: #ffffff;
-  --text-dim: #94a3b8;
+  --bg-absolute: #000000;       
+  --bg-panel: #050505;          
+  --bg-input: #0a0a0a;          
+  --accent-camera: #3b82f6;     
+  --accent-location: #22d3ee;   
+  --border-dim: #161616;        
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;    
   --danger: #ef4444;
 }
 
+
 .cVisualizerContainerFull {
-  background-color: var(--bg-dark-absolute);
+  background-color: var(--bg-absolute);
   min-height: 100vh;
-  padding: 40px 20px;
-  font-family: 'Inter', system-ui, sans-serif;
-  color: var(--text-white);
+  padding: 50px 30px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
 }
 
 .cVizualizerTitle {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 30px;
-  color: var(--text-white);
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
 }
 
-/* --- FILTROS --- */
+/* nav */
 .cVisualizerNavFull {
   display: flex;
   gap: 12px;
-  background: var(--bg-card-surface);
-  padding: 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border-subtle);
-  margin-bottom: 40px;
+  justify-content: center;
+  margin-bottom: 50px;
+  background: var(--bg-panel);
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dim);
 }
 
 .cVisualizerSearch, 
 .cVisualizerSelectSearch {
-  background: var(--bg-input-deep);
-  border: 1px solid var(--border-subtle);
-  color: white;
-  padding: 10px 14px;
-  border-radius: 8px;
+  background: var(--bg-absolute);
+  border: 1px solid var(--border-dim);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   outline: none;
-  font-size: 0.9rem;
+  transition: border-color 0.3s;
 }
 
-.cVisualizerSearch { flex-grow: 1; }
+.cVisualizerSearch:focus {
+  border-color: var(--accent-camera);
+}
 
-/* --- GRID Y CARDS --- */
+/* grid structure */
 .cVizualizerContainerCamerasFull {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .cVisualizerContainerCameraOwn {
-  background: var(--bg-card-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease;
 }
 
+.cVisualizerContainerCameraOwn:hover {
+  transform: translateY(-5px);
+  border-color: #333;
+}
+
+/* header card */
 .cVisualizerHeaderCamera {
-  padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-dim);
 }
 
 .cVisualizerTitleCamera {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-white);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
 }
 
 .cVisualizerStatusCamera {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
   color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
-  padding: 4px 10px;
-  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  display: inline-block;
 }
 
-/* --- CUERPO --- */
+/* body info cameras */
 .cVisualizerMainCamera {
-  padding: 20px;
+  padding: 22px;
   flex-grow: 1;
 }
 
 .cVisualizerNameCamera { display: none; }
 
-.cVisualizerIPAddressCamera, 
-.cVisualizerURLAddressCamera {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  color: var(--accent-blue);
-  margin-bottom: 8px;
+.cVisualizerDescriptionCamera {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 18px;
 }
 
-.cVisualizerDescriptionCamera {
-  font-size: 0.9rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-  margin: 15px 0;
+.cVisualizerIPAddressCamera, 
+.cVisualizerURLAddressCamera {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent-camera);
+  background: rgba(59, 130, 246, 0.05);
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 8px;
+  width: fit-content;
+  border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
 .cVisualizerLocationCamera {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--accent-cyan);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  color: var(--accent-location);
   background: rgba(34, 211, 238, 0.05);
-  padding: 4px 12px;
   border-radius: 4px;
+  text-transform: uppercase;
   border: 1px solid rgba(34, 211, 238, 0.1);
 }
 
 .cVisualizerViewGeolocation {
   margin-top: 20px;
   height: 160px;
-  border-radius: 8px;
-  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
   overflow: hidden;
+  border: 1px solid var(--border-dim);
+  filter: grayscale(1) brightness(0.6);
 }
 
-/* --- FOOTER Y BOTONES (VISIBLES) --- */
+/* bttns on footer */
 .cVisualizerFooterCamera {
-  padding: 16px 20px;
-  display: flex;
+  padding: 15px 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
-  border-top: 1px solid var(--border-subtle);
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.cVisualizerContainerBttn {
-  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--border-dim);
 }
 
 .cVisualizerBttnDelete {
   width: 100%;
-  padding: 10px;
   background: transparent;
   color: var(--danger);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
 
 .cVisualizerBttnDelete:hover {
@@ -166,54 +189,56 @@
 
 .cVisualizerBttnEdit {
   width: 100%;
-  padding: 10px;
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
   border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  padding: 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
 .cVisualizerBttnEdit:hover {
-  background: #e2e8f0;
+  background: #ccc;
 }
 
-/* --- MODAL DE EDICIÓN --- */
+/*  modal edit  */
 .cVisualizerModalEditFull {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.98);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .cVisualizerEditFormFull {
-  background: var(--bg-card-surface);
-  border: 1px solid var(--border-subtle);
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
   width: 90%;
-  max-width: 480px;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  padding: 35px;
+  border-radius: 8px;
 }
 
 .cVisualizerTitleMEdit {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 24px;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 25px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .cVisualizerLabelFormEdit {
-  font-size: 0.75rem;
-  color: var(--text-dim);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-secondary);
   text-transform: uppercase;
   margin-bottom: 6px;
   display: block;
@@ -222,48 +247,41 @@
 .cVisualizerInputFormEdit, 
 .cVisualizerSelectEditForm {
   width: 100%;
-  background: var(--bg-input-deep);
-  border: 1px solid var(--border-subtle);
-  color: white;
+  background: var(--bg-absolute);
+  border: 1px solid var(--border-dim);
+  color: #fff;
   padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  border-radius: 4px;
+  margin-bottom: 15px;
   outline: none;
 }
 
-.cVisualizerInputFormEdit:focus {
-  border-color: var(--accent-blue);
-}
-
-/* Botones del Modal */
 .cVisualizerContainerBttnsEdit {
   display: flex;
   gap: 12px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .cVisualizerBtnSaveEdit {
   flex: 1;
-  background: var(--accent-blue);
+  background: var(--accent-camera);
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 700;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
 .cVisualizerBtnCancelEdit {
   flex: 1;
   background: transparent;
-  color: white;
-  border: 1px solid var(--border-subtle);
-  padding: 12px;
-  border-radius: 8px;
-  font-weight: 700;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
   cursor: pointer;
 }
-
-.cVisualizerBtnSaveEdit:hover { opacity: 0.9; }
-.cVisualizerBtnCancelEdit:hover { background: rgba(255, 255, 255, 0.05); }

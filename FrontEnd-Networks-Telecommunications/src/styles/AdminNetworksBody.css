@@ -1,230 +1,326 @@
+/* AdminNetworks root styles */
 :root {
-  --bg-dark: #0a0c10;
-  --card-bg: #ffffff;
-  --accent-blue: #00d4ff;
-  --accent-orange: #ff9f00;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-ui: #f1f5f9;
-  --shadow-pro: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --bg-absolute: #000000;       
+  --bg-panel: #050505;         
+  --bg-input: #0a0a0a;          
+  --accent-blue: #3b82f6;      
+  --accent-orange: #f59e0b;     
+  --border-dim: #161616;       
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;    
+  --danger: #ef4444;
+  --success: #10b981;
 }
 
+/* card fullMain  */
 .adminBodyContainer {
+  background-color: var(--bg-absolute);
   min-height: 100vh;
-  padding-bottom: 50px;
-  font-family: 'Inter', sans-serif;
+  padding: 40px 20px;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-primary);
 }
 
 .adminBdContainerFull {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 .adminBdTitle {
-  color: #fff;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 800;
-  margin-bottom: 30px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+  color: #fff;
+  border-left: 4px solid var(--accent-blue);
+  padding-left: 15px;
 }
 
-/* map section */
+.adminBdTitle:contains("Routers") {
+  border-left-color: var(--accent-orange);
+}
+
+/* Map Section */
 .adminMapSection {
   margin-bottom: 40px;
-  box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--border-dim);
+  filter: grayscale(1) invert(0.9) contrast(0.9); 
+  transition: filter 0.3s ease;
 }
 
-/* search and filters */
+.adminMapSection:hover {
+  filter: grayscale(0.5) invert(0.9) contrast(1);
+}
+
+/* Filter & Search */
 .adminBdNavFull {
   display: flex;
-  gap: 15px;
-  margin-bottom: 30px;
+  gap: 12px;
+  margin-bottom: 35px;
+  background: var(--bg-panel);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-dim);
 }
 
-.adminBdSearch, .adminBdSelectSearch {
-  background: #1e293b;
-  border: 1px solid #334155;
+.adminBdSearch, 
+.adminBdSelectSearch {
+  background: var(--bg-absolute);
+  border: 1px solid var(--border-dim);
   color: #fff;
-  padding: 12px 20px;
-  border-radius: 10px;
+  padding: 12px 18px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   outline: none;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .adminBdSearch { flex-grow: 1; }
-.adminBdSearch:focus { border-color: var(--accent-blue); box-shadow: 0 0 0 4px rgba(0, 212, 255, 0.1); }
-
-/* grid container cameras and routers */
-.adminBdContainerCamerasFull, .adminBdContainerRoutersFull {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
+.adminBdSearch:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 1px #333;
 }
 
-.adminBdContainerCameraOwn, .adminBdContainerRouterOwn {
-  background: var(--card-bg);
-  border-radius: 18px;
+/* system structure */
+.adminBdContainerCamerasFull, 
+.adminBdContainerRoutersFull {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* cards structure */
+.adminBdContainerCameraOwn, 
+.adminBdContainerRouterOwn {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-pro);
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.adminBdContainerCameraOwn:hover { transform: translateY(-5px); }
+.adminBdContainerCameraOwn:hover, 
+.adminBdContainerRouterOwn:hover {
+  transform: translateY(-4px);
+  border-color: #222;
+}
 
-/* card header */
-.adminBdHeaderCamera, .adminBdHeaderRouter {
-  padding: 15px 20px;
-  background: #f8fafc;
-  border-bottom: 1px solid var(--border-ui);
+/* Card Header */
+.adminBdHeaderCamera, 
+.adminBdHeaderRouter {
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-dim);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.adminBdHeaderCamera h4 { margin: 0; color: var(--text-main); font-size: 1rem; }
-.adminBdHeaderCamera span {
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: #e0f2fe;
-  color: #0369a1;
-  text-transform: uppercase;
+.adminBdHeaderCamera h4, 
+.adminBdHeaderRouter h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
 
-/* card body */
-.adminBdMainCamera, .adminBdMainRouter {
+.adminBdHeaderCamera span, 
+.adminBdHeaderRouter span {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+/* Card Body */
+.adminBdMainCamera, 
+.adminBdMainRouter {
   padding: 20px;
   flex-grow: 1;
 }
 
-.adminBdCamerasLocation, .adminBdRoutersLocation {
-  font-weight: 700;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-bottom: 10px;
-}
-
-.adminBdCamerasIP, .adminBdRoutersIP, .adminBdCamerasURL, .adminBdRoutersMAC {
-  font-family: 'JetBrains Mono', monospace;
+.adminBdCamerasLocation, 
+.adminBdRoutersLocation {
   font-size: 0.75rem;
-  color: var(--accent-blue);
-  background: #f1f5f9;
-  padding: 4px 8px;
-  border-radius: 5px;
-  margin: 5px 0;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
 }
 
-/* footer card  */
-.adminBdFooterCamera, .adminBdFooterRouter {
+.adminBdCamerasDescrip, 
+.adminBdRoutersDescription {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.adminBdCamerasIP, .adminBdRoutersIP, 
+.adminBdCamerasURL, .adminBdRoutersMAC, 
+.adminBdRoutersBrand, .adminBdModel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  padding: 6px 10px;
+  background: var(--bg-absolute);
+  border: 1px solid var(--border-dim);
+  border-radius: 4px;
+  margin: 4px 0;
+  width: fit-content;
+  color: var(--accent-blue);
+}
+
+.adminBdRoutersIP, .adminBdRoutersMAC {
+  color: var(--accent-orange);
+}
+
+/* Footer Card */
+.adminBdFooterCamera, 
+.adminBdFooterRouter {
   padding: 15px 20px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .adminBdBttnEdit {
-  flex: 1;
-  background: var(--text-main);
-  color: #fff;
+  background: #fff;
+  color: #000;
   border: none;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.adminBdBttnEdit:hover { background: #ccc; }
 
 .adminBdBttnDelete {
-  background: #fee2e2;
-  color: #ef4444;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 8px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 10px;
+  border-radius: 4px;
   font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
-/* edit modal */
+.adminBdBttnDelete:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Modal Edit */
 .adminBdModalEditFull {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(8px);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
   padding: 20px;
 }
 
 .adminBdEditFormFull {
-  background: #fff;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-dim);
   width: 100%;
-  max-width: 500px;
-  border-radius: 24px;
+  max-width: 550px;
+  border-radius: 12px;
   padding: 30px;
-  max-height: 90vh;
   display: flex;
   flex-direction: column;
 }
 
-.adminBdModalBodyScroll {
-  overflow-y: auto;
-  padding-right: 10px;
+.adminBdModalTitle {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
+.adminBdModalBodyScroll {
+  overflow-y: auto;
+  max-height: 60vh;
+  padding-right: 15px;
+}
+
+/* style scroll Modal */
+.adminBdModalBodyScroll::-webkit-scrollbar { width: 4px; }
+.adminBdModalBodyScroll::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+
 .adminBdLbModal {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-secondary);
   text-transform: uppercase;
   margin-top: 15px;
   display: block;
+  letter-spacing: 0.05em;
 }
 
-.adminBdINPModal, .adminBdSelectModal {
+.adminBdINPModal, 
+.adminBdSelectModal {
   width: 100%;
+  background: var(--bg-absolute);
+  border: 1px solid var(--border-dim);
+  color: #fff;
   padding: 12px;
-  border: 1px solid var(--border-ui);
-  border-radius: 10px;
-  margin-top: 5px;
-  background: #f8fafc;
+  border-radius: 4px;
+  margin-top: 6px;
+  font-size: 0.9rem;
+  outline: none;
 }
 
-.inputGroupTwo {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
+.adminBdINPModal:focus { border-color: var(--accent-blue); }
 
 .adminBdContainerBttnsEdit {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
-  gap: 15px;
+  gap: 12px;
 }
 
 .adminBdBtnSaveEdit {
   flex: 2;
-  background: var(--text-main);
+  background: var(--accent-blue);
   color: #fff;
   border: none;
-  padding: 15px;
-  border-radius: 12px;
-  font-weight: 700;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
 .adminBdBtnCancelEdit {
   flex: 1;
-  background: #f1f5f9;
-  border: none;
-  padding: 15px;
-  border-radius: 12px;
-  font-weight: 700;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
   cursor: pointer;
 }

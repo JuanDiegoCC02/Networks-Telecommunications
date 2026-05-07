@@ -3,10 +3,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import AdminNetworksNav from './AdminNetworksNav'; 
 import { getCameras, patchCameras, deleteCameras } from '../services/camerasApi';
 import { getRouters, patchRouters, deleteRouters } from '../services/routersApi';
-import "../styles/AdminBody.css"
+import "../styles/AdminNetworksBody.css"
 import "leaflet/dist/leaflet.css";
-import "../styles/CamerasVisualizer.css";
-import "../styles/RoutersVisualizer.css";
+
 
 function AdminNetworksBody() {
   // data primary states

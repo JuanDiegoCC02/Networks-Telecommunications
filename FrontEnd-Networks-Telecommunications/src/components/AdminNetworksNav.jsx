@@ -4,11 +4,11 @@ import "../styles/AdminNav.css";
 export default function AdminNav({ activeTab, setActiveTab }) {
   const navigationTabs = [
     { id: 'cameras', label: 'Cámaras', icon: '📸' },
-    { id: 'routers', label: 'Routers', icon: '🌐' }
+    { id: 'routers', label: 'Routers', icon: '🛜' }
   ];
 
   return (
-    <nav className="adminNavContainer">
+    <nav className="bttnsNavContainer">
       <ul className="adminNavUl">
         {navigationTabs.map((tab) => (
           <li 

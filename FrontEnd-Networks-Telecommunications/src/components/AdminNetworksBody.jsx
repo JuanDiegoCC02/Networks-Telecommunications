@@ -123,7 +123,7 @@ function AdminNetworksBody() {
         </section>
       ) : (
         <section className='adminBdContainerFull '>
-          <h3 className='adminBdTitle'>🌐 Control Routers</h3>
+          <h3 className='adminBdTitle'>🛜 Control Routers</h3>
 
           <div className="adminMapSection">
             <MapContainer center={[9.7489, -83.7534]} zoom={8} style={{ height: "400px", width: "100%", borderRadius: "15px", border: '2px solid #ff9f00' }}>
@@ -159,7 +159,7 @@ function AdminNetworksBody() {
                   <p className='adminBdRoutersDescription'>Description: {r.description}</p>
                   <p className='adminBdRoutersIP'>IP: {r.ip_address}</p>
                   <p className='adminBdRoutersMAC'>MAC: {r.mac_address}</p>
-                  <p className='adminBd RoutersBrand'>Brand: {r.brand}</p>
+                  <p className='adminBdRoutersBrand'>Brand: {r.brand}</p>
                   <p className='adminBdModel'>Model: {r.model}</p>
                 </main>
                 <footer className='adminBdFooterRouter'>
@@ -181,7 +181,7 @@ function AdminNetworksBody() {
               </header>
 
               <div className='adminBdModalBodyScroll'>
-                {/* CAMPOS COMUNES */}
+                {/* same info */}
                 <label className='adminBdLbModal'>Name</label>
                 <input className='adminBdINPModal' value={editData.name || ''} onChange={e => setEditData({...editData, name: e.target.value})} />
                 

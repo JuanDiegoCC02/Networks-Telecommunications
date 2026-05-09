@@ -91,9 +91,28 @@ async function deleteUsers(id) {
   }
 }
 
+// Get MyStats
+async function getMyStats(){
+
+    const token = cookies.get('access_token')
+
+    const response = await fetch(
+        "http://127.0.0.1:8000/api/my-stats/",
+        {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        }
+    )
+
+    const data = await response.json()
+    return data
+}
+
 export{
     getUsers,
     postUsers,
     updateUsers,
-    deleteUsers
+    deleteUsers,
+    getMyStats
 }

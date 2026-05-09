@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUsers, updateUsers } from '../services/usersApi';
+import { getMyStats, getUsers, updateUsers } from '../services/usersApi';
 import '../styles/MyProfileBody.css';
 
 function MyProfileBody() {
@@ -17,6 +17,8 @@ function MyProfileBody() {
   const [myUser, setMyUser] = useState(null);
   const [reload, setReload] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const [totalCameras, setTotalCameras] = useState(0)
+  const [totalRouters, setTotalRouters] = useState(0)
 
   //  states for the editing form
   const [editUsername, setEditUsername] = useState('');
@@ -39,6 +41,11 @@ function MyProfileBody() {
         
         // find the specific user that matches the Id from the cookie
         const info_user = data_users.find(u => u.id === userId);
+
+        const stats = await getMyStats()
+
+        setTotalCameras(stats.total_cameras)
+        setTotalRouters(stats.total_routers)
         
         if (info_user) {
           setMyUser(info_user);
@@ -94,6 +101,16 @@ function MyProfileBody() {
                 <p className='EmailProfile'>Email: {myUser.email}</p>
                 <p className='BirthDateProfile'>Birth Date: {myUser.birth_date}</p>
                 <p className='PhoneNumberProfile'>Phone Number: {myUser.phone_number}</p>
+
+                 <div className='ProfileStatCard'>
+                <span className='ProfileStatLabel'> Cameras </span>
+                <span className='ProfileStatValue'>{totalCameras}</span>
+              </div>
+
+              <div className='ProfileStatCard'>
+                <span className='ProfileStatLabel'> Routers </span>
+                <span className='ProfileStatValue'>{totalRouters}</span>
+              </div>
               </div>
             </div>
           </li>

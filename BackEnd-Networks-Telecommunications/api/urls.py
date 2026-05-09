@@ -27,7 +27,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     
     path('profile/', MyProfileView.as_view()),
-    path('api/my-stats/', MyStatsView.as_view()),
-
+    path('my-stats/', MyStatsView.as_view()),
+    
     path('', include(router.urls)),
 ]

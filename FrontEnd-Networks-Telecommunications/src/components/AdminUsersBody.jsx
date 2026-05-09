@@ -5,58 +5,78 @@ import "../styles/AdminUsersBody.css";
 function AdminUsersBody() {
   const [users, setUsers] = useState([]);
   const [reload, setReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
 
+  // State editing
   const [userID, setUserID] = useState(null);
-  const [editUsername, setEditUsername] = useState("");
-  const [editFirstName, setEditFirstName] = useState("");
-  const [editLastName, setEditLastName] = useState("");
-  const [editEmail, setEditEmail] = useState("");
-  const [editBirthDate, setEditBirthDate] = useState("");
-  const [editPhoneNumber, setEditPhoneNumber] = useState("");
-  const [editGroup, setEditGroup] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    birth_date: "",
+    phone_number: "",
+    group: ""
+  });
 
   useEffect(() => {
     async function list() {
-      const data = await getUsers();
-      setUsers(data);
+      setIsLoading(true);
+      try {
+        const data = await getUsers();
+        setUsers(data);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
     list();
   }, [reload]);
 
-  const handleEdit = (user) => {
+  const handleEditToggle = (user) => {
     if (userID === user.id) {
       setUserID(null);
     } else {
       setUserID(user.id);
-      setEditUsername(user.username);
-      setEditFirstName(user.first_name);
-      setEditLastName(user.last_name);
-      setEditEmail(user.email);
-      setEditBirthDate(user.birth_date || "");
-      setEditPhoneNumber(user.phone_number || "");
-      setEditGroup(user.role || (user.groups && user.groups[0]) || "Standard User");
+      setFormData({
+        username: user.username || "",
+        first_name: user.first_name || "",
+        last_name: user.last_name || "",
+        email: user.email || "",
+        birth_date: user.birth_date || "",
+        phone_number: user.phone_number || "",
+        group: user.group || (user.groups && user.groups[0]) || "Standard"
+      });
     }
   };
 
-  async function handleUpdate(id) {
-    const obj = {
-      username: editUsername,
-      first_name: editFirstName,
-      last_name: editLastName,
-      email: editEmail,
-      birth_date: editBirthDate,
-      phone_number: editPhoneNumber,
-      group: editGroup 
-    };
-    await updateUsers(obj, id); 
-    setReload(!reload);
-    setUserID(null);
+  // manage form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  async function handleUpdate(e, id) {
+    e.preventDefault(); 
+    setIsLoading(true);
+    try {
+      await updateUsers(formData, id);
+      setReload(!reload);
+      setUserID(null);
+    } catch (error) {
+      alert("Synchronization Failed");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function handleDelete(id) {
     if (window.confirm("CRITICAL ACTION: Are you sure you want to permanently delete this user?")) {
+      setIsLoading(true);
       await deleteUsers(id);
       setReload(!reload);
+      setIsLoading(false);
     }
   }
 
@@ -68,44 +88,47 @@ function AdminUsersBody() {
           <p className="subTitle">Monitoring and administrative synchronization of network accounts</p>
         </div>
         <div className="systemStatus">
-          <span className="statusLabel">Database Connection:</span>
-          <span className="statusPulse"></span>
-          <span className="statusText">Active</span>
+          <span className="statusLabel">System Status:</span>
+          <span className={`statusPulse ${isLoading ? 'isProcessing' : 'isActive'}`}></span>
+          <span className="statusText">{isLoading ? "Synchronizing..." : "Active"}</span>
         </div>
       </header>
 
       <section className="registryTableContainer">
         <table className="registryTable">
-          <thead>
-            <tr>
-              <th>System Handle</th>
-              <th>Full Identity</th>
-              <th>Network Email</th>
-              <th>Birth Date</th> 
-              <th>Access Level</th> 
-              <th>Control Actions</th>
+          <thead className="registryTableHead">
+            <tr className="registryHeaderRow">
+              <th className="registryTh">System Handle</th>
+              <th className="registryTh">Full Identity</th>
+              <th className="registryTh">Network Email</th>
+              <th className="registryTh">Birth Date</th> 
+              <th className="registryTh">Access Level</th> 
+              <th className="registryTh">Control Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="registryTableBody">
             {users.map((user) => (
               <React.Fragment key={user.id}>
                 <tr className={`registryRow ${userID === user.id ? "isEditing" : ""}`}>
-                  <td>
+                  <td className="registryTd">
                     <div className="userHandleWrapper">
-                      <div className="userIcon">ID</div>
+                      <div className="userIcon">{user.first_name?.charAt(0) || "U"}</div>
                       <span className="userHandle">@{user.username}</span>
                     </div>
                   </td>
-                  <td className="identityCell">{user.first_name} {user.last_name}</td>
-                  <td className="emailCell">{user.email}</td>
-                  <td className="birthDateCell">{user.birth_date || "N/A"}</td>
-                  <td className="roleCell">
-                    <span className="roleBadge">
+                  <td className="registryTd identityCell">{user.first_name} {user.last_name}</td>
+                  <td className="registryTd emailCell">{user.email}</td>
+                  <td className="registryTd birthDateCell">{user.birth_date || "—"}</td>
+                  <td className="registryTd roleCell">
+                    <span className={`roleBadge badge--${user.group?.toLowerCase() || 'standard'}`}>
                       {user.group || (user.groups && user.groups[0]) || "Standard"}
                     </span>
                   </td>
-                  <td className="actionCell">
-                    <button className="actionBtn editBtn" onClick={() => handleEdit(user)}>
+                  <td className="registryTd actionCell">
+                    <button 
+                      className={`actionBtn editBtn ${userID === user.id ? "btn--abort" : ""}`} 
+                      onClick={() => handleEditToggle(user)}
+                    >
                       {userID === user.id ? "Abort" : "Edit"}
                     </button>
                     <button className="actionBtn deleteBtn" onClick={() => handleDelete(user.id)}>
@@ -114,48 +137,52 @@ function AdminUsersBody() {
                   </td>
                 </tr>
 
-                {/* Inline Configuration Panel */}
+                {/* edit panel */}
                 {userID === user.id && (
                   <tr className="expansionRow">
-                    <td colSpan="6"> {/* Aumentado colSpan a 6 */}
-                      <div className="configPanel">
-                        <h4 className="configPanelTitle">Modify Identity Parameters</h4>
+                    <td colSpan="6" className="expansionTd">
+                      <form className="configPanel" onSubmit={(e) => handleUpdate(e, user.id)}>
+                        <div className="configPanelHeader">
+                          <h4 className="configPanelTitle">Editing Identity Parameters: {user.username}</h4>
+                        </div>
+                        
                         <div className="configGrid">
-                          <div className="inputField">
-                            <label>System Username</label>
-                            <input value={editUsername} onChange={(e) => setEditUsername(e.target.value)} />
+                          <div className="configGridItem">
+                            <label className="configLabel">System Username</label>
+                            <input className="configInput" name="username" value={formData.username} onChange={handleInputChange} />
                           </div>
-                          <div className="inputField">
-                            <label>Given Name</label>
-                            <input value={editFirstName} onChange={(e) => setEditFirstName(e.target.value)} />
+                          <div className="configGridItem">
+                            <label className="configLabel">Given Name</label>
+                            <input className="configInput" name="first_name" value={formData.first_name} onChange={handleInputChange} />
                           </div>
-                          <div className="inputField">
-                            <label>Family Name</label>
-                            <input value={editLastName} onChange={(e) => setEditLastName(e.target.value)} />
+                          <div className="configGridItem">
+                            <label className="configLabel">Family Name</label>
+                            <input className="configInput" name="last_name" value={formData.last_name} onChange={handleInputChange} />
                           </div>
-                          <div className="inputField">
-                            <label>Primary Email</label>
-                            <input value={editEmail} onChange={(e) => setEditEmail(e.target.value)} />
+                          <div className="configGridItem">
+                            <label className="configLabel">Primary Email Address</label>
+                            <input className="configInput" type="email" name="email" value={formData.email} onChange={handleInputChange} />
                           </div>
-                          <div className="inputField">
-                            <label>Birth Date</label>
-                            <input type="date" value={editBirthDate} onChange={(e) => setEditBirthDate(e.target.value)} />
+                          <div className="configGridItem">
+                            <label className="configLabel">Birth Date</label>
+                            <input className="configInput" name="birth_date" type="date" value={formData.birth_date} onChange={handleInputChange} />
                           </div>
-                          <div className="inputField">
-                            <label>System Group</label>
-                            <select value={editGroup} onChange={(e) => setEditGroup(e.target.value)}>
+                          <div className="configGridItem">
+                            <label className="configLabel">Access Privilege Group</label>
+                            <select className="configSelect" name="group" value={formData.group} onChange={handleInputChange}>
                               <option value="Standard">Standard User</option>
                               <option value="Administrator">Administrator</option>
-                              <option value="User">User</option>
+                              <option value="Support">Support Tech</option>
                             </select>
                           </div>
                         </div>
+
                         <div className="configActions">
-                          <button className="commitBtn" onClick={() => handleUpdate(user.id)}>
-                            Commit Synchronization
+                          <button type="submit" className="commitBtn" disabled={isLoading}>
+                            {isLoading ? "Updating Engine..." : "Commit Synchronization"}
                           </button>
                         </div>
-                      </div>
+                      </form>
                     </td>
                   </tr>
                 )}

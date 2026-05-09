@@ -94,3 +94,22 @@ class RouterViewSet(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
+# View Stats
+class MyStatsView(APIView):
+
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        total_cameras = Camera.objects.filter(
+            user=user
+        ).count()
+        total_routers = Router.objects.filter(
+            user=user
+        ).count()
+        return Response({
+
+            "total_cameras": total_cameras,
+            "total_routers": total_routers,
+
+        })

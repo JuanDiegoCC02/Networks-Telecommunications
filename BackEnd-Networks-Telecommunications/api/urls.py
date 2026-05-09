@@ -4,7 +4,8 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     LoginView, 
     LogoutView,         
-    MyProfileView, 
+    MyProfileView,
+    MyStatsView, 
     UserViewSet, 
     CameraViewSet, 
     RouterViewSet
@@ -26,6 +27,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     
     path('profile/', MyProfileView.as_view()),
+    path('api/my-stats/', MyStatsView.as_view()),
 
     path('', include(router.urls)),
 ]

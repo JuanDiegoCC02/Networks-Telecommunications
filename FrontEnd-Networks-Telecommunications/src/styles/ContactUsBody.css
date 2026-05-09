@@ -1,10 +1,9 @@
-/* --- CONTACT US: ENTERPRISE INFRASTRUCTURE STYLE --- */
-
+/* root ContactUs */
 :root {
   --bg-pure: #000000;
   --bg-card: #080808;
   --border-dim: #1a1a1a;
-  --accent-cyan: #00e5ff; /* Color de identidad técnica */
+  --accent-cyan: #00e5ff; 
   --text-main: #ededed;
   --text-muted: #707070;
 }
@@ -19,7 +18,7 @@
   margin: 0 auto;
 }
 
-/* --- HEADER SECTION --- */
+/* header */
 .contactUsHeader {
   border-bottom: 1px solid var(--border-dim);
   padding-bottom: 40px;
@@ -43,7 +42,7 @@
   letter-spacing: 0.05em;
 }
 
-/* --- SECTIONS (Objectives, Goals, Info) --- */
+/* section info web site */
 .contactUsSection {
   margin-bottom: 50px;
 }
@@ -74,7 +73,7 @@
   max-width: 800px;
 }
 
-/* Listas de Objetivos y Metas */
+/* List Goals / List Objetives */
 .contactUssectionList {
   list-style: none;
   padding: 0;
@@ -101,7 +100,7 @@
   font-weight: bold;
 }
 
-/* --- CONTACT CARDS --- */
+/* cards */
 .contactUsInfoContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -140,7 +139,7 @@
   color: var(--text-main);
 }
 
-/* --- FOOTER --- */
+/* footer */
 .contactFooter {
   margin-top: 100px;
   padding-top: 30px;
@@ -152,7 +151,7 @@
   letter-spacing: 0.05em;
 }
 
-/* --- RESPONSIVIDAD --- */
+/* responsive */
 @media (max-width: 768px) {
   .contactUssectionList {
     grid-template-columns: 1fr;

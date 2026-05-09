@@ -1,66 +1,89 @@
-/* --- CONTAINER & HEADER --- */
-.usersManagementMain {
-  padding: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
+/* root AdminUsersBody */
+:root {
+  --bg-main: #000000;           
+  --bg-card: #080808;          
+  --bg-input: #0c0c0c;          
+  --border-subtle: #1a1a1a;     
+  --border-hover: #333333;      
+  --accent-primary: #ffffff;    
+  --accent-data: #00e5ff;       
+  --text-primary: #ededed;      
+  --text-muted: #707070;        
+  --danger-red: #ff3333;        
 }
 
+.usersManagementMain {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  padding: 60px 40px;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+/*  header bodyAdminUsers */
 .usersManagementHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 40px;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-  padding-bottom: 20px;
+  margin-bottom: 50px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .mainTitle {
-  font-size: 2.2rem;
-  font-weight: 900;
-  color: #c7efff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0;
+  color: #fff;
 }
 
 .subTitle {
-  color: #dddddd;
-  font-size: 0.95rem;
-  margin-top: 5px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 8px;
+  font-weight: 400;
 }
 
 .systemStatus {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 8px 15px;
-  border-radius: 50px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  gap: 12px;
+  background: var(--bg-card);
+  padding: 8px 16px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
 }
-
-.statusLabel { font-size: 0.75rem; color: #94a3b8; font-weight: 700; }
-.statusText { font-size: 0.75rem; color: #10b981; font-weight: 800; text-transform: uppercase; }
 
 .statusPulse {
-  width: 8px;
-  height: 8px;
-  background: #10b981;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  box-shadow: 0 0 10px #10b981;
-  animation: pulse 2s infinite;
+  background: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
 }
 
-@keyframes pulse {
-  0% { transform: scale(0.95); opacity: 0.7; }
-  70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 15px #10b981; }
-  100% { transform: scale(0.95); opacity: 0.7; }
+.statusPulse.isProcessing {
+  background: var(--accent-data);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  animation: processing 1.5s infinite ease-in-out;
 }
 
-/* --- DATA TABLE --- */
+@keyframes processing {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* panel users */
 .registryTableContainer {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 1400px;
+  margin: 0 auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-card);
   overflow: hidden;
 }
 
@@ -69,158 +92,201 @@
   border-collapse: collapse;
 }
 
-.registryTable th {
-  background: rgba(2, 0, 8, 0.856);
+.registryTh {
   padding: 20px;
-  text-align: left;
   font-size: 0.7rem;
-  color: #cac6ff;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  border-bottom: 2px solid rgba(0, 212, 255, 0.1);
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #050505;
 }
 
-.registryRow td {
+.registryTd {
   padding: 18px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-  color: #cbd5e1;
+  border-bottom: 1px solid var(--border-subtle);
   font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.registryRow {
+  transition: all 0.2s ease;
 }
 
 .registryRow:hover {
-  background: rgba(4, 9, 37, 0.788);
+  background: #0c0c0c;
 }
 
 .registryRow.isEditing {
-  background: rgba(4, 9, 37, 0.788);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-/* --- CELL STYLES --- */
 .userHandleWrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
 }
 
 .userIcon {
-  background: #1e293b;
-  color: #64748b;
-  font-size: 0.6rem;
-  font-weight: 900;
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
+  background: #111;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
 }
 
 .userHandle {
   font-family: 'JetBrains Mono', monospace;
-  color: #00d4ff;
-  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent-data);
 }
 
-.phoneCell { font-family: 'JetBrains Mono', monospace; color: #64748b; }
-
-/* --- ACTION BUTTONS --- */
-.actionBtn {
-  padding: 6px 14px;
+.roleBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+}
+
+.badge--administrator {
+  color: #fff;
+  border-color: #444;
+}
+
+/* bttns actions */
+.actionBtn {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 4px;
   cursor: pointer;
   transition: 0.2s;
+  background: transparent;
   border: 1px solid transparent;
 }
 
 .editBtn {
-  background: transparent;
-  color: #00d4ff;
-  border-color: rgba(0, 212, 255, 0.3);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
 }
 
-.editBtn:hover { background: #00d4ff; color: #000; }
+.editBtn:hover {
+  background: var(--accent-primary);
+  color: #000;
+  border-color: var(--accent-primary);
+}
+
+.editBtn.btn--abort {
+  color: var(--danger-red);
+  border-color: rgba(255, 51, 51, 0.2);
+}
 
 .deleteBtn {
-  background: transparent;
-  color: #ef4444;
-  margin-left: 10px;
+  color: var(--text-muted);
 }
 
-.deleteBtn:hover { text-decoration: underline; color: #f87171; }
+.deleteBtn:hover {
+  color: var(--danger-red);
+}
 
-/* --- CONFIG PANEL (EXPANDED) --- */
+/* edit panel */
+.expansionTd {
+  background: #020202;
+}
+
 .configPanel {
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.3s ease-out;
+  padding: 40px;
+  animation: reveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
-@keyframes slideIn {
+@keyframes reveal {
   from { opacity: 0; transform: translateY(-5px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .configPanelTitle {
-  margin-bottom: 25px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #94a3b8;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #fff;
 }
 
 .configGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
-.inputField label {
-  display: block;
-  font-size: 0.65rem;
+.configLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
   text-transform: uppercase;
-  color: #00d4ff;
-  margin-bottom: 8px;
-  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: block;
 }
 
-.inputField input {
+.configInput, .configSelect {
   width: 100%;
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  padding: 14px;
   color: #fff;
-  border-radius: 4px;
-  outline: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
-.inputField input:focus {
-  border-color: #00d4ff;
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+.configInput:focus, .configSelect:focus {
+  border-color: #555;
+  outline: none;
+  background: #111;
 }
 
 .configActions {
-  margin-top: 30px;
+  margin-top: 40px;
   display: flex;
   justify-content: flex-end;
 }
 
 .commitBtn {
-  background: #00d4ff;
-  color: #020617;
-  padding: 12px 30px;
-  border-radius: 4px;
+  background: var(--accent-primary);
+  color: #000;
   border: none;
-  font-weight: 900;
+  padding: 16px 32px;
+  font-weight: 800;
+  font-size: 0.8rem;
   text-transform: uppercase;
+  border-radius: 4px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.commitBtn:hover {
-  background: #fff;
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+.commitBtn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.commitBtn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Responsividad */
+@media (max-width: 1024px) {
+  .configGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .configGrid { grid-template-columns: 1fr; }
+  .registryTh:nth-child(4), .registryTd:nth-child(4) { display: none; }
 }

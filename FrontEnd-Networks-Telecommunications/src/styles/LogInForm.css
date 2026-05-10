@@ -1,169 +1,165 @@
-:root {
-  /* Mantenemos tu paleta corporativa */
-  --bg-dark: #0a0c10;
-  --form-bg: #ffffff;
-  --text-main: #0f172a;
-  --text-label: #475569;
-  --accent: #2563eb;
-  
-  /* Sombra Premium con borde fantasma */
-  --shadow-premium: 
-    0 0 0 1px rgba(0, 0, 0, 0.05),
-    0 20px 25px -5px rgba(0, 0, 0, 0.4), 
-    0 10px 10px -5px rgba(0, 0, 0, 0.2);
+/* root syles LogIn */
 
-  --border-subtle: #e2e8f0;
+:root {
+  --bg-black: #000000;
+  --bg-card: #050505;
+  --bg-input: #0a0a0a;
+  --accent-cyan: #00e5ff;
+  --border-dim: #161616;
+  --text-main: #ededed;
+  --text-dim: #666666;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
-/* Contenedor Principal con tu fondo de rejilla */
+/* principal container  */
 .logInContainerFull {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  background: var(--bg-dark);
-  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
-  background-size: 32px 32px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  align-items: center;
   padding: 20px;
+  font-family: 'Inter', -apple-system, sans-serif;
 }
 
+/* title */
 .logInContainerTitle {
-  margin-bottom: 2rem;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .logInTitle {
-  color: #ffffff;
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: #fff;
   margin: 0;
 }
 
-/* El Formulario de Login */
+/* card body form */
 .logInFormFull {
-  background: var(--form-bg);
-  border-radius: 16px;
-  padding: 3.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dim);
   width: 100%;
-  max-width: 420px; /* Un poco más angosto que el register para mayor elegancia */
-  box-shadow: var(--shadow-premium);
-  display: flex;
-  flex-direction: column;
+  max-width: 400px;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
 }
 
+/* inputs & labels */
 .logInContainerForm {
+  margin-bottom: 25px;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .logInLabelForm {
-  color: var(--text-label);
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  letter-spacing: 0.1em;
 }
 
 .logInInputForm {
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 1rem;
-  color: var(--text-main);
-  background-color: #fcfcfd;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-dim);
+  padding: 14px 18px;
+  color: #fff;
+  font-family: var(--font-mono); /* Estilo técnico para credenciales */
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  outline: none;
 }
 
 .logInInputForm:focus {
-  outline: none;
-  background-color: #ffffff;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
-  transform: translateY(-1px);
+  border-color: var(--accent-cyan);
+  background: #0d0d0d;
 }
 
-/* Botón de Acceso */
+.logInInputForm::placeholder {
+  color: #222;
+}
+
+/* bttn access */
 .logInContianerBttn {
-  margin-top: 1.5rem;
+  margin-top: 15px;
 }
 
 .logInBttnAccess {
   width: 100%;
-  background: var(--text-main);
-  color: #ffffff;
+  background: #fff;
+  color: #000;
   border: none;
   padding: 16px;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 900;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .logInBttnAccess:hover {
-  background: #000000;
+  background: var(--accent-cyan);
   transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
 }
 
 .logInBttnAccess:active {
   transform: translateY(0);
 }
-/* Contenedor del link de registro */
+
+/* register link */
 .logInContainerLinkRegister {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
+  margin-top: 35px;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  text-align: center;
+  gap: 10px;
+  border-top: 1px solid var(--border-dim);
+  padding-top: 25px;
 }
 
-/* El texto descriptivo (Label) */
 .logInTitleLinkRegister {
-  color: var(--text-label);
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: default;
+  font-size: 0.8rem;
+  color: var(--text-dim);
 }
 
-/* El enlace (Link) */
 .logInLinkRegister {
-  color: var(--accent);
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-/*  Animation link */
-.logInLinkRegister::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -2px;
-  left: 0;
-  background-color: var(--accent);
-  transform: scaleX(0);
-  transform-origin: bottom right;
-  transition: transform 0.3s ease-out;
+  transition: color 0.2s ease;
 }
 
 .logInLinkRegister:hover {
-  color: #1d4ed8; 
+  color: #fff;
+  text-decoration: underline;
 }
 
-.logInLinkRegister:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+/* load anamition */
+.logInFormFull {
+  animation: formEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes formEntrance {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive */
+@media (max-width: 480px) {
+  .logInFormFull {
+    padding: 30px;
+    border: none;
+    background: transparent;
+  }
 }

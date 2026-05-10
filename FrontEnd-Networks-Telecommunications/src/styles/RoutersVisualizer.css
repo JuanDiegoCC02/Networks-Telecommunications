@@ -1,20 +1,18 @@
-/* --- ROUTERS VISUALIZER: INFRASTRUCTURE DARK EDITION --- */
-
+/* root routersVisualizer */
 :root {
-  --bg-absolute: #000000;       /* Negro total */
-  --bg-panel: #050505;          /* Superficie de tarjetas */
-  --bg-input: #0a0a0a;          /* Inputs y selects */
-  --accent-router: #3b82f6;     /* Azul para IPs/MACs */
-  --accent-location: #22d3ee;   /* Cyan para ubicación */
-  --border-dim: #161616;        /* Bordes casi invisibles */
+  --bg-absolute: #000000;      
+  --bg-panel: #050505;         
+  --bg-input: #0a0a0a;         
+  --accent-router: #3b82f6;     
+  --accent-location: #22d3ee;   
+  --border-dim: #161616;        
   --text-primary: #ffffff;
-  --text-secondary: #94a3b8;    /* Gris para descripciones */
+  --text-secondary: #94a3b8;    
   --danger: #ef4444;
 }
 
-/* Contenedor Principal */
+/* principal container */
 .rVisualizerContainerFull {
-  background-color: var(--bg-absolute);
   min-height: 100vh;
   padding: 50px 30px;
   font-family: 'Inter', sans-serif;
@@ -31,7 +29,7 @@
   color: #fff;
 }
 
-/* --- NAV & SEARCH (Filtros) --- */
+/* nav / search & filter */
 .rVisualizerNavFull {
   display: flex;
   gap: 12px;
@@ -59,7 +57,7 @@
   border-color: var(--accent-router);
 }
 
-/* --- GRID DE ROUTERS --- */
+/* structure cards */
 .rVisualizerContainerRoutersFull {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -83,7 +81,7 @@
   border-color: #333;
 }
 
-/* --- HEADER DE TARJETA --- */
+/* header card */
 .rVisualizerHeaderRouter {
   padding: 18px 22px;
   background: rgba(255, 255, 255, 0.02);
@@ -118,13 +116,13 @@
   background: rgba(34, 211, 238, 0.05);
 }
 
-/* --- CUERPO (DATA TÉCNICA) --- */
+/* card data */
 .rVisualizerMainRouter {
   padding: 22px;
   flex-grow: 1;
 }
 
-.rVisualizerNameRouter { display: none; } /* Oculto para no repetir el título */
+.rVisualizerNameRouter { display: none; } 
 
 .rVisualizerDescriptionRouter {
   font-size: 0.85rem;
@@ -158,7 +156,7 @@
   filter: grayscale(1) brightness(0.6);
 }
 
-/* --- FOOTER (BOTONES VISIBLES) --- */
+/* footer */
 .rVisualizerFooterRouter {
   padding: 15px 22px;
   display: grid;
@@ -202,7 +200,7 @@
   background: #ccc;
 }
 
-/* --- MODAL EDIT (Sincronizado con AddCameras) --- */
+/* modal edit */
 .rVisualizerModalEditFull {
   position: fixed;
   inset: 0;
@@ -258,7 +256,7 @@
   outline: none;
 }
 
-/* Botones del Modal */
+/* bttns tools */
 .rVisualizerBttnsEdit {
   display: flex;
   gap: 12px;

@@ -14,7 +14,6 @@
 
 /* card fullMain  */
 .adminBodyContainer {
-  background-color: var(--bg-absolute);
   min-height: 100vh;
   padding: 40px 20px;
   font-family: 'Inter', -apple-system, sans-serif;

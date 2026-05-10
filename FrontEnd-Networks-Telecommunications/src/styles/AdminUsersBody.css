@@ -13,7 +13,6 @@
 }
 
 .usersManagementMain {
-  background-color: var(--bg-main);
   min-height: 100vh;
   padding: 60px 40px;
   color: var(--text-primary);

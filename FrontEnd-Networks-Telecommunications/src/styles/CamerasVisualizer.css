@@ -1,5 +1,4 @@
-/* --- CAMERAS VISUALIZER: INFRASTRUCTURE DARK EDITION (MATCHED) --- */
-
+/* root camerasVisualizer */
 :root {
   --bg-absolute: #000000;       
   --bg-panel: #050505;          
@@ -14,7 +13,6 @@
 
 
 .cVisualizerContainerFull {
-  background-color: var(--bg-absolute);
   min-height: 100vh;
   padding: 50px 30px;
   font-family: 'Inter', sans-serif;

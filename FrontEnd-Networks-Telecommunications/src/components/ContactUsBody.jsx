@@ -17,7 +17,7 @@
       <p className="contactUssectionText">
         This web platform allows centralized monitoring of telecommunications
         devices, including surveillance cameras and network routers, providing
-        secure administration and real-time visualization.
+        secure administration and real-time visualization.  
       </p>
     </section>
 

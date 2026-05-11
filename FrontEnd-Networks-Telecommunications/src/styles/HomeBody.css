@@ -1,0 +1,214 @@
+/* --- NETWORKS TELECOMMUNICATIONS: CORE HOME SYSTEM --- */
+
+:root {
+  --bg-dark: #000000;
+  --panel-bg: #050505;
+  --accent-cyan: #00e5ff;
+  --text-main: #ffffff;
+  --text-dim: #94a3b8;
+  --border-tech: #161616;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+.HomeContainer {
+  background-color: var(--bg-dark);
+  background-image: radial-gradient(circle at 1px 1px, #1a1a1a 1px, transparent 0);
+  background-size: 32px 32px;
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 0 0 100px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- HERO SECTION --- */
+.HomeHeroSection {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border-tech);
+}
+
+.HomeHeroContent {
+  max-width: 900px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.HomeMainTitle {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom, #fff 40%, var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.SubTitle {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.HomeHeroDescription {
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* --- INFORMATION CARDS (Objectives & Features) --- */
+.HomeInformationSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: -60px auto 100px;
+  padding: 0 20px;
+}
+
+.HomeInfoCard {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-tech);
+  padding: 40px;
+  border-radius: 4px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.HomeInfoCard:hover {
+  border-color: var(--accent-cyan);
+  transform: translateY(-5px);
+}
+
+.HomeCardTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.HomeCardTitle::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: var(--accent-cyan);
+  display: inline-block;
+}
+
+.HomeInfoList {
+  list-style: none;
+  padding: 0;
+}
+
+.HomeInfoList li {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  padding: 12px 0;
+  border-bottom: 1px solid #111;
+  position: relative;
+}
+
+.HomeInfoList li:last-child { border: none; }
+
+/* --- SYSTEM VISUALIZATION SECTION --- */
+.HomeSystemSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.HomeFakeImage {
+  aspect-ratio: 16/9;
+  background: #080808;
+  border: 1px dashed var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.HomeFakeImage::after {
+  content: 'LIVE_FEED_01';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.HomeSystemTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.HomeSystemText {
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+/* --- EXTRA CARDS (Real-time, Geolocation, etc) --- */
+.HomeExtraSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 100px auto;
+  padding: 0 20px;
+}
+
+.HomeExtraCard {
+  border-left: 2px solid var(--accent-cyan);
+  padding: 20px 30px;
+  background: rgba(255,255,255, 0.02);
+}
+
+.HomeExtraTitle {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.HomeExtraText {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .HomeSystemSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .HomeMainTitle { font-size: 2.5rem; }
+  .HomeInformationSection { margin-top: 50px; }
+}

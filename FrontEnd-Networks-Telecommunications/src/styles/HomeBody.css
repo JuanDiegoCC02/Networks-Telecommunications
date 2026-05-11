@@ -1,4 +1,4 @@
-/* --- NETWORKS TELECOMMUNICATIONS: CORE HOME SYSTEM --- */
+/* root HomeBody */
 
 :root {
   --bg-dark: #000000;
@@ -20,7 +20,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* --- HERO SECTION --- */
+/* hero section */
 .HomeHeroSection {
   height: 80vh;
   display: flex;
@@ -65,7 +65,7 @@
   margin: 0 auto;
 }
 
-/* --- INFORMATION CARDS (Objectives & Features) --- */
+/* objetives & features */
 .HomeInformationSection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -121,7 +121,7 @@
 
 .HomeInfoList li:last-child { border: none; }
 
-/* --- SYSTEM VISUALIZATION SECTION --- */
+/* visualization section */
 .HomeSystemSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -168,7 +168,7 @@
   margin-bottom: 20px;
 }
 
-/* --- EXTRA CARDS (Real-time, Geolocation, etc) --- */
+/* info extracard & map */
 .HomeExtraSection {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -197,13 +197,13 @@
   line-height: 1.6;
 }
 
-/* --- ANIMATIONS --- */
+/* aniamtions */
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- RESPONSIVE --- */
+/* responsive */
 @media (max-width: 900px) {
   .HomeSystemSection {
     grid-template-columns: 1fr;

@@ -8,7 +8,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
     phone_number = serializers.CharField(source='profile.phone_number', required=False, allow_null=True, max_length=20)
 
     group = serializers.SerializerMethodField()
-    
+    total_cameras = serializers.SerializerMethodField()
+    total_routers = serializers.SerializerMethodField()
     username = serializers.CharField(required=True)
     email = serializers.EmailField(required=True)
 
@@ -16,7 +17,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'id', 'username', 'password', 'email', 'first_name', 
-            'last_name', 'birth_date', 'phone_number', "group"
+            'last_name', 'birth_date', 'phone_number', "group", "total_cameras", "total_routers"
         ]
         extra_kwargs = {
             'password': {'write_only': True, 'required': False},
@@ -45,6 +46,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
             phone_number=profile_data.get('phone_number')
         )
         return user
+    def get_total_cameras(self, obj):
+        return Camera.objects.filter(user=obj).count()
+
+    def get_total_routers(self, obj):
+        return Router.objects.filter(user=obj).count()
+    
 
 # Custom update method to handle nested profile updates and Group assignment
     def update(self, instance, validated_data):

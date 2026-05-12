@@ -119,6 +119,8 @@ function AdminUsersBody() {
                   <td className="registryTd identityCell">{user.first_name} {user.last_name}</td>
                   <td className="registryTd emailCell">{user.email}</td>
                   <td className="registryTd birthDateCell">{user.birth_date || "—"}</td>
+                  <td>{user.total_cameras}</td>
+                  <td>{user.total_routers}</td>
                   <td className="registryTd roleCell">
                     <span className={`roleBadge badge--${user.group?.toLowerCase() || 'standard'}`}>
                       {user.group || (user.groups && user.groups[0]) || "Standard"}

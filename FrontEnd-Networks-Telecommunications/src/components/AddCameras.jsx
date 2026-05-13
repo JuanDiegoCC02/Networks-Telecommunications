@@ -7,6 +7,9 @@ function AddCameras() {
   const [cameraName, setCameraName] = useState("");
   const [ip_Address, setIp_Address] = useState("");
   const [url_Address, setUrl_Address] = useState("");
+  const [Url_Stream, setUrlStream] = useState("");
+  const [Url_thumbnail, setUrlThumbnail] = useState("");
+  const [streamType, setStreamType] = useState("MP4");
   const [cameraLocation, setCameraLocation] = useState("");
   const [cameraDescription, setCameraDescroption] = useState("");
   const [cameraStatus, setCameraStatus] = useState("");
@@ -21,6 +24,15 @@ function AddCameras() {
   }
    function url_address(e) {
     setUrl_Address(e.target.value)    
+  }
+   function url_stream(e) {
+    setUrlStream(e.target.value)    
+  }
+   function url_thumbnail(e) {
+    setUrlThumbnail(e.target.value)    
+  }
+   function stream_type(e) {
+    setStreamType(e.target.value)    
   }
    function location(e) {
     setCameraLocation(e.target.value)    
@@ -56,6 +68,9 @@ function AddCameras() {
       name: cameraName,
       ip_address: ip_Address,
       url_address: url_Address,
+      stream_url: Url_Stream,
+      thumbnail_url: Url_thumbnail,
+      stream_type: streamType,
       description: cameraDescription,
       location: cameraLocation,
       latitude: latitude,
@@ -110,6 +125,25 @@ function AddCameras() {
           <label className='addCamerasLabelForm' htmlFor=""> URL Address Camera </label>
           <input className='addCamerasInputForm' type="text"  placeholder='Insert URL Address' value={url_Address} onChange={url_address}  />
         </div> 
+
+        <div className='addCamerasContainerForm'>
+        <label className='addCamerasLabelForm'> Stream URL Camera </label>
+        <input className='addCamerasInputForm'type="text" placeholder='Insert Stream URL' value={Url_Stream} onChange={url_stream}/>
+        </div>
+
+        <div className='addCamerasContainerForm'>
+        <label className='addCamerasLabelForm'> Thumbnail URL Camera </label>
+        <input className='addCamerasInputForm' type="text" placeholder='Insert Thumbnail URL' value={Url_thumbnail} onChange={url_thumbnail}/>
+        </div>
+
+        <div className='addCamerasContainerForm'>
+        <label className='addCamerasLabelForm'> Stream Type </label>
+        <select className='addCamerasSelectStatus' value={streamType} onChange={stream_type}>
+          <option value="MP4">MP4</option>
+          <option value="HLS">HLS</option>
+          <option value="AWS">AWS</option>
+        </select>
+        </div>
 
         <div className='addCamerasContainerForm'>
          <label className='addCamerasLabelForm' htmlFor=""> Camera Description </label>

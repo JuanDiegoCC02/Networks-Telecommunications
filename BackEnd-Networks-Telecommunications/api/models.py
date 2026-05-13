@@ -33,6 +33,24 @@ class Camera(models.Model):
     ip_address = models.CharField(max_length=80)
 
     url_address = models.URLField()
+    
+    stream_url = models.URLField(blank=True, null=True)
+
+    thumbnail_url = models.URLField(blank=True, null=True)
+
+    stream_type = models.CharField(
+        max_length=20,
+        choices=[
+            ('MP4', 'MP4'),
+            ('HLS', 'HLS'),
+            ('AWS', 'AWS'),
+        ],
+        default='MP4'
+    )
+
+    latency_ms = models.IntegerField(default=0)
+
+    packet_loss = models.FloatField(default=0)
 
     description = models.TextField(blank=True)
 

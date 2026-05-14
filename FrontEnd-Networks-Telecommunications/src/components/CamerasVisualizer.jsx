@@ -140,6 +140,10 @@ function CamerasVisualizer() {
   
             <span className='cVisualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br />
             <span className='cVisualizerURLAddressCamera'>URL Address: {c.url_address} </span><br />
+
+            <video width="100%" controls autoPlay muted loop className='cVisualizerVideoCamera'> 
+            <source src={c.stream_url} type="video/mp4" />
+            </video>
             
             
             

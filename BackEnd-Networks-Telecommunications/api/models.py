@@ -34,9 +34,9 @@ class Camera(models.Model):
 
     url_address = models.URLField()
     
-    stream_url = models.URLField(blank=True, null=True)
+    stream_url = models.CharField(max_length=255, blank=True, null=True)
 
-    thumbnail_url = models.URLField(blank=True, null=True)
+    thumbnail_url = models.CharField(max_length=255, blank=True, null=True)
 
     stream_type = models.CharField(
         max_length=20,

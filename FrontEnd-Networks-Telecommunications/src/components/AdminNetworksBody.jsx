@@ -111,6 +111,9 @@ function AdminNetworksBody() {
                   <small className='adminBdCamerasDescrip'>{c.description}</small>
                   <p className='adminBdCamerasIP'>IP: {c.ip_address}</p>
                   <p className='adminBdCamerasURL'>URL: {c.url_address}</p> 
+                  <video width="100%" controls autoPlay muted loop className='adminBdCameraVideo'> 
+                  <source src={c.stream_url} type="video/mp4" />
+                  </video>
                 </main>
                 <footer className='adminBdFooterCamera'>
                   <button className='adminBdBttnEdit' onClick={() => openEdit(c, 'camera')}>Edit</button>

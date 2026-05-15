@@ -111,6 +111,9 @@ function AdminNetworksBody() {
                   <small className='adminBdCamerasDescrip'>{c.description}</small>
                   <p className='adminBdCamerasIP'>IP: {c.ip_address}</p>
                   <p className='adminBdCamerasURL'>URL: {c.url_address}</p> 
+                  <div className='cameraThumbnailContainer'>
+                  <img src={c.thumbnail_url} alt={c.name} className='cameraThumbnail' />
+                  </div>
                   <video width="100%" controls autoPlay muted loop className='adminBdCameraVideo'> 
                   <source src={c.stream_url} type="video/mp4" />
                   </video>

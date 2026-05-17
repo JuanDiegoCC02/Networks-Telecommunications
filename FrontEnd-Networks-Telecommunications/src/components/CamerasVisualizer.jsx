@@ -218,7 +218,7 @@ function CamerasVisualizer() {
             <select className='cVisualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
               <option className='cVisualizerOptEditForm' value="">select status</option>
               <option className='cVisualizerOptEditForm' value="Active">Active</option>
-              <option className='adminBdOptModal' value="Maintenance">Maintenance</option>
+              <option className='cVisualizerOptEditForm' value="Maintenance">Maintenance</option>
               <option className='cVisualizerOptEditForm' value="Inactive">Inactive</option>
             </select>
           </div>

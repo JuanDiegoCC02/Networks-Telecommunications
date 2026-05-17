@@ -154,6 +154,7 @@ function AddRouters() {
             <select className='addRoutersSelectStatus' name="" id="" value={routerStatus} onChange={status}>
               <option className='addRoutersOptionSelect' value="">Select Status</option>
               <option className='addRoutersOptionSelect' value="Active">Active</option>
+              <option className='addRoutersOptionSelect' value="Maintenance">Maintenance</option>
               <option className='addRoutersOptionSelect' value="Inactive">Inactive</option>
             </select>
           </div>

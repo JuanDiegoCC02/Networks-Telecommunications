@@ -215,6 +215,7 @@ function RoutersVisualizer() {
                     <select className='rVisualizerSelectEditForm' value={editStatus} onChange={(e) => setEditStatus(e.target.value)} name="" id=""> 
                         <option className='rVisualizerOptEditForm' value="">select status</option>
                         <option className='rVisualizerOptEditForm' value="Active">Active</option>
+                        <option className='rVisualizerOptEditForm' value="Maintenance">Maintenance</option>
                         <option className='rVisualizerOptEditForm' value="Inactive">Inactive</option>
                     </select>
                     </div>

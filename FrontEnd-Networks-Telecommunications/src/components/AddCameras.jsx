@@ -169,6 +169,7 @@ function AddCameras() {
           <select  className='addCamerasSelectStatus' value={cameraStatus} onChange={status} name="" id="">
             <option className='addCamerasOptionStatus' value="">Select Status</option>
             <option className='addCamerasOptionStatus' value="Active">Active</option>
+            <option className='adminBdOptModal' value="Maintenance">Maintenance</option>
             <option className='addCamerasOptionStatus' value="Inactive">Inactive</option>
           </select>
         </div>

@@ -240,8 +240,8 @@ function AdminNetworksBody() {
                 <label className='adminBdLbModal'>Status</label>
                 <select className='adminBdSelectModal' value={editData.status || ''} onChange={e => setEditData({...editData, status: e.target.value})}>
                   <option className='adminBdOptModal' value="Active">Active</option>
-                  <option className='adminBdOptModal' value="Inactive">Inactive</option>
                   <option className='adminBdOptModal' value="Maintenance">Maintenance</option>
+                  <option className='adminBdOptModal' value="Inactive">Inactive</option>
                 </select>
               </div>
 

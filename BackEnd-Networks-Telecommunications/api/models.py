@@ -99,9 +99,9 @@ class Router(models.Model):
     longitude = models.FloatField(null=True, blank=True)
 
     status = models.CharField(
-        max_length=10,
-        choices=[('Active', 'Active'),('Inactive', 'Inactive')],
-        default='Active'
+        max_length=15,
+        choices=[('Active', 'Active'), ('Maintenance', 'Maintenance'), ('Inactive', 'Inactive')],
+        default='Maintenance'
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

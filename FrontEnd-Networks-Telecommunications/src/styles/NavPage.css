@@ -1,42 +1,46 @@
-/* base styles of root */
+/* --- NETWORKS TELECOMMUNICATIONS: NOC INTERACTIVE NAVIGATION --- */
+
 :root {
-  --nav-bg-glass: rgba(10, 12, 16, 0.85); 
-  --neon-cyan: #00d4ff;
-  --neon-blue: #2563eb;
+  --nav-bg-glass: rgba(3, 4, 7, 0.85); /* Negro profundo que empareja con el fondo del sitio */
+  --neon-cyan: #00e5ff;               /* Cian de precisión unificado */
+  --accent-blue: #0a1120;
   --text-silver: #94a3b8;
-  --glass-stroke: rgba(255, 255, 255, 0.08);
+  --glass-stroke: rgba(30, 41, 59, 0.7); /* Borde técnico metálico */
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 .navContainerFull {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: stretch; /* Asegura altura homogénea */
   background: var(--nav-bg-glass);
-  backdrop-filter: blur(15px) saturate(180%);
-  -webkit-backdrop-filter: blur(15px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid var(--glass-stroke);
   position: sticky;
   top: 0;
   z-index: 2000; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.7);
 }
 
 .navContainerOwn {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
-/* navigation links  */
+/* --- NAVIGATION LINKS --- */
 .accessNav {
   text-decoration: none;
   color: var(--text-silver);
-  font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
   font-weight: 700;
-  padding: 22px 25px;
+  padding: 24px 28px;
   text-transform: uppercase; 
-  letter-spacing: 1px;
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  letter-spacing: 0.12em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   align-items: center;
@@ -44,113 +48,146 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  height: 100%;
 }
 
-/* indicator is a LED */
+/* Indicador de Estado LED - Simula canal inactivo */
 .accessNav::before {
   content: '';
-  width: 4px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 5px;
+  height: 5px;
+  background: #1e293b;
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  display: inline-block;
 }
 
 .accessNav:hover {
-  color: #fff;
-  background-color: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  background-color: rgba(0, 229, 255, 0.02);
 }
 
+/* Activación de LED al pasar el cursor (Hover) */
 .accessNav:hover::before {
   background: var(--neon-cyan);
   box-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
 }
 
-/* activation line */
+/* Línea sutil de link activo / enfoque */
 .accessNav::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px; /* Montado exacto sobre el borde del contenedor */
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
-  transition: width 0.4s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .accessNav:hover::after {
-  width: 80%;
+  width: 100%;
 }
 
-/* bttn config */
+/* --- CONFIGURATION BUTTON SPECIAL ITEM --- */
 .btnConfig {
   color: var(--neon-cyan) !important;
   border-left: 1px solid var(--glass-stroke) !important;
-  margin-left: 10px;
+  font-family: var(--font-mono) !important; /* Estilo de consola */
+  font-size: 0.8rem;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.btnConfig::before {
+  /* LED de configuración inicia en cian sutil */
+  background: rgba(0, 229, 255, 0.3) !important;
 }
 
 .configWrapper {
   position: relative;
 }
 
+/* --- HARDWARE DROPDOWN PANEL --- */
 .configDropdown {
   position: absolute;
   top: 100%;
   right: 0;
   width: 220px;
-  background: #0f172a;
+  background: #05070c; /* Panel sólido de servidor */
   border: 1px solid var(--glass-stroke);
-  border-radius: 0 0 12px 12px;
-  padding: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  animation: slideDropdown 0.3s ease-out;
+  border-top: none; /* Acople perfecto con la barra */
+  border-radius: 0 0 6px 6px;
+  padding: 8px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+  animation: dropdownDeploy 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes slideDropdown {
-  from { opacity: 0; transform: translateY(-10px); }
+@keyframes dropdownDeploy {
+  from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .dropdownItem {
   display: flex;
   align-items: center;
-  padding: 12px 14px;
+  box-sizing: border-box;
+  width: 100%; /* Corregido para ocupar todo el contenedor */
+  padding: 12px 16px;
   color: var(--text-silver);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-family: var(--font-mono); /* Texto tipo terminal */
+  font-size: 0.8rem;
   font-weight: 600;
-  border-radius: 8px;
-  transition: 0.2s;
-  width: 80%;
+  border-radius: 4px;
+  transition: all 0.2s ease;
   background: transparent;
   border: none;
   cursor: pointer;
+  text-align: left;
 }
 
 .dropdownItem:hover {
-  background: rgba(56, 189, 248, 0.1);
-  color: var(--neon-cyan);
+  background: rgba(0, 229, 255, 0.06);
+  color: #ffffff;
+  padding-left: 20px; /* Pequeño desplazamiento de confirmación */
 }
 
+/* Botón de desconexión / Alerta */
 .btnLogout {
-  color: #f87171 !important;
+  color: #ef4444 !important; /* Rojo de sistema de seguridad estándar */
   border-top: 1px solid var(--glass-stroke) !important;
-  margin-top: 5px;
-  padding-top: 15px;
+  margin-top: 6px;
+  border-radius: 0 0 4px 4px;
+  padding-top: 14px;
 }
 
-/* responsive */
+.btnLogout:hover {
+  background: rgba(239, 68, 68, 0.06);
+  color: #f87171 !important;
+}
+
+/* --- RESPONSIVITY AND SCROLL STYLES --- */
 @media (max-width: 800px) {
   .navContainerFull {
-    padding: 0 10px;
     justify-content: flex-start;
     overflow-x: auto;
+    /* Ocultar barra de scroll horrible de navegadores en móvil */
+    scrollbar-width: none; 
+  }
+  
+  .navContainerFull::-webkit-scrollbar {
+    display: none; 
   }
   
   .accessNav {
-    padding: 20px 15px;
+    padding: 20px 20px;
     font-size: 0.7rem;
     white-space: nowrap;
+  }
+  
+  .btnConfig {
+    border-left: none !important;
   }
 }

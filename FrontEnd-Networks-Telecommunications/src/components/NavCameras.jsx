@@ -12,7 +12,7 @@ export default function NavCameras({ view, setView }) {
           onClick={() => setView("add")}
         >
           <span className="navIcon">📝</span>
-          <span className="navLabel">Add Cameras</span>
+          <span className="navLabel">Form Cameras</span>
           {view === "add" && <div className="activeIndicator" />}
         </li>
 

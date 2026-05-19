@@ -157,15 +157,15 @@
                               <input className="configInput" name="username" value={formData.username} onChange={handleInputChange} />
                             </div>
                             <div className="configGridItem">
-                              <label className="configLabel">Given Name</label>
+                              <label className="configLabel">FirstName</label>
                               <input className="configInput" name="first_name" value={formData.first_name} onChange={handleInputChange} />
                             </div>
                             <div className="configGridItem">
-                              <label className="configLabel">Family Name</label>
+                              <label className="configLabel">LastName</label>
                               <input className="configInput" name="last_name" value={formData.last_name} onChange={handleInputChange} />
                             </div>
                             <div className="configGridItem">
-                              <label className="configLabel">Primary Email Address</label>
+                              <label className="configLabel">Email Address</label>
                               <input className="configInput" type="email" name="email" value={formData.email} onChange={handleInputChange} />
                             </div>
                             <div className="configGridItem">

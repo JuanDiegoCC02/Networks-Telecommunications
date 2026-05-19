@@ -175,11 +175,12 @@ function AddCameras() {
         </div>
 
         <div className='addCamerasContainerForm'>
-          <label>Select the Camera Direction</label>
+          <label className='addCamerasLabelForm'>Select the Camera Direction</label>
+          <div className='addCamerasMapForm'>
           <AddGeolocationCamera setCoords={handleCoords} />
-
-          <p>Latitude: {latitude}</p>
-          <p>Longitude: {longitude}</p>
+          </div>
+          <p className='addCamerasCoords'>Latitude: {latitude}</p>
+          <p className='addCamerasCoords'>Longitude: {longitude}</p>
         </div>
               
 

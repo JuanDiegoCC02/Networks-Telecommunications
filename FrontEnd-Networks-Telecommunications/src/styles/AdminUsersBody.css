@@ -1,15 +1,18 @@
+/* ==========================================================================
+   SYSTEM VARIABLES (Dark Tech & Cyberpunk Palette)
+   ========================================================================== */
 :root {
-
-  --bg-row-hover: rgba(0, 229, 255, 0.02);
+  --bg-row-hover: rgba(0, 229, 255, 0.03);
   --neon-cyan: #00e5ff;
   --neon-green: #10b981;
   --neon-yellow: #f59e0b;
   --neon-red: #ef4444;
   --text-primary: #f8fafc;
   --text-muted: #64748b;
-  --border-technical: rgba(30, 41, 59, 0.8);
+  --border-technical: rgba(30, 41, 59, 0.9);
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
+
 
 .usersManagementMain {
   min-height: calc(100vh - 70px);
@@ -43,6 +46,7 @@
   margin: 0;
 }
 
+/* System Status Real-time Module */
 .systemStatus {
   display: flex;
   align-items: center;
@@ -63,7 +67,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  position: relative;
+  display: inline-block;
 }
 
 .statusPulse.isActive {
@@ -74,7 +78,7 @@
 .statusPulse.isProcessing {
   background-color: var(--neon-cyan);
   box-shadow: 0 0 12px var(--neon-cyan);
-  animation: pulseLoading 1s infinite alternate;
+  animation: pulseLoading 1s infinite alternate ease-in-out;
 }
 
 .statusText {
@@ -84,9 +88,8 @@
 
 @keyframes pulseLoading {
   from { opacity: 0.4; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1.1); }
+  to { opacity: 1; transform: scale(1.15); }
 }
-
 
 .registryTableContainer {
   background: var(--bg-panel-surface);
@@ -160,6 +163,7 @@
 
 .identityCell {
   font-weight: 500;
+  color: #e2e8f0;
 }
 
 .emailCell, .birthDateCell {
@@ -190,18 +194,19 @@
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.badge--support {
+.badge--technician, .badge--support {
   background: rgba(245, 158, 11, 0.1);
   color: var(--neon-yellow);
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-.badge--standard {
+.badge--standard, .badge--user {
   background: rgba(16, 185, 129, 0.1);
   color: var(--neon-green);
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
+/* actions bttns  */
 .actionCell {
   display: flex;
   gap: 8px;
@@ -231,9 +236,13 @@
 }
 
 .editBtn.btn--abort {
-  background: rgba(239, 68, 68, 0.1) !important;
+  background: rgba(239, 68, 68, 0.12) !important;
   border-color: var(--neon-red) !important;
   color: var(--neon-red) !important;
+}
+
+.editBtn.btn--abort:hover {
+  background: rgba(239, 68, 68, 0.2) !important;
 }
 
 .deleteBtn {
@@ -248,26 +257,30 @@
   color: #f87171;
 }
 
+/* config panel */
 .expansionRow {
-  background: #04060b;
+  background: #060a13; 
 }
 
 .expansionTd {
-  padding: 24px 40px !important;
-  border-bottom: 1px solid var(--neon-cyan) !important;
+  padding: 24px 30px !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.2) !important;
 }
 
 .configPanel {
   animation: panelDeploy 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
 }
 
 @keyframes panelDeploy {
-  from { opacity: 0; transform: translateY(-8px); }
+  from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .configPanelHeader {
   margin-bottom: 20px;
+  border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+  padding-bottom: 10px;
 }
 
 .configPanelTitle {
@@ -279,6 +292,7 @@
   margin: 0;
 }
 
+/* panel grid */
 .configGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -301,7 +315,7 @@
 }
 
 .configInput, .configSelect {
-  background-color: #0d1527;
+  background-color: #0b111e;
   border: 1px solid var(--border-technical);
   border-radius: 4px;
   padding: 10px 14px;
@@ -309,6 +323,7 @@
   font-size: 0.85rem;
   transition: all 0.2s ease;
   outline: none;
+  box-sizing: border-box;
 }
 
 .configInput:focus, .configSelect:focus {
@@ -319,6 +334,11 @@
 .configSelect option {
   background-color: #0b111e;
   color: #ffffff;
+}
+
+.configInput[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
 }
 
 .configActions {
@@ -352,6 +372,7 @@
   cursor: not-allowed;
 }
 
+/* responsive */
 @media (max-width: 1024px) {
   .usersManagementMain {
     padding: 20px;

@@ -27,9 +27,11 @@ class UserProfileSerializer(serializers.ModelSerializer):
         
     # Method to get the users group name for display in GET responses
     def get_group(self, obj):
-        user_groups = obj.groups.values_list('name', flat=True)
-        if 'Administrator' in user_groups:
-            return 'Administrator'
+        user_groups = list(
+            obj.groups.values_list('name', flat=True)
+        )
+        if user_groups:
+            return user_groups[0]
         return 'User'
 
     def create(self, validated_data):
@@ -74,9 +76,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
         instance.save()
 
         # Handle Group assignment & clearing existing groups 
-        if new_group_name:
-            group_obj = Group.objects.filter(name=new_group_name).first()
-            if group_obj:
+        if new_group_name: group_obj, created = Group.objects.get_or_create( name=new_group_name )
+        if group_obj:
                 instance.groups.clear()
                 instance.groups.add(group_obj)
 

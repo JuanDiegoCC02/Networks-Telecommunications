@@ -11,7 +11,7 @@ export default function NavRouters({ view, setView }) {
           onClick={() => setView("add")}
         >
           <span className="navIcon">📝</span>
-          <span className="navLabel">Add Routers</span>
+          <span className="navLabel">Form Routers</span>
           {view === "add" && <div className="activeIndicator" />}
         </li>
 

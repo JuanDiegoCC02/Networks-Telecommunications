@@ -160,11 +160,12 @@ function AddRouters() {
           </div>
 
           <div className='addRoutersContainerForm'>
-            <label>Select the Camera Direction</label>
+            <label className='addRoutersLabelForm'>Select the Camera Direction</label>
+            <div className='addRoutersContainerMapForm'>
             <AddGeolocationRouter setCoords={handleCoords} />
-  
-            <p>Latitude: {latitude}</p>
-            <p>Longitude: {longitude}</p>
+            </div>
+            <p className='addRoutersCoords'>Latitude: {latitude}</p>
+            <p className='addRoutersCoords'>Longitude: {longitude}</p>
           </div>
 
         <div className='addRoutersContainerBtn'>

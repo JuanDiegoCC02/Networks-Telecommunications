@@ -1,6 +1,5 @@
-/* AdminNetworks root styles */
-:root {
-  --bg-absolute: #000000;       
+/* root styles AdminNetworks */
+:root {      
   --bg-panel: #050505;         
   --bg-input: #0a0a0a;          
   --accent-blue: #3b82f6;      
@@ -16,7 +15,7 @@
 .adminBodyContainer {
   min-height: 100vh;
   padding: 40px 20px;
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
 }
 
@@ -26,35 +25,37 @@
 }
 
 .adminBdTitle {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   margin-bottom: 35px;
   text-transform: uppercase;
-  color: #fff;
+  color: #ffffff;
   border-left: 4px solid var(--accent-blue);
   padding-left: 15px;
 }
 
-.adminBdTitle:contains("Routers") {
+/* modern hierarchy select */
+section:has(.adminBdContainerRoutersFull) .adminBdTitle,
+div:has(> .adminBdContainerRoutersFull) .adminBdTitle {
   border-left-color: var(--accent-orange);
 }
 
-/* Map Section */
+/* map section */
 .adminMapSection {
   margin-bottom: 40px;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-dim);
   filter: grayscale(1) invert(0.9) contrast(0.9); 
-  transition: filter 0.3s ease;
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adminMapSection:hover {
-  filter: grayscale(0.5) invert(0.9) contrast(1);
+  filter: grayscale(0.4) invert(0.9) contrast(1);
 }
 
-/* Filter & Search */
+/* filter & search */
 .adminBdNavFull {
   display: flex;
   gap: 12px;
@@ -63,24 +64,34 @@
   padding: 12px;
   border-radius: 8px;
   border: 1px solid var(--border-dim);
+  align-items: center;
 }
 
 .adminBdSearch, 
 .adminBdSelectSearch {
-  background: var(--bg-absolute);
+  background: var(--bg-input);
   border: 1px solid var(--border-dim);
-  color: #fff;
+  color: #ffffff;
   padding: 12px 18px;
   border-radius: 6px;
   font-size: 0.85rem;
   outline: none;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.adminBdSearch { flex-grow: 1; }
-.adminBdSearch:focus {
-  border-color: #333;
-  box-shadow: 0 0 0 1px #333;
+.adminBdSearch { 
+  flex-grow: 1; 
+}
+
+.adminBdSearch:focus,
+.adminBdSelectSearch:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3), 0 0 12px rgba(59, 130, 246, 0.1);
+}
+
+.adminBdSelectSearch option {
+  background: var(--bg-panel);
+  color: #ffffff;
 }
 
 /* system structure */
@@ -88,7 +99,7 @@
 .adminBdContainerRoutersFull {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 /* cards structure */
@@ -96,24 +107,41 @@
 .adminBdContainerRouterOwn {
   background: var(--bg-panel);
   border: 1px solid var(--border-dim);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.adminBdContainerCameraOwn:hover, 
+.adminBdContainerCameraOwn:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.85), 0 0 15px rgba(59, 130, 246, 0.03);
+}
+
 .adminBdContainerRouterOwn:hover {
   transform: translateY(-4px);
-  border-color: #222;
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.85), 0 0 15px rgba(245, 158, 11, 0.03);
 }
 
-/* Card Header */
+/* pannel img & video */
+.adminBdContainerCameraOwn img,
+.adminBdContainerCameraOwn video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: var(--bg-absolute);
+  border-bottom: 1px solid var(--border-dim);
+  display: block;
+}
+
+/* card header */
 .adminBdHeaderCamera, 
 .adminBdHeaderRouter {
-  padding: 18px 20px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 16px 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01), transparent);
   border-bottom: 1px solid var(--border-dim);
   display: flex;
   justify-content: space-between;
@@ -123,80 +151,91 @@
 .adminBdHeaderCamera h4, 
 .adminBdHeaderRouter h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
 .adminBdHeaderCamera span, 
 .adminBdHeaderRouter span {
   font-size: 0.65rem;
   font-weight: 800;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: 4px;
   text-transform: uppercase;
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.05);
   color: var(--success);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  letter-spacing: 0.03em;
 }
 
-/* Card Body */
+/* card body */
 .adminBdMainCamera, 
 .adminBdMainRouter {
   padding: 20px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .adminBdCamerasLocation, 
 .adminBdRoutersLocation {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   display: block;
+  letter-spacing: 0.05em;
 }
 
 .adminBdCamerasDescrip, 
 .adminBdRoutersDescription {
   font-size: 0.85rem;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 15px;
+  color: #71717a;
+  line-height: 1.6;
+  margin-bottom: 18px;
   display: block;
 }
 
 .adminBdCamerasIP, .adminBdRoutersIP, 
 .adminBdCamerasURL, .adminBdRoutersMAC, 
 .adminBdRoutersBrand, .adminBdModel {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.7rem;
-  padding: 6px 10px;
+  padding: 6px 12px;
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
   border-radius: 4px;
   margin: 4px 0;
   width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-break: break-all;
+  display: block;
   color: var(--accent-blue);
+  letter-spacing: -0.01em;
 }
 
 .adminBdRoutersIP, .adminBdRoutersMAC {
   color: var(--accent-orange);
 }
 
-/* Footer Card */
+/* footer card */
 .adminBdFooterCamera, 
 .adminBdFooterRouter {
-  padding: 15px 20px;
+  padding: 14px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.2);
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--border-dim);
 }
 
 .adminBdBttnEdit {
-  background: #fff;
-  color: #000;
+  background: #ffffff;
+  color: #000000;
   border: none;
   padding: 10px;
   border-radius: 4px;
@@ -204,34 +243,38 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background-color 0.2s ease;
 }
 
-.adminBdBttnEdit:hover { background: #ccc; }
+.adminBdBttnEdit:hover { 
+  background: #e4e4e7; 
+}
 
 .adminBdBttnDelete {
   background: transparent;
   color: var(--danger);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(239, 68, 68, 0.2);
   padding: 10px;
   border-radius: 4px;
   font-weight: 700;
   font-size: 0.75rem;
   text-transform: uppercase;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .adminBdBttnDelete:hover {
   background: var(--danger);
-  color: white;
+  color: #ffffff;
+  border-color: var(--danger);
 }
 
-/* Modal Edit */
+/* modal edit */
 .adminBdModalEditFull {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -245,36 +288,46 @@
   width: 100%;
   max-width: 550px;
   border-radius: 12px;
-  padding: 30px;
+  padding: 35px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
 }
 
 .adminBdModalTitle {
-  color: #fff;
-  font-size: 1.2rem;
+  color: #ffffff;
+  font-size: 1.25rem;
   font-weight: 800;
   margin-bottom: 25px;
   text-transform: uppercase;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .adminBdModalBodyScroll {
   overflow-y: auto;
   max-height: 60vh;
-  padding-right: 15px;
+  padding-right: 12px;
 }
 
-/* style scroll Modal */
-.adminBdModalBodyScroll::-webkit-scrollbar { width: 4px; }
-.adminBdModalBodyScroll::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+/* custom scrollbar */
+.adminBdModalBodyScroll::-webkit-scrollbar { 
+  width: 5px; 
+}
+.adminBdModalBodyScroll::-webkit-scrollbar-track {
+  background: var(--bg-absolute);
+}
+.adminBdModalBodyScroll::-webkit-scrollbar-thumb { 
+  background: #27272a; 
+  border-radius: 10px; 
+}
 
 .adminBdLbModal {
   font-size: 0.65rem;
   font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  margin-top: 15px;
+  margin-top: 16px;
   display: block;
   letter-spacing: 0.05em;
 }
@@ -284,42 +337,64 @@
   width: 100%;
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
-  color: #fff;
+  color: #ffffff;
   padding: 12px;
   border-radius: 4px;
   margin-top: 6px;
   font-size: 0.9rem;
   outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.adminBdINPModal:focus { border-color: var(--accent-blue); }
+.adminBdINPModal:focus,
+.adminBdSelectModal:focus { 
+  border-color: rgba(59, 130, 246, 0.5); 
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+}
+
+.adminBdSelectModal option {
+  background: var(--bg-panel);
+  color: #ffffff;
+}
 
 .adminBdContainerBttnsEdit {
-  margin-top: 30px;
+  margin-top: 35px;
   display: flex;
-  gap: 12px;
+  gap: 14px;
 }
 
 .adminBdBtnSaveEdit {
   flex: 2;
   background: var(--accent-blue);
-  color: #fff;
+  color: #ffffff;
   border: none;
   padding: 14px;
   border-radius: 4px;
   font-weight: 800;
   text-transform: uppercase;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.adminBdBtnSaveEdit:hover {
+  opacity: 0.95;
 }
 
 .adminBdBtnCancelEdit {
   flex: 1;
   background: transparent;
-  color: #fff;
-  border: 1px solid #333;
+  color: #ffffff;
+  border: 1px solid #27272a;
   padding: 14px;
   border-radius: 4px;
   font-weight: 800;
   text-transform: uppercase;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.adminBdBtnCancelEdit:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: #3f3f46;
 }

@@ -89,6 +89,9 @@ class Router(models.Model):
     brand = models.CharField(max_length=50, blank=True)
     model = models.CharField(max_length=50, blank=True)
 
+    thumbnail_url = models.CharField(max_length=255, blank=True, null=True)
+
+
     location = models.CharField(
         max_length=20,
         choices=[('San José', 'San José'), ('Cartago', 'Cartago'),('Heredia', 'Heredia'),('Alajuela', 'Alajuela'),('Limón', 'Limón'),('Puntarenas', 'Puntarenas'),('Guanacaste', 'Guanacaste')],

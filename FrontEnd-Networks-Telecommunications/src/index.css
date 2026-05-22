@@ -1,5 +1,8 @@
+:root {
+  --bg-dark: #000000; 
+}
 body{
      background: var(--bg-dark);
-  background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
-  background-size: 32px 32px;
+     background-image: radial-gradient(circle at 2px 2px, #1e293b 1px, transparent 0);
+     background-size: 32px 32px;
 }

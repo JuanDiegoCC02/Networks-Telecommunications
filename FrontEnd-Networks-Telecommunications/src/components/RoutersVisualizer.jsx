@@ -18,6 +18,7 @@ function RoutersVisualizer() {
     const [editMac, setEditMac] = useState("")
     const [editBrand, setEditBrand] = useState("")
     const [editModel, setEditModel] = useState("")
+    const [editThumbnail, setEditThumbnail] = useState("")
     const [editLocation, setEditLocation] = useState("")
     const [editStatus, setEditStatus] = useState("")
     const [show, setShow] = useState(false)
@@ -40,6 +41,7 @@ function RoutersVisualizer() {
         setEditMac(user.mac_address)
         setEditBrand(user.brand)
         setEditModel(user.model)
+        setEditThumbnail(user.thumbnail_url)
         setEditLocation(user.location)
         setEditStatus(user.status)
         setShow(true)
@@ -54,6 +56,7 @@ function RoutersVisualizer() {
             "brand" : editBrand,
             "model" : editModel,
             "location" : editLocation,
+            "thumbnail_url" : editThumbnail,  
             "status" : editStatus
         };
         try {
@@ -140,6 +143,9 @@ function RoutersVisualizer() {
                     <span className='rVisualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />
                     <span className='rVisualizerBrandRouter'>Brand: {r.brand}</span><br />
                     <span className='rVisualizerModelRouter'>Model: {r.model}</span><br />
+                    <div className='routerThumbnailContainer'>
+                        <img src={r.thumbnail_url} alt={r.name} className='routerThumbnail' />
+                    </div>
 
                     <div className='rVisualizerViewGeolocation'>
                       <ViewGeolocationRouter routers={[r]}/>
@@ -195,6 +201,13 @@ function RoutersVisualizer() {
                         <label className='rVisualizerLabelFormEdit' htmlFor=""> Model </label>
                         <input className='rVisualizerInputFormEdit' value={editModel} onChange={(e)=> setEditModel(e.target.value)}  type="text" />
                     </div>
+
+                    <div className='rVizualizerContainerOwnEdit'>
+                        <label className='rVisualizerLabelFormEdit' htmlFor=""> Thumbnail URL </label>
+                        <input className='rVisualizerInputFormEdit' value={editModel} onChange={(e)=> setEditModel(e.target.value)}  type="text" />
+                    </div>
+
+
                     
                     <div className='rVizualizerContainerOwnEdit'>
                         <label className='rVisualizerLabelFormEdit' htmlFor="">Router Location </label>

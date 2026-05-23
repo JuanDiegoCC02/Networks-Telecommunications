@@ -15,6 +15,7 @@ function CamerasVisualizer() {
   const [editName, setEditName] = useState("")
   const [editIp_Address, setEditIp_Address] = useState("")
   const [editUrl_Address, setEditUrl_Address] = useState("")
+  const [editThumbnailUrl, setEditThumbnailUrl] = useState("")
   const [editLocation, setEditLocation] = useState("")
   const [editDescription, setEditDescription] = useState("")
   const [editStatus, setEditStatus] = useState("")
@@ -60,6 +61,7 @@ function CamerasVisualizer() {
     setEditLocation(c.location)
     setEditDescription(c.description)
     setEditStatus(c.status)
+    setEditThumbnailUrl(c.thumbnail_url)
     setShow(true)
     
  }
@@ -70,6 +72,7 @@ function CamerasVisualizer() {
     "name": editName,
     "ip_address": editIp_Address,
     "url_address": editUrl_Address,
+    "thumbnail_url": editThumbnailUrl,
     "location": editLocation,
     "description": editDescription,
     "status": editStatus,
@@ -141,6 +144,10 @@ function CamerasVisualizer() {
             <span className='cVisualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br />
             <span className='cVisualizerURLAddressCamera'>URL Address: {c.url_address} </span><br />
 
+            <div className='cVisualizerThumbnailContainer'>
+              <img src={c.thumbnail_url} alt={c.name} className='cVisualizerThumbnail' />
+            </div>
+
             <video width="100%" controls autoPlay muted loop className='cVisualizerVideoCamera'> 
             <source src={c.stream_url} type="video/mp4" />
             </video>
@@ -197,6 +204,11 @@ function CamerasVisualizer() {
           <div className='cVisualizerContainerOwnEdit'>
             <label className='cVisualizerLabelFormEdit' htmlFor="">Description</label>
             <input className='cVisualizerInputFormEdit' value={editDescription} onChange={(e) => setEditDescription(e.target.value)} type="text" />
+          </div>
+
+          <div className='cVisualizerContainerOwnEdit'>
+            <label className='cVisualizerLabelFormEdit' htmlFor="">Thumbnail URL</label>
+            <input className='cVisualizerInputFormEdit' value={editThumbnailUrl} onChange={(e) => setEditThumbnailUrl(e.target.value)} type="text" />
           </div>
 
            <div className='cVisualizerContainerOwnEdit'>

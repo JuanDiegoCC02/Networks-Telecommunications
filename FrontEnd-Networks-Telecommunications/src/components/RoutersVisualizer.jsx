@@ -18,7 +18,7 @@ function RoutersVisualizer() {
     const [editMac, setEditMac] = useState("")
     const [editBrand, setEditBrand] = useState("")
     const [editModel, setEditModel] = useState("")
-    const [editThumbnail, setEditThumbnail] = useState("")
+    const [editThumbnailUrl, setEditThumbnailUrl] = useState("")
     const [editLocation, setEditLocation] = useState("")
     const [editStatus, setEditStatus] = useState("")
     const [show, setShow] = useState(false)
@@ -41,7 +41,7 @@ function RoutersVisualizer() {
         setEditMac(user.mac_address)
         setEditBrand(user.brand)
         setEditModel(user.model)
-        setEditThumbnail(user.thumbnail_url)
+        setEditThumbnailUrl(user.thumbnail_url)
         setEditLocation(user.location)
         setEditStatus(user.status)
         setShow(true)
@@ -56,7 +56,7 @@ function RoutersVisualizer() {
             "brand" : editBrand,
             "model" : editModel,
             "location" : editLocation,
-            "thumbnail_url" : editThumbnail,  
+            "thumbnail_url" : editThumbnailUrl,  
             "status" : editStatus
         };
         try {
@@ -204,7 +204,7 @@ function RoutersVisualizer() {
 
                     <div className='rVizualizerContainerOwnEdit'>
                         <label className='rVisualizerLabelFormEdit' htmlFor=""> Thumbnail URL </label>
-                        <input className='rVisualizerInputFormEdit' value={editModel} onChange={(e)=> setEditModel(e.target.value)}  type="text" />
+                        <input className='rVisualizerInputFormEdit' value={editThumbnailUrl} onChange={(e)=> setEditThumbnailUrl(e.target.value)}  type="text" />
                     </div>
 
 

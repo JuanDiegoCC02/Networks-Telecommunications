@@ -1,8 +1,8 @@
-/* root routersVisualizer */
+/* root styles routersVisualizer*/
 :root {
-  --bg-absolute: #000000;      
-  --bg-panel: #050505;         
-  --bg-input: #0a0a0a;         
+  --bg-absolute: #000000;       
+  --bg-panel: #050505;          
+  --bg-input: #0a0a0a;          
   --accent-router: #3b82f6;     
   --accent-location: #22d3ee;   
   --border-dim: #161616;        
@@ -11,12 +11,17 @@
   --danger: #ef4444;
 }
 
-/* principal container */
 .rVisualizerContainerFull {
   min-height: 100vh;
   padding: 50px 30px;
   font-family: 'Inter', sans-serif;
   color: var(--text-primary);
+  background-color: var(--bg-absolute);
+  box-sizing: border-box;
+}
+
+.rVisualizerContainerTitle {
+  width: 100%;
 }
 
 .rVisualizerTitle {
@@ -29,7 +34,7 @@
   color: #fff;
 }
 
-/* nav / search & filter */
+/* search filters */
 .rVisualizerNavFull {
   display: flex;
   gap: 12px;
@@ -41,8 +46,20 @@
   border: 1px solid var(--border-dim);
 }
 
+.rVisualizerContainerSearch {
+  flex: 1;
+  max-width: 500px;
+}
+
+.rVisualizerContainerSelectSearch {
+  flex: 1;
+  max-width: 250px;
+}
+
 .rVisualizerSearch, 
 .rVisualizerSelectSearch {
+  width: 100%;
+  box-sizing: border-box;
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
   color: #fff;
@@ -53,14 +70,20 @@
   transition: border-color 0.3s;
 }
 
-.rVisualizerSearch:focus {
+.rVisualizerSearch:focus,
+.rVisualizerSelectSearch:focus {
   border-color: var(--accent-router);
 }
 
-/* structure cards */
+.rVisualizerOptSearch {
+  background-color: var(--bg-panel);
+  color: #fff;
+}
+
+/* grid cards */
 .rVisualizerContainerRoutersFull {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Medida exacta original */
   gap: 25px;
   max-width: 1400px;
   margin: 0 auto;
@@ -73,7 +96,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .rVisualizerContainerRouterOwn:hover {
@@ -92,45 +115,53 @@
   font-size: 1.1rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
-.rVisualizerStatusRouter, 
-.rVisualizerLocationRouter {
+/* status / location */
+.rVisualizerStatusRouter {
   font-size: 0.65rem;
   font-weight: 800;
   padding: 3px 10px;
   border-radius: 4px;
   text-transform: uppercase;
-  margin-right: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.rVisualizerStatusRouter {
   color: #10b981;
   background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  display: inline-block;
+  margin-right: 8px;
 }
 
 .rVisualizerLocationRouter {
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 4px 10px;
   color: var(--accent-location);
   background: rgba(34, 211, 238, 0.05);
+  border-radius: 4px;
+  text-transform: uppercase;
+  border: 1px solid rgba(34, 211, 238, 0.1);
+  display: inline-block;
 }
 
-/* card data */
+/* body cards */
 .rVisualizerMainRouter {
   padding: 22px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.rVisualizerNameRouter { display: none; } 
+.rVisualizerNameRouter { display: none; }
 
 .rVisualizerDescriptionRouter {
   font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 18px;
+  margin: 0 0 18px 0;
 }
 
+/* style terminal */
 .rVisualizerIPAddressRouter, 
 .rVisualizerMACAddressRouter,
 .rVisualizerBrandRouter,
@@ -145,8 +176,29 @@
   margin-bottom: 8px;
   width: fit-content;
   border: 1px solid rgba(59, 130, 246, 0.1);
+  box-sizing: border-box;
 }
 
+/* imgRouter */
+.routerThumbnailContainer {
+  margin-top: 12px;
+  width: 100%;
+  height: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-dim);
+  background: var(--bg-absolute);
+}
+
+.routerThumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* map */
 .rVisualizerViewGeolocation {
   margin-top: 20px;
   height: 160px;
@@ -156,7 +208,7 @@
   filter: grayscale(1) brightness(0.6);
 }
 
-/* footer */
+/* footer bttns */
 .rVisualizerFooterRouter {
   padding: 15px 22px;
   display: grid;
@@ -166,7 +218,12 @@
   border-top: 1px solid var(--border-dim);
 }
 
+.rVisualizerContainerFooter {
+  width: 100%;
+}
+
 .rVisualizerBttnDelete {
+  width: 100%;
   background: transparent;
   color: var(--danger);
   border: 1px solid rgba(239, 68, 68, 0.2);
@@ -185,6 +242,7 @@
 }
 
 .rVisualizerBttnEdit {
+  width: 100%;
   background: #fff;
   color: #000;
   border: none;
@@ -194,13 +252,14 @@
   font-size: 0.7rem;
   text-transform: uppercase;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .rVisualizerBttnEdit:hover {
   background: #ccc;
 }
 
-/* modal edit */
+/* edit modal  */
 .rVisualizerModalEditFull {
   position: fixed;
   inset: 0;
@@ -211,6 +270,7 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  padding: 20px;
 }
 
 .rVisualizerEditFormFull {
@@ -220,6 +280,13 @@
   max-width: 500px;
   padding: 35px;
   border-radius: 8px;
+  box-sizing: border-box;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.rVisualizerContainerTitleEdit {
+  width: 100%;
 }
 
 .rVisualizerTitleMEdit {
@@ -231,9 +298,9 @@
   text-transform: uppercase;
 }
 
-.rVisualizerContainerOwnEdit, 
+.rVisualizerContainerOwnEdit,
 .rVizualizerContainerOwnEdit {
-  margin-bottom: 15px;
+  margin-bottom: 15px; 
 }
 
 .rVisualizerLabelFormEdit {
@@ -248,6 +315,7 @@
 .rVisualizerInputFormEdit, 
 .rVisualizerSelectEditForm {
   width: 100%;
+  box-sizing: border-box;
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
   color: #fff;
@@ -256,33 +324,69 @@
   outline: none;
 }
 
-/* bttns tools */
+.rVisualizerOptEditForm {
+  background-color: var(--bg-panel);
+  color: #fff;
+}
+
+/* modal bttns */
 .rVisualizerBttnsEdit {
   display: flex;
   gap: 12px;
   margin-top: 30px;
+  width: 100%;
+}
+
+.rVisualizerBtnSaveEdit,
+.rVisualizerContainerBtnCancelEdit {
+  flex: 1;
+}
+
+/* bttns style*/
+.rVisualizerBttnsEdit button,
+.rVisualizerBtnCancelEdit {
+  width: 100%;
+  padding: 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-size: 0.8rem;
 }
 
 .rVisualizerBtnSaveEdit button {
-  width: 100%;
   background: var(--accent-router);
   color: white;
   border: none;
-  padding: 14px;
-  border-radius: 4px;
-  font-weight: 800;
-  text-transform: uppercase;
-  cursor: pointer;
 }
 
 .rVisualizerBtnCancelEdit {
-  width: 100%;
   background: transparent;
   color: #fff;
   border: 1px solid #333;
-  padding: 14px;
-  border-radius: 4px;
-  font-weight: 800;
-  text-transform: uppercase;
-  cursor: pointer;
+  display: block;
+  text-align: center;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .rVisualizerContainerFull {
+    padding: 30px 15px;
+  }
+  
+  .rVisualizerNavFull {
+    flex-direction: column; 
+    gap: 15px;
+  }
+  
+  .rVisualizerContainerSearch,
+  .rVisualizerContainerSelectSearch {
+    max-width: 100%; /
+    width: 100%;
+  }
+
+  .rVisualizerContainerRoutersFull {
+    grid-template-columns: 1fr; 
+  }
 }

@@ -1,245 +1,315 @@
-/* root camerasVisualizer */
+/* root styles camerasVisualizer */
 :root {
-  --bg-absolute: #000000;       
-  --bg-panel: #050505;          
-  --bg-input: #0a0a0a;          
+  --bg-absolute: #09090b;       
+  --bg-panel: #18181b;          
+  --bg-input: #27272a;          
   --accent-camera: #3b82f6;     
-  --accent-location: #22d3ee;   
-  --border-dim: #161616;        
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;    
+  --accent-location: #06b6d4;   
+  --border-dim: #27272a;        
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;    
   --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
 }
 
-
+/* containerFull */
 .cVisualizerContainerFull {
   min-height: 100vh;
-  padding: 50px 30px;
-  font-family: 'Inter', sans-serif;
+  padding: 40px 24px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-primary);
+  background-color: var(--bg-absolute);
 }
 
 .cVizualizerTitle {
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  margin-bottom: 40px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
   text-align: center;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text-primary);
+  opacity: 0.9;
 }
 
-/* nav */
+/* search filters */
 .cVisualizerNavFull {
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
-  margin-bottom: 50px;
+  align-items: center;
+  margin-bottom: 40px;
   background: var(--bg-panel);
-  padding: 15px;
-  border-radius: 8px;
+  padding: 16px 24px;
+  border-radius: 12px;
   border: 1px solid var(--border-dim);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* inputs & selects */
 .cVisualizerSearch, 
 .cVisualizerSelectSearch {
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-size: 0.85rem;
+  color: var(--text-primary);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 0.875rem;
   outline: none;
-  transition: border-color 0.3s;
+  width: 240px;
+  transition: all 0.2s ease;
 }
 
-.cVisualizerSearch:focus {
+.cVisualizerSearch:focus,
+.cVisualizerSelectSearch:focus {
   border-color: var(--accent-camera);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
 }
 
-/* grid structure */
+/* cards cameras / grid  */
 .cVizualizerContainerCamerasFull {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 25px;
+  gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
+/* containerCameraown */
 .cVisualizerContainerCameraOwn {
   background: var(--bg-panel);
   border: 1px solid var(--border-dim);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cVisualizerContainerCameraOwn:hover {
-  transform: translateY(-5px);
-  border-color: #333;
+  transform: translateY(-4px);
+  border-color: #3f3f46;
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
 }
 
-/* header card */
+/* header cards */
 .cVisualizerHeaderCamera {
-  padding: 18px 22px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.01);
   border-bottom: 1px solid var(--border-dim);
 }
 
 .cVisualizerTitleCamera {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
+/* status */
 .cVisualizerStatusCamera {
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
   text-transform: uppercase;
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.05);
-  border: 1px solid rgba(16, 185, 129, 0.1);
-  display: inline-block;
+  color: var(--success);
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  display: inline-flex;
+  align-items: center;
+  margin-right: 8px;
 }
 
-/* body info cameras */
+/* videoCameras */
+.cVisualizerStatusCamera:contains("Inactive") {
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.cVisualizerLocationCamera {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  color: var(--accent-location);
+  background: rgba(34, 211, 238, 0.08);
+  border-radius: 6px;
+  text-transform: uppercase;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  display: inline-flex;
+}
+
+/* body cards */
 .cVisualizerMainCamera {
-  padding: 22px;
+  padding: 20px;
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .cVisualizerNameCamera { display: none; }
 
 .cVisualizerDescriptionCamera {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 18px;
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
+/* urlAddress & ipAddress */
 .cVisualizerIPAddressCamera, 
 .cVisualizerURLAddressCamera {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: 0.75rem;
   color: var(--accent-camera);
-  background: rgba(59, 130, 246, 0.05);
-  padding: 5px 10px;
-  border-radius: 4px;
-  display: block;
+  background: rgba(59, 130, 246, 0.06);
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-block;
   margin-bottom: 8px;
   width: fit-content;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  letter-spacing: 0.02em;
 }
 
-.cVisualizerLocationCamera {
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 4px 10px;
-  color: var(--accent-location);
-  background: rgba(34, 211, 238, 0.05);
-  border-radius: 4px;
-  text-transform: uppercase;
-  border: 1px solid rgba(34, 211, 238, 0.1);
-}
-
-.cVisualizerViewGeolocation {
-  margin-top: 20px;
-  height: 160px;
-  border-radius: 6px;
+/* imgCameras */
+.cVisualizerThumbnailContainer {
+  margin-top: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--border-dim);
-  filter: grayscale(1) brightness(0.6);
 }
 
-/* bttns on footer */
+.cVisualizerThumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.cVisualizerVideoCamera {
+  margin-top: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-dim);
+  background: #000;
+  display: block;
+}
+
+/* map */
+.cVisualizerViewGeolocation {
+  margin-top: 16px;
+  height: 140px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-dim);
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+
+.cVisualizerViewGeolocation:hover {
+  opacity: 1;
+}
+
+/* footer bttns */
 .cVisualizerFooterCamera {
-  padding: 15px 22px;
+  padding: 16px 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(9, 9, 11, 0.4);
   border-top: 1px solid var(--border-dim);
 }
 
 .cVisualizerBttnDelete {
   width: 100%;
-  background: transparent;
+  background: rgba(239, 68, 68, 0.05);
   color: var(--danger);
   border: 1px solid rgba(239, 68, 68, 0.2);
   padding: 10px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.7rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: 0.2s;
+  transition: all 0.2s;
 }
 
 .cVisualizerBttnDelete:hover {
   background: var(--danger);
   color: white;
+  border-color: var(--danger);
 }
 
 .cVisualizerBttnEdit {
   width: 100%;
-  background: #fff;
-  color: #000;
-  border: none;
+  background: #27272a;
+  color: var(--text-primary);
+  border: 1px solid var(--border-dim);
   padding: 10px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.7rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .cVisualizerBttnEdit:hover {
-  background: #ccc;
+  background: #3f3f46;
+  border-color: #52525b;
 }
 
-/*  modal edit  */
+/* edit modal */
 .cVisualizerModalEditFull {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.98);
-  backdrop-filter: blur(10px);
+  background: rgba(9, 9, 11, 0.8);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
+  padding: 20px;
 }
 
 .cVisualizerEditFormFull {
   background: var(--bg-panel);
-  border: 1px solid var(--border-dim);
-  width: 90%;
-  max-width: 500px;
-  padding: 35px;
-  border-radius: 8px;
+  border: 1px solid #3f3f46;
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .cVisualizerTitleMEdit {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 25px;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 24px;
   text-align: center;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .cVisualizerLabelFormEdit {
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
   margin-bottom: 6px;
   display: block;
+  letter-spacing: 0.05em;
 }
 
 .cVisualizerInputFormEdit, 
@@ -247,17 +317,24 @@
   width: 100%;
   background: var(--bg-absolute);
   border: 1px solid var(--border-dim);
-  color: #fff;
-  padding: 12px;
-  border-radius: 4px;
-  margin-bottom: 15px;
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
   outline: none;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.cVisualizerInputFormEdit:focus, 
+.cVisualizerSelectEditForm:focus {
+  border-color: var(--accent-camera);
 }
 
 .cVisualizerContainerBttnsEdit {
   display: flex;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 24px;
 }
 
 .cVisualizerBtnSaveEdit {
@@ -265,21 +342,35 @@
   background: var(--accent-camera);
   color: white;
   border: none;
-  padding: 14px;
-  border-radius: 4px;
-  font-weight: 800;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cVisualizerBtnSaveEdit:hover {
+  background: #2563eb;
 }
 
 .cVisualizerBtnCancelEdit {
   flex: 1;
   background: transparent;
-  color: #fff;
-  border: 1px solid #333;
-  padding: 14px;
-  border-radius: 4px;
-  font-weight: 800;
+  color: var(--text-primary);
+  border: 1px solid var(--border-dim);
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cVisualizerBtnCancelEdit:hover {
+  background: rgba(255, 255, 255, 0.05);
 }

@@ -166,6 +166,9 @@ function AdminNetworksBody() {
                   <p className='adminBdRoutersMAC'>MAC: {r.mac_address}</p>
                   <p className='adminBdRoutersBrand'>Brand: {r.brand}</p>
                   <p className='adminBdModel'>Model: {r.model}</p>
+                   <div className='routerThumbnailContainer'>
+                    <img src={r.thumbnail_url} alt={r.name} className='routerThumbnail' />
+                   </div>
                 </main>
                 <footer className='adminBdFooterRouter'>
                   <button className='adminBdBttnEdit' onClick={() => openEdit(r, 'router')}>Edit</button>
@@ -221,6 +224,9 @@ function AdminNetworksBody() {
                         <label className='adminBdLbModal'>Model</label>
                         <input className='adminBdINPModal' value={editData.model || ''} onChange={e => setEditData({...editData, model: e.target.value})} />
                       </div>
+
+                        
+
                     </div>
                   </>
                 )}

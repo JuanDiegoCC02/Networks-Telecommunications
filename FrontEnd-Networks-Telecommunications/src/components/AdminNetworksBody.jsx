@@ -108,6 +108,7 @@ function AdminNetworksBody() {
                 <header className='adminBdHeaderCamera'><h4>{c.name}</h4><span>{c.status}</span></header>
                 <main className='adminBdMainCamera'>
                   <p className='adminBdCamerasLocation'>Location: {c.location}</p>
+                  <p className='adminBdCamerasTechnician'>Technician: {c.username}</p>
                   <small className='adminBdCamerasDescrip'>{c.description}</small>
                   <p className='adminBdCamerasIP'>IP: {c.ip_address}</p>
                   <p className='adminBdCamerasURL'>URL: {c.url_address}</p> 

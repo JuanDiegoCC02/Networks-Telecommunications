@@ -124,7 +124,15 @@ class CameraSerializer(serializers.ModelSerializer):
 
 # Serializer for Router 
 class RouterSerializer(serializers.ModelSerializer):
+
+    username = serializers.CharField(
+        source='user.username',
+        read_only=True
+    )
+
     class Meta:
         model = Router
         fields = '__all__'
-        extra_kwargs = {'user': {'read_only': True}}
+        extra_kwargs = {
+            'user': {'read_only': True}
+        }

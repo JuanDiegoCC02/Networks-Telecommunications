@@ -76,11 +76,13 @@ class UserProfileSerializer(serializers.ModelSerializer):
         instance.save()
 
         # Handle Group assignment & clearing existing groups 
-        if new_group_name: group_obj, created = Group.objects.get_or_create( name=new_group_name )
-        if group_obj:
-                instance.groups.clear()
-                instance.groups.add(group_obj)
+        if new_group_name:
+            group_obj, created = Group.objects.get_or_create(
+                name=new_group_name
+            )
 
+            instance.groups.clear()
+            instance.groups.add(group_obj)
         # Update or Create the associated Profile
         profile, created = Profile.objects.get_or_create(user=instance)
         if profile_data:

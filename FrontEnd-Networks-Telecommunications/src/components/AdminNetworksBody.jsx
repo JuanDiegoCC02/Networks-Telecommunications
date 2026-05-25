@@ -162,6 +162,7 @@ function AdminNetworksBody() {
                 <header className='adminBdHeaderRouter'><h4>{r.name}</h4><span>{r.status}</span></header>
                 <main className='adminBdMainRouter'>
                   <p className='adminBdRoutersLocation'>Location: {r.location}</p>
+                  <p className='adminBdRoutersTechnician'>Technician: {r.username}</p>
                   <p className='adminBdRoutersDescription'>Description: {r.description}</p>
                   <p className='adminBdRoutersIP'>IP: {r.ip_address}</p>
                   <p className='adminBdRoutersMAC'>MAC: {r.mac_address}</p>

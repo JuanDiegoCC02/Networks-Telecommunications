@@ -1,115 +1,123 @@
 /* root syles LogIn */
-
 :root {
-  --bg-black: #000000;
-  --bg-card: #050505;
-  --bg-input: #0a0a0a;
-  --accent-cyan: #00e5ff;
-  --border-dim: #161616;
-  --text-main: #ededed;
-  --text-dim: #666666;
+  --bg-card-glass: rgba(8, 8, 10, 0.85);
+  --bg-input: #040406;
+  
+  --accent-green: #10b981; 
+  --text-main: #f3f4f6;
+  --text-dim: #9ca3af;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --border-dim: rgba(30, 41, 59, 0.6);
+  --shadow-premium: 
+    0 0 0 1px rgba(30, 41, 59, 0.5), 
+    0 24px 48px -12px rgba(0, 0, 0, 0.9);
 }
 
-/* principal container  */
+/* principal container */
 .logInContainerFull {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  font-family: 'Inter', -apple-system, sans-serif;
+  padding: 40px 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* title */
 .logInContainerTitle {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   text-align: center;
 }
 
 .logInTitle {
-  font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: -0.05em;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--text-main);
   margin: 0;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
 }
 
-/* card body form */
+/* card form*/
 .logInFormFull {
-  background: var(--bg-card);
+  background: var(--bg-card-glass);
   border: 1px solid var(--border-dim);
   width: 100%;
-  max-width: 400px;
-  padding: 50px;
-  border-radius: 8px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+  max-width: 420px; 
+  padding: 40px;
+  border-radius: 6px; 
+  box-shadow: var(--shadow-premium);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: formEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* inputs & labels */
 .logInContainerForm {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
+  gap: 6px;
 }
 
 .logInLabelForm {
-  font-size: 0.65rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin-bottom: 10px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .logInInputForm {
   width: 100%;
   background: var(--bg-input);
   border: 1px solid var(--border-dim);
-  padding: 14px 18px;
-  color: #fff;
-  font-family: var(--font-mono); /* Estilo técnico para credenciales */
-  font-size: 0.9rem;
+  padding: 11px 14px;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
   border-radius: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease-in-out;
   outline: none;
 }
 
 .logInInputForm:focus {
-  border-color: var(--accent-cyan);
-  background: #0d0d0d;
+  border-color: var(--accent-green);
+  background: #000000;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
 }
 
 .logInInputForm::placeholder {
-  color: #222;
+  color: #3f3f46;
 }
 
-/* bttn access */
+/* bttnAccess */
 .logInContianerBttn {
-  margin-top: 15px;
+  margin-top: 24px;
 }
 
 .logInBttnAccess {
   width: 100%;
-  background: #fff;
-  color: #000;
+  background: var(--accent-green);
+  color: #040406;
   border: none;
-  padding: 16px;
-  font-weight: 900;
-  font-size: 0.75rem;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .logInBttnAccess:hover {
-  background: var(--accent-cyan);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  background: #34d399;
+  transform: translateY(-1px);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
 }
 
 .logInBttnAccess:active {
@@ -118,48 +126,50 @@
 
 /* register link */
 .logInContainerLinkRegister {
-  margin-top: 35px;
+  margin-top: 32px;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
   border-top: 1px solid var(--border-dim);
-  padding-top: 25px;
+  padding-top: 24px;
 }
 
 .logInTitleLinkRegister {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-dim);
 }
 
 .logInLinkRegister {
-  font-size: 0.8rem;
-  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  color: var(--accent-green);
   text-decoration: none;
-  font-weight: 700;
-  transition: color 0.2s ease;
+  font-weight: 600;
+  transition: color 0.15s ease;
 }
 
 .logInLinkRegister:hover {
-  color: #fff;
+  color: #ffffff;
   text-decoration: underline;
 }
 
-/* load anamition */
-.logInFormFull {
-  animation: formEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+/* animation */
 @keyframes formEntrance {
-  from { opacity: 0; transform: translateY(15px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* responsive */
 @media (max-width: 480px) {
+  .logInContainerFull {
+    padding: 20px 16px;
+  }
+
   .logInFormFull {
-    padding: 30px;
-    border: none;
-    background: transparent;
+    padding: 28px 20px;
+    background: var(--bg-card-glass);
+    border: 1px solid var(--border-dim);
   }
 }

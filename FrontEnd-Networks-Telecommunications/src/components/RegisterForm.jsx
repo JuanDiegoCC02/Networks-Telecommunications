@@ -53,6 +53,11 @@ function RegisterForm() {
                 </div>
 
                 <div className='registerContainerForm'>
+                    <label className='registerLabelForm'>Password</label>
+                    <input className='registerInputForm' placeholder='Password' value={Password} onChange={(e) => setPassword(e.target.value)} type="password" />
+                </div>
+
+                <div className='registerContainerForm'>
                     <label className='registerLabelForm'>Firstname</label>
                     <input className='registerInputForm' placeholder='Firstname' value={FirstName} onChange={(e) => setFirstName(e.target.value)} type="text" />
                 </div>
@@ -60,11 +65,6 @@ function RegisterForm() {
                 <div className='registerContainerForm'>
                     <label className='registerLabelForm'>Lastname</label>
                     <input className='registerInputForm' placeholder='Lastname' value={LastName} onChange={(e) => setLastName(e.target.value)} type="text" />
-                </div>
-
-                <div className='registerContainerForm'>
-                    <label className='registerLabelForm'>Password</label>
-                    <input className='registerInputForm' placeholder='Password' value={Password} onChange={(e) => setPassword(e.target.value)} type="password" />
                 </div>
 
                 <div className='registerContainerForm'>

@@ -1,16 +1,17 @@
 /* root register */
 :root {
-  --form-bg: #050505; 
+  --form-bg-glass: rgba(8, 8, 10, 0.85); 
+  --bg-input: #040406; 
 
-  --text-main: #ffffff;
-  --text-label: #94a3b8; 
-  --accent: #00e5ff;    
-  
+  --text-main: #f3f4f6;
+  --text-label: #9ca3af; 
+  --accent: #10b981; 
+
   --shadow-premium: 
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 20px 25px -5px rgba(0, 0, 0, 0.9);
+    0 0 0 1px rgba(30, 41, 59, 0.5), 
+    0 24px 48px -12px rgba(0, 0, 0, 0.9);
 
-  --border-subtle: #161616;
+  --border-subtle: rgba(30, 41, 59, 0.6);
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
@@ -21,109 +22,121 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-size: 32px 32px;
-  font-family: 'Inter', system-ui, sans-serif;
-  padding: 40px 20px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 60px 20px;
+}
+
+/* container title */
+.registerContainerTitle {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
 }
 
 .registerTitle {
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: 900;
-  letter-spacing: -0.05em; 
-  margin-bottom: 2rem;
-  text-align: center;
+  color: var(--text-main);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.06em; 
+  margin-bottom: 28px;
   text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
 }
 
+/*  card form */
 .registerFormFull {
-  background: var(--form-bg);
+  background: var(--form-bg-glass);
   border: 1px solid var(--border-subtle); 
-  border-radius: 12px; 
-  padding: 3.5rem;
+  border-radius: 6px; 
+  padding: 40px;
   width: 100%;
-  max-width: 500px;
+  max-width: 540px;
   box-shadow: var(--shadow-premium);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; 
-  animation: fadeIn 0.6s ease-out;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; 
+  animation: registerFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .registerContainerForm {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 6px;
+}
+
+.registerContainerForm:nth-child(5) {
+  grid-column: span 2;
+}
+
+.registerContainerBttn {
+  grid-column: span 2;
+  margin-top: 10px; 
+}
+
+.registerContainerLinkLogIn {
+  grid-column: span 2;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
 }
 
 /* inputs & labels */
 .registerLabelForm {
   color: var(--text-label);
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .registerInputForm {
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 14px 16px;
-  font-size: 0.95rem;
-  color: #ffffff;
-  background-color: #0a0a0a; 
+  border-radius: 4px;
+  padding: 11px 14px;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  background-color: var(--bg-input); 
   font-family: var(--font-mono); 
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease-in-out;
 }
 
 .registerInputForm:focus {
   outline: none;
-  background-color: #0d0d0d;
   border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1);
-  transform: translateY(-1px);
+  background-color: #000000;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
 }
 
 .registerInputForm::placeholder {
-  color: #334155;
+  color: #3f3f46;
 }
 
-.registerContainerBttn {
-  margin-top: 1rem; 
-}
-
-/* bttn access */
+/* bttnAccess */
 .registerBttnAccess {
   width: 100%;
-  background: #ffffff; 
-  color: #000000;
+  background: var(--accent); 
+  color: #040406;
   border: none;
-  padding: 16px; 
-  border-radius: 6px;
-  font-weight: 800;
+  padding: 14px; 
+  border-radius: 4px;
+  font-weight: 600;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .registerBttnAccess:hover {
-  background: var(--accent);
-  color: #000;
-  transform: translateY(-2px); 
-  box-shadow: 0 10px 20px -10px rgba(0, 229, 255, 0.5);
+  background: #34d399; 
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
 }
 
 input[type="date"] {
   color-scheme: dark;
-}
-
-.registerContainerLinkLogIn {
-  margin-top: 1rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-subtle);
-  text-align: center;
 }
 
 .registerTitleLinkLogIn {
@@ -134,27 +147,50 @@ input[type="date"] {
 .registerLinkLogIn {
   color: var(--accent);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  margin-left: 8px;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-left: 6px;
+  transition: color 0.15s ease;
 }
 
 .registerLinkLogIn:hover {
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+  text-decoration: underline;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+@keyframes registerFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 480px) {
+/* responsive */
+@media (max-width: 640px) {
   .registerFormFull {
-    padding: 2rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    padding: 30px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .registerContainerFull {
+    padding: 20px 16px;
+  }
+
+  .registerFormFull {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .registerContainerForm:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .registerContainerBttn {
+    grid-column: span 1;
+  }
+
+  .registerContainerLinkLogIn {
+    grid-column: span 1;
   }
 }

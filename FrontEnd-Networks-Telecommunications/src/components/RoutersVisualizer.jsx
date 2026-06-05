@@ -138,6 +138,7 @@ function RoutersVisualizer() {
 
                 <main className='rVisualizerMainRouter'>
                     <h4 className='rVisualizerNameRouter'>Name: {r.name}</h4>
+                    <p className='rVisualizerTechnicianRouter'>Technician: {r.username}</p>
                     <p className='rVisualizerDescriptionRouter'>Description: {r.description}</p>
                     <span className='rVisualizerIPAddressRouter'>IP Address: {r.ip_address}</span><br />
                     <span className='rVisualizerMACAddressRouter'>MAC Address: {r.mac_address}</span><br />

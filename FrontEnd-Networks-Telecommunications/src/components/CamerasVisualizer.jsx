@@ -139,6 +139,7 @@ function CamerasVisualizer() {
           
             <main className='cVisualizerMainCamera'>
             <h5 className='cVisualizerNameCamera'>Name: {c.name} </h5>
+            <p className='cVisualizerTechnicianCamera'>Technician: {c.username}</p>
             <p className='cVisualizerDescriptionCamera'>Description: {c.description} </p>                                       
   
             <span className='cVisualizerIPAddressCamera'>IP Address: {c.ip_address} </span><br />

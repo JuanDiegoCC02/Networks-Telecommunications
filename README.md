@@ -136,7 +136,9 @@ By combining asset administration, geolocation services, maintenance management,
 
 ### Design & Collaboration:
 
+* Draw.io
 * Figma
+* Trello
 
 ---
 

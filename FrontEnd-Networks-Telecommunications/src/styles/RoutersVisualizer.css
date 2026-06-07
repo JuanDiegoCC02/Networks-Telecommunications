@@ -154,6 +154,14 @@
 
 .rVisualizerNameRouter { display: none; }
 
+/* Estilos para el nuevo campo de Técnico Responsable */
+.rVisualizerTechnicianRouter {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0 0 10px 0;
+  display: block;
+}
+
 .rVisualizerDescriptionRouter {
   font-size: 0.85rem;
   color: var(--text-secondary);
@@ -382,7 +390,7 @@
   
   .rVisualizerContainerSearch,
   .rVisualizerContainerSelectSearch {
-    max-width: 100%; /
+    max-width: 100%;
     width: 100%;
   }
 

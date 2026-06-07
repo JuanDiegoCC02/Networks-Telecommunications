@@ -398,3 +398,42 @@ div:has(> .adminBdContainerRoutersFull) .adminBdTitle {
   background: rgba(255, 255, 255, 0.02);
   border-color: #3f3f46;
 }
+
+.adminBdCamerasTechnician,
+.adminBdRoutersTechnician {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cameraThumbnailContainer,
+.routerThumbnailContainer {
+  width: 100%;
+  background-color: var(--bg-absolute);
+}
+
+.cameraThumbnail,
+.routerThumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-dim);
+  display: block;
+}
+
+.adminBdContainerRouterOwn img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-dim);
+  display: block;
+}
+
+/* support modal Edit */
+.inputGroupTwo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}

@@ -2,6 +2,7 @@
    SYSTEM VARIABLES (Dark Tech & Cyberpunk Palette)
    ========================================================================== */
 :root {
+  --bg-panel: #000000; 
   --bg-row-hover: rgba(0, 229, 255, 0.03);
   --neon-cyan: #00e5ff;
   --neon-green: #10b981;
@@ -92,7 +93,7 @@
 }
 
 .registryTableContainer {
-  background: var(--bg-panel-surface);
+  background: var(--bg-panel);
   border: 1px solid var(--border-technical);
   border-radius: 8px;
   overflow: hidden;

@@ -155,6 +155,13 @@
 
 .cVisualizerNameCamera { display: none; }
 
+.cVisualizerTechnicianCamera {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  display: block;
+}
+
 .cVisualizerDescriptionCamera {
   font-size: 0.875rem;
   color: var(--text-secondary);

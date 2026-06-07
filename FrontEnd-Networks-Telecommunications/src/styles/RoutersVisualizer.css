@@ -83,7 +83,7 @@
 /* grid cards */
 .rVisualizerContainerRoutersFull {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* Medida exacta original */
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
   gap: 25px;
   max-width: 1400px;
   margin: 0 auto;

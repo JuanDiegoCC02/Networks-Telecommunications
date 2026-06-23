@@ -8,6 +8,12 @@ The system allows administrators and authorized users to manage network assets s
 
 By combining asset administration, geolocation services, maintenance management, and infrastructure monitoring, the application delivers a scalable solution that reflects common workflows found in telecommunications and network operations centers (NOCs).
 
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Django](https://img.shields.io/badge/Django-REST_Framework-green)
+![React](https://img.shields.io/badge/React-Frontend-61DAFB)
+![MySQL](https://img.shields.io/badge/MySQL-Database-orange)
+![Leaflet](https://img.shields.io/badge/Leaflet-Geolocation-green)
+
 ---
 
 ## -->Architecture:

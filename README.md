@@ -148,7 +148,7 @@ Tools
 
 ---
 
-## -->Technical Highlights:
+# 🛠️ Technical Highlights:
 
 * RESTful API design using Django REST Framework.
 * Relational database modeling with MySQL.
@@ -164,7 +164,7 @@ Tools
 
 ---
 
-## -->Installation Front-End:
+# 🔧 Installation Front-End:
 
 ```bash
 git clone https://github.com/JuanDiegoCC02/Networks-Telecommunications.git
@@ -177,7 +177,7 @@ npm run dev
 
 ---
 
-## -->Installation Back-End:
+# 🔧 Installation Back-End:
 
 ```bash
 cd BackEnd
@@ -201,10 +201,9 @@ python manage.py runserver
 
 ---
 
-## -->Credits:
+# 🧑‍💻 Credits:
 
 Project Title: Networks Telecommunications
 
 Author:
-
 * Juan Diego Corella Camacho

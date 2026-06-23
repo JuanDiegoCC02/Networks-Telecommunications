@@ -203,5 +203,4 @@ python manage.py runserver
 
 Project Title: Networks Telecommunications
 
-Author:
-* Juan Diego Corella Camacho
+Author: Juan Diego Corella Camacho

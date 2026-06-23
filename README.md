@@ -1,6 +1,6 @@
 # Networks Telecommunications
 
-## -->Description:
+# 🌐 Description:
 
 Networks Telecommunications is a full-stack web platform developed with React on the front end and Django/Django REST Framework on the back end, designed to simulate the administration and monitoring of telecommunications infrastructure in a centralized environment.
 
@@ -39,7 +39,7 @@ Tools
 
 ---
 
-## -->Features:
+# 🗂️​ Features:
 
 ### Camera Management:
 
@@ -101,7 +101,7 @@ Tools
 
 ---
 
-## -->Technologies:
+# 🏗️ Technologies:
 
 ### Languages:
 

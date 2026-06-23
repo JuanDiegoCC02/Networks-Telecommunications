@@ -16,26 +16,26 @@ By combining asset administration, geolocation services, maintenance management,
 
 ---
 
-## -->Architecture:
+# ⚙️ Tech Stack
 
-### Front-End:
+Frontend
+- React
+- React Router
+- Bootstrap
+- Leaflet
 
-* React
-* React Router
-* Leaflet (interactive geolocation maps)
-* Bootstrap (responsive UI framework)
-* Native Fetch API (REST API consumption)
-* LocalStorage & Cookies (session persistence)
-* Responsive UI Components
+Backend
+- Django
+- Django REST Framework
 
-### Back-End:
+Database
+- MySQL
 
-* Python
-* Django
-* Django REST Framework
-* MySQL (relational database)
-* Django Admin
-* RESTful API Architecture
+Tools
+- Git
+- GitHub
+- VS Code
+- Django Admin
 
 ---
 

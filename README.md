@@ -146,7 +146,7 @@ Tools
 
 ---
 
-#  Technical Highlights:
+# 🎯 Technical Highlights:
 
 * RESTful API design using Django REST Framework.
 * Relational database modeling with MySQL.

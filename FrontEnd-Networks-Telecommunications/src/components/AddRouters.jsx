@@ -149,7 +149,7 @@ function AddRouters() {
 
         <div className='addRoutersContainerForm'>
           <label className='addRoutersLabelForm'> Thumbnail URL </label>
-          <input className='addRoutersInputForm' placeholder='Insert Thumbnail URL' type="text" value={routerModel} onChange={(e) => thumbnail_url(e)}/>
+          <input className='addRoutersInputForm' placeholder='Insert Thumbnail URL' type="text" value={Url_thumbnail} onChange={(e) => thumbnail_url(e)}/>
         </div>
         
 

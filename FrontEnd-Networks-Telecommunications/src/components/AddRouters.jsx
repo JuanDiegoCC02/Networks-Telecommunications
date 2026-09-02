@@ -3,107 +3,139 @@ import { postRouters } from '../services/routersApi';
 import AddGeolocationRouter from './AddGeolocationRouter';
 import "../styles/AddRouters.css";
 
+
 function AddRouters() {
-  const [routerName, setRouterName] = useState("");
-  const [routerDescription, setRouterDescription] = useState("");
-  const [ip_Address, setIp_Address] = useState("");
-  const [mac_Address, setMac_Address] = useState("");
-  const [routerBrand, setRouterBrand] = useState("");
-  const [routerModel, setRouterModel] = useState("");
-  const [Url_thumbnail, setUrlThumbnail] = useState("");
-  const [routerLocation, setRouterLocation] = useState("");
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [routerStatus, setRouterStatus] = useState("");
-  const handleCoords = (coords) => { setLatitude(coords.lat);  setLongitude(coords.lng); };
+    const [routerName, setRouterName] = useState("");
 
-    function name(e) {
-    setRouterName(e.target.value)    
-  }
-    function description(e) {
-    setRouterDescription(e.target.value)
-  }  
-   function ip_address(e) {
-    setIp_Address(e.target.value)    
-  }
-    function mac_address(e) {
-    setMac_Address(e.target.value)
-  }
-    function brand(e) {
-    setRouterBrand(e.target.value)
-  }
-    function model(e) {
-    setRouterModel(e.target.value)
-  }
-    function thumbnail_url(e) {
-    setUrlThumbnail(e.target.value)
-  }
-    function location(e) {
-    setRouterLocation(e.target.value)
-  }
-    function status(e) {
-    setRouterStatus(e.target.value)
-  }
+    const [routerDescription, setRouterDescription] = useState("");
 
-  // reset form
-  const resetForm = () => {
-    setRouterName("");
-    setRouterDescription("");
-    setIp_Address("");
-    setMac_Address("");
-    setRouterBrand("");
-    setRouterModel("");
-    setUrlThumbnail("");
-    setRouterLocation("");
-    setRouterStatus("");
-    setLatitude(null);
-    setLongitude(null);
-  };
+    const [ip_Address, setIp_Address] = useState("");
 
-  // funtion create
-  async function create() {
-    console.log("name:", routerName);
-    console.log("description:", routerDescription);
-    console.log("ip_address:", ip_Address);
-    console.log("mac_address:", mac_Address);
-    console.log("brand:", routerBrand);
-    console.log("model:", routerModel);
-    console.log("thumbnail_url:", Url_thumbnail);
-    console.log("location:", routerLocation);
-    console.log("latitude:", latitude);
-    console.log("longitude:", longitude);
-    console.log("status:", routerStatus);
-    
-    // validate inputs
-    if (!routerName || !ip_Address || !mac_Address || !routerBrand || !routerModel || !Url_thumbnail || !routerLocation || !routerStatus) {
-      alert("Complete all fields");
-      return;
+    const [mac_Address, setMac_Address] = useState("");
+
+    const [routerBrand, setRouterBrand] = useState("");
+
+    const [routerModel, setRouterModel] = useState("");
+
+    const [Url_thumbnail, setUrlThumbnail] = useState("");
+
+    const [routerLocation, setRouterLocation] = useState("");
+
+    const [latitude, setLatitude] = useState(null);
+
+    const [longitude, setLongitude] = useState(null);
+
+    const [routerStatus, setRouterStatus] = useState("");
+
+    const handleCoords = (coords) => { setLatitude(coords.lat);  setLongitude(coords.lng); };
+
+
+      function name(e) {
+      setRouterName(e.target.value)    
     }
 
-    const obj = {
-      name: routerName,
-      description: routerDescription,
-      ip_address: ip_Address,
-      mac_address: mac_Address,
-      brand: routerBrand,
-      model: routerModel,
-      thumbnail_url: Url_thumbnail,
-      location: routerLocation,
-      latitude: latitude,
-      longitude: longitude,
-      status: routerStatus
+      function description(e) {
+      setRouterDescription(e.target.value)
+    }  
+
+    function ip_address(e) {
+      setIp_Address(e.target.value)    
+    }
+
+      function mac_address(e) {
+      setMac_Address(e.target.value)
+    }
+
+      function brand(e) {
+      setRouterBrand(e.target.value)
+    }
+
+      function model(e) {
+      setRouterModel(e.target.value)
+    }
+
+      function thumbnail_url(e) {
+      setUrlThumbnail(e.target.value)
+    }
+
+      function location(e) {
+      setRouterLocation(e.target.value)
+    }
+
+      function status(e) {
+      setRouterStatus(e.target.value)
+    }
+
+
+    // reset form
+    const resetForm = () => {
+      setRouterName("");
+      setRouterDescription("");
+      setIp_Address("");
+      setMac_Address("");
+      setRouterBrand("");
+      setRouterModel("");
+      setUrlThumbnail("");
+      setRouterLocation("");
+      setRouterStatus("");
+      setLatitude(null);
+      setLongitude(null);
     };
 
-    try {
-      const requestServer = await postRouters(obj);
-      console.log("router register:", requestServer);
-      alert("router connection created successfully");
-      resetForm();
-    } catch (error) {
-      console.error("Error for create router:", error);
-      alert("Error creating router");
+
+    // funtion create
+    async function create() {
+      console.log("name:", routerName);
+      console.log("description:", routerDescription);
+      console.log("ip_address:", ip_Address);
+      console.log("mac_address:", mac_Address);
+      console.log("brand:", routerBrand);
+      console.log("model:", routerModel);
+      console.log("thumbnail_url:", Url_thumbnail);
+      console.log("location:", routerLocation);
+      console.log("latitude:", latitude);
+      console.log("longitude:", longitude);
+      console.log("status:", routerStatus);
+      
+
+      // validate inputs
+      if (!routerName || !ip_Address || !mac_Address || !routerBrand || !routerModel || !Url_thumbnail || !routerLocation || !routerStatus) {
+        alert("Complete all fields");
+        return;
+      }
+
+
+      const obj = {
+        name: routerName,
+        description: routerDescription,
+        ip_address: ip_Address,
+        mac_address: mac_Address,
+        brand: routerBrand,
+        model: routerModel,
+        thumbnail_url: Url_thumbnail,
+        location: routerLocation,
+        latitude: latitude,
+        longitude: longitude,
+        status: routerStatus
+      };
+
+      try {
+        const requestServer = await postRouters(obj);
+
+        console.log("router register:", requestServer);
+
+        alert("router connection created successfully");
+
+        resetForm();
+
+      } catch (error) {
+        console.error("Error for create router:", error);
+
+        alert("Error creating router");
+      }
     }
-  }
+
+
 
   return (
     <div className='addRoutersContainerFull'>

@@ -3,50 +3,75 @@ import { postCameras } from '../services/camerasApi';
 import AddGeolocationCamera from './AddGeolocationCamera';
 import "../styles/AddCameras.css"
 
+
+
 function AddCameras() {
+
   const [cameraName, setCameraName] = useState("");
+
   const [ip_Address, setIp_Address] = useState("");
+
   const [url_Address, setUrl_Address] = useState("");
+
   const [Url_Stream, setUrlStream] = useState("");
+
   const [Url_thumbnail, setUrlThumbnail] = useState("");
+
   const [streamType, setStreamType] = useState("MP4");
+
   const [cameraLocation, setCameraLocation] = useState("");
+
   const [cameraDescription, setCameraDescroption] = useState("");
+
   const [cameraStatus, setCameraStatus] = useState("");
+
   const [latitude, setLatitude] = useState(null);
+
   const [longitude, setLongitude] = useState(null);
+
+
 
   function name(e) {
     setCameraName(e.target.value)    
   }
+
    function ip_address(e) {
     setIp_Address(e.target.value)    
   }
+
    function url_address(e) {
     setUrl_Address(e.target.value)    
   }
+
    function url_stream(e) {
     setUrlStream(e.target.value)    
   }
+
    function url_thumbnail(e) {
     setUrlThumbnail(e.target.value)    
   }
+
    function stream_type(e) {
     setStreamType(e.target.value)    
   }
+
    function location(e) {
     setCameraLocation(e.target.value)    
   }
+
    function description(e) {
     setCameraDescroption(e.target.value)    
   }
+
   function handleCoords(coords) {
   setLatitude(coords.lat);
   setLongitude(coords.lng);
   }
+
    function status(e) {
     setCameraStatus(e.target.value)    
   }
+
 
 
   //create connection camera
@@ -58,46 +83,47 @@ function AddCameras() {
       console.log("location:", cameraLocation)
       console.log("description:", cameraDescription)
       console.log("status:", cameraStatus)
+
       
-  if (!cameraName || !ip_Address || !url_Address || !cameraLocation || !cameraDescription || !cameraStatus) {
-      alert("Complete all fields");
-      return;
-  }
+      if (!cameraName || !ip_Address || !url_Address || !cameraLocation || !cameraDescription || !cameraStatus) {
+          alert("Complete all fields");
+          return;
+      }
 
-  const obj = {
-      name: cameraName,
-      ip_address: ip_Address,
-      url_address: url_Address,
-      stream_url: Url_Stream,
-      thumbnail_url: Url_thumbnail,
-      stream_type: streamType,
-      description: cameraDescription,
-      location: cameraLocation,
-      latitude: latitude,
-      longitude: longitude,
-      status: cameraStatus
-  }
+  
+      const obj = {
+          name: cameraName,
+          ip_address: ip_Address,
+          url_address: url_Address,
+          stream_url: Url_Stream,
+          thumbnail_url: Url_thumbnail,
+          stream_type: streamType,
+          description: cameraDescription,
+          location: cameraLocation,
+          latitude: latitude,
+          longitude: longitude,
+          status: cameraStatus
+      }
 
-  try {
+      try {
+          const requestServer = await postCameras(obj);
 
-      const requestServer = await postCameras(obj);
+          console.log("camera register:", requestServer);
 
-      console.log("camera register:", requestServer);
-      console.log(obj);
+          console.log(obj);
 
-      alert("camera connection created successfully");
+          alert("camera connection created successfully");
 
-     
+      } catch (error) {
+          console.error("Error for create camera:", error);
 
-  } catch (error) {
+          console.log(obj);
 
-      console.error("Error for create camera:", error);
-      console.log(obj);
+          alert("Error creating camera");
+      }
+    }
 
-      alert("Error creating camera");
-
-  }
-}
+    
 
   return (
     <div className='addCamerasContainerFull'>

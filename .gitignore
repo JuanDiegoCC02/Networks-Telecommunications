@@ -13,6 +13,11 @@ db.sqlite3
 media/
 staticfiles/
 
+# Camera media
+/FrontEnd-Networks-Telecommunications/public/imagesRouters/
+/FrontEnd-Networks-Telecommunications/public/imagesCams/
+/FrontEnd-Networks-Telecommunications/public/videos/
+
 # Environment
 .env
 
